@@ -1,32 +1,36 @@
-version: "3"
-
+version: '2'
 services:
-  laravel:
-    build:
-      context: .
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www
-      - ./docker/docker.env:/var/www/.env
-    ports:
-      - "8000:8000"
+    app:
+        build: docker/php
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=db"
+            - "DB_DATABASE=gym"
+            - "DB_USERNAME=rayuser"
+            - "DB_PASSWORD=raypass"
 
-    depends_on:
-      - mysql
-      - redis
+    web:
+        build: docker/nginx
+        working_dir: /var/www
+        volumes_from:
+            - app
+        ports:
+            - 8008:80
 
-  redis:
-    image: redis:alpine
+    db:
+        image: mysql:5.7.24
+        volumes:
+            - dbgym:/var/lib/mysql
+        environment:
+            - "MYSQL_DATABASE=gym"
+            - "MYSQL_USER=rayuser"
+            - "MYSQL_PASSWORD=raypass"
+            - "MYSQL_ROOT_PASSWORD=rootpassword"
+        ports:
+            - "33068:3306"
 
-  mysql:
-    image: mysql:5.7
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./docker/mysql:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: laravue
-      MYSQL_USER: laravue
-      MYSQL_PASSWORD: laravue
-      MYSQL_ROOT_PASSWORD: root
-
+volumes:
+    dbgym:

@@ -4,6 +4,7 @@ export default {
     return: 'Trở về',
   },
   route: {
+    pages: 'Trang',
     dashboard: 'Giao diện chính',
     introduction: 'Giới thiệu',
     documentation: 'Tài liệu',

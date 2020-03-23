@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    function make_slug($string) {
+    	$string = str_replace('(', '', $string);
+    	$string = str_replace(')', '', $string);
+    	$string = str_replace(',', '', $string);
+    	$string = str_replace('.', '', $string);
+	    return strtolower(preg_replace('/\s+/u', '-', trim($string)));
+	}
 }
