@@ -35,6 +35,7 @@ mix.webpackConfig(config);
 
 mix
   .js('resources/js/app.js', 'public/js')
+  .js('resources/js/admin_app.js', 'public/js')
   .extract([
     'vue',
     'axios',

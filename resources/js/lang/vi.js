@@ -4,6 +4,9 @@ export default {
     return: 'Trở về',
   },
   route: {
+    pages: 'Trang nội dung',
+    editPages: 'Sửa trang nội dung',
+    blocks: 'Blocks',
     dashboard: 'Giao diện chính',
     introduction: 'Giới thiệu',
     documentation: 'Tài liệu',

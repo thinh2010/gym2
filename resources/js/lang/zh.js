@@ -1,5 +1,6 @@
 export default {
   route: {
+    pages: 'Pages',
     dashboard: '首页',
     introduction: '简述',
     documentation: '文档',

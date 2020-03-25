@@ -1,5 +1,8 @@
 export default {
   route: {
+    pages: 'Pages',
+    editPages: 'Edit page',
+    blocks: 'Blocks',
     dashboard: 'Dashboard',
     introduction: 'Introduction',
     documentation: 'Documentation',
