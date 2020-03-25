@@ -2,7 +2,7 @@ import Resource from '@/api/resource';
 
 class PageResource extends Resource {
   constructor() {
-    super('page');
+    super('pages');
   }
 }
 

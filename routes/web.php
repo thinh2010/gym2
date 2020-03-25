@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');
-});
+// Route::group(['middleware' => 'web'], function () {
+//     Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');
+// });
 
 Route::group(['middleware' => 'web'], function() {
-	Route::get('admin', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
+	Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

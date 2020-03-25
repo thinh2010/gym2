@@ -26,7 +26,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('roles/{role}/permissions', 'RoleController@permissions')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
     Route::apiResource('permissions', 'PermissionController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
-    Route::apiResource('pages', 'PageController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('pages', 'Api\PageController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+
+    Route::apiResource('blocks', 'Api\BlockController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {
     //     Route::get('/', 'Api\PageController@index')->name('index');
@@ -39,17 +41,17 @@ Route::group(['middleware' => 'auth:api'], function () {
     //     Route::delete('/{page}/block/{block}', 'Api\PageController@removeBlock')->name('remove_block');
     // });
 
-    Route::group(['prefix' => '/blocks', 'as' => 'api.blocks.'], function () {
-        Route::get('/', 'Api\BlockController@index')->name('index');
-        Route::get('/enabled', 'Api\BlockController@enabledBlocks')->name('enabled_blocks');
-        Route::post('/', 'Api\BlockController@store')->name('store');
-        Route::get('/{id}', 'Api\BlockController@show')->name('show');
-        Route::post('/{id}/edit', 'Api\BlockController@update')->name('update');
-        Route::delete('/{block}', 'Api\BlockController@destroy')->name('destroy');
-        // block contents
-        Route::post('/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content');
-        Route::post('/{id}/block_contents/{blockContentId}', 'Api\BlockContentController@update')->name('update_block_content');
-    });
+    // Route::group(['prefix' => '/blocks', 'as' => 'api.blocks.'], function () {
+    //     Route::get('/', 'Api\BlockController@index')->name('index');
+    //     Route::get('/enabled', 'Api\BlockController@enabledBlocks')->name('enabled_blocks');
+    //     Route::post('/', 'Api\BlockController@store')->name('store');
+    //     Route::get('/{id}', 'Api\BlockController@show')->name('show');
+    //     Route::post('/{id}/edit', 'Api\BlockController@update')->name('update');
+    //     Route::delete('/{block}', 'Api\BlockController@destroy')->name('destroy');
+    //     // block contents
+    //     Route::post('/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content');
+    //     Route::post('/{id}/block_contents/{blockContentId}', 'Api\BlockContentController@update')->name('update_block_content');
+    // });
 
     Route::group(['prefix' => '/pages/{page}/items', 'as' => 'api.items.'], function () {
         Route::get('/', 'Api\ItemController@index')->name('index');

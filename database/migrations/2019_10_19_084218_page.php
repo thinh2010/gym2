@@ -19,7 +19,7 @@ class Page extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->string('type')->default('page');
 
             $table->boolean('is_enabled')->default(true);

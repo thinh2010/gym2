@@ -7,17 +7,36 @@ use App\BlockContent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Http\Resources\BlockResource;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class BlockController extends Controller
 {
+    const ITEM_PER_PAGE = 15;
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Block::orderBy('id')->get());
+        searchParams = $request->all();
+        $blockQuery = Block::query();
+        $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
+        $type = Arr::get($searchParams, 'type', '');
+        $keyword = Arr::get($searchParams, 'keyword', '');
+
+        if (!empty($type)) {
+            $blockQuery->where('type', $type);
+        }
+
+        if (!empty($keyword)) {
+            $blockQuery->where('title', 'LIKE', '%' . $keyword . '%');
+        }
+
+        return BlockResource::collection($blockQuery->paginate($limit));
     }
     
     /**

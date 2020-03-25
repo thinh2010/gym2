@@ -11,9 +11,10 @@ Vue.use(Router);
 
 /* Layout */
 import Layout from '@/layout';
+import PageList from '@/views/pages/index';
 
 /* Router for modules */
-// import elementUiRoutes from './modules/element-ui';
+import elementUiRoutes from './modules/element-ui';
 // import componentRoutes from './modules/components';
 // import chartsRoutes from './modules/charts';
 // import tableRoutes from './modules/table';
@@ -118,7 +119,7 @@ export const constantRoutes = [
   //     },
   //   ],
   // },
-  // elementUiRoutes,
+  elementUiRoutes,
 ];
 
 export const asyncRoutes = [
@@ -135,9 +136,36 @@ export const asyncRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/pages/index'),
+        component: PageList,
         name: 'Pages',
         meta: { title: 'pages', icon: 'documentation', noCache: false },
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: PageList,
+        name: 'EditPage',
+        meta: { title: 'editPages', noCache: false },
+        hidden: true,
+      },
+    ],
+  },
+  {
+    path: '/blocks',
+    component: Layout,
+    redirect: '/blocks/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/blocks/index'),
+        name: 'Blocks',
+        meta: { title: 'blocks', icon: 'documentation', noCache: false },
+      },
+      {
+        path: 'edit/:id(\\d+)',
+        component: () => import('@/views/blocks/index'),
+        name: 'EditBlock',
+        meta: { title: 'editBlocks', noCache: false },
+        hidden: true,
       },
     ],
   },
@@ -231,7 +259,7 @@ export const asyncRoutes = [
 ];
 
 const createRouter = () => new Router({
-  // mode: 'history', // require service support
+  mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   base: process.env.MIX_LARAVUE_PATH,
   routes: constantRoutes,

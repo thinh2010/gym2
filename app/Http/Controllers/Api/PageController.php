@@ -6,6 +6,8 @@ use App\Page;
 use App\Block;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PageResource;
+use App\Http\Resources\PageDetailResource;
 
 class PageController extends Controller
 {
@@ -16,7 +18,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return response()->json(Page::orderBy('id')->get());
+        return PageResource::collection(Page::all());
+        // return response()->json(Page::orderBy('id')->get());
     }
 
     /**
@@ -62,9 +65,10 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Page $page)
     {
-        return response()->json(Page::with('blocks')->with('items')->findOrFail($id));
+        return new PageDetailResource($page);
+        // return response()->json($page->load('blocks')->load('items'));
     }
 
     /**
