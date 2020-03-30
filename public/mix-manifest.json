@@ -6,5 +6,7 @@
     "/js/vendor.js": "/js/vendor.js",
     "/gym/css/main.css": "/gym/css/main.css",
     "/gym/css/svg.css": "/gym/css/svg.css",
-    "/gym/js/main.js": "/gym/js/main.js"
+    "/gym/js/main.js": "/gym/js/main.js",
+    "/gym/js/jquery.js": "/gym/js/jquery.js",
+    "/gym/js/error.js": "/gym/js/error.js"
 }

@@ -25,6 +25,9 @@
                     />
                   </el-select>
                 </el-form-item>
+                <el-form-item v-for="(option, idx) in options" :key="idx" :label="option.label">
+                  <custom-form-field :option="option" :entity="entity" />
+                </el-form-item>
               </div>
             </el-col>
             <el-col :span="12">
@@ -41,7 +44,7 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button v-loading="saving" native-type="submit" type="primary" @click="onSubmit()">Lưu lại</el-button>
-                  <el-button v-if="isEditing()" type="danger" @click="onDelete()">Xóa</el-button>
+                  <el-button v-if="isEditing()" type="danger" @click="onDelete(entity.id)">Xóa</el-button>
                 </el-form-item>
               </div>
             </el-col>
@@ -107,19 +110,20 @@
 </template>
 
 <script>
-import { BLOCK_TYPES, TYPE_BLOCK } from '@/constants';
+import { BLOCK_TYPES, CUSTOM_OPTIONS, TYPE_BLOCK } from '@/constants';
 import Tinymce from '@/components/Tinymce';
 import ImageUpload from '@/components/Upload/Image';
 import BlockResource from '@/api/block';
 import BlockContentResource from '@/api/blockContent';
 import Sortable from 'sortablejs';
+import CustomFormField from '@/components/Form/CustomFormField';
 
 const blockApi = new BlockResource();
 const blockContentApi = new BlockContentResource();
 
 export default {
   name: 'FormBlock',
-  components: { Tinymce, ImageUpload },
+  components: { Tinymce, ImageUpload, CustomFormField },
   data() {
     return {
       entity: {
@@ -130,6 +134,7 @@ export default {
         content: '',
         options: [],
         block_contents: [],
+        type: '',
       },
       fileList: [],
       types: [],
@@ -137,10 +142,10 @@ export default {
       loading: false,
       rules: {
         title: [
-          { required: true, message: 'Hãy điền tiêu đề trang', trigger: 'blur' },
+          { required: true, message: 'Hãy điền tiêu đề block', trigger: 'blur' },
         ],
         type: [
-          { required: true, message: 'Hãy chọn loại trang', trigger: 'blur' },
+          { required: true, message: 'Hãy chọn loại block', trigger: 'blur' },
         ],
       },
       uploadImage: {},
@@ -148,6 +153,14 @@ export default {
       activeTab: 'blockcontent',
       newList: [],
     };
+  },
+  computed: {
+    options: function() {
+      if (this.entity.type !== '') {
+        return _.get(CUSTOM_OPTIONS, this.entity.type, []);
+      }
+      return [];
+    },
   },
   created() {
     this.types = BLOCK_TYPES;
@@ -196,6 +209,9 @@ export default {
         if (this.entity.image === '') {
           formData.set('image', '');
         }
+
+        formData.set('content', _.get(this.entity, 'content', ''));
+        formData.set('type', this.entity.type);
 
         if (this.isEditing()) {
           await blockApi.postUpdate(this.entity.id, formData);

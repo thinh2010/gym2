@@ -22,6 +22,7 @@ class BlockDetailResource extends JsonResource
             'is_enabled' => $this->is_enabled,
             'image' => strval($this->image),
             'content' => $this->content,
+            'options' => $this->options,
             'block_contents' => BlockContentResource::collection($this->blockContents),
         ];
     }
