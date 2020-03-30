@@ -1,7 +1,7 @@
 window.onload = function() {
-	$(document).trigger('pageloaded');
-}
+  $(document).trigger('pageloaded');
+};
 
-if (typeof console == "undefined") {
-    this.console = {log: function() {}};
+if (typeof console === 'undefined') {
+  this.console = { log: function() {} };
 }

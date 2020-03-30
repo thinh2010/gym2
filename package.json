@@ -22,7 +22,11 @@
     }
   },
   "lint-staged": {
-    "resources/**/*.{js,vue}": [
+    "resources/js/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "resources/sass/*.{js,vue}": [
       "eslint --fix",
       "git add"
     ]
