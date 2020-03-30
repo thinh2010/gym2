@@ -34,13 +34,15 @@ mix.webpackConfig(config);
  */
 
 mix
-  .copy('resources/frontend/css/main.css', 'public/gym/css')
-  .copy('resources/frontend/css/svg.css', 'public/gym/css')
-  .copyDirectory('resources/frontend/img', 'public/gym/img')
-  .copyDirectory('resources/frontend/fonts', 'public/gym/fonts')
   .js('resources/js/app.js', 'public/js')
   .js('resources/js/admin_app.js', 'public/js')
+  .copy('resources/frontend/css/main.css', 'public/gym/css')
+  .copy('resources/frontend/css/svg.css', 'public/gym/css')
   .copy('resources/frontend/js/main.js', 'public/gym/js')
+  .copy('resources/frontend/js/jquery.js', 'public/gym/js')
+  .copy('resources/frontend/js/error.js', 'public/gym/js')
+  .copyDirectory('resources/frontend/img', 'public/gym/img')
+  .copyDirectory('resources/frontend/fonts', 'public/gym/fonts')
   .extract([
     'vue',
     'axios',

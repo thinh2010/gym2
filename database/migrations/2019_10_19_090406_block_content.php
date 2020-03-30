@@ -18,7 +18,7 @@ class BlockContent extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->text('image')->nullable();
             $table->integer('sort')->nullable();
 

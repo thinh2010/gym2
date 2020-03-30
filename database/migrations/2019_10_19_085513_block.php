@@ -18,7 +18,7 @@ class Block extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->text('image')->nullable();
             $table->string('type')->default('block');
             $table->text('options')->nullable();

@@ -19,7 +19,7 @@ class Item extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->text('image')->nullable();
             $table->integer('sort')->nullable();
 
