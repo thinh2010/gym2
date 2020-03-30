@@ -6,7 +6,7 @@ export const PAGE_TYPES = [
 ];
 
 export const TYPE_FILE = 'file';
-export const TYPE_SLIDER = 'slider';
+export const TYPE_HEADING = 'heading';
 export const TYPE_FEATURE = 'feature';
 export const TYPE_CUSTOMER_REVIEW = 'customer_review';
 export const TYPE_CUSTOMER_REVIEW_2 = 'customer_review_2';
@@ -19,23 +19,22 @@ export const TYPE_BLOCK = 'block';
 export const TYPE_PAGE_ITEMS = 'page_items';
 
 export const BLOCK_TYPES = [
-  { value: TYPE_VIDEO, text: 'Video', options: [
-    {
-      'type': TYPE_FILE,
-      'name': 'options[video]',
-      'label': 'Video',
-    },
-  ] },
-  { value: TYPE_SLIDER, text: 'Slider' },
-  { value: TYPE_FEATURE, text: 'Feature' },
-  { value: TYPE_CUSTOMER_REVIEW, text: 'Customer review' },
-  { value: TYPE_CUSTOMER_REVIEW_2, text: 'Customer review (no avatar)' },
-  { value: TYPE_TEAM, text: 'Team' },
-  { value: TYPE_STATUS, text: 'Status' },
-  { value: TYPE_PARTNER, text: 'Partner' },
-  { value: TYPE_CONTACT, text: 'Contact Form' },
-  { value: TYPE_BLOCK, text: 'Block' },
-  { value: TYPE_PAGE_ITEMS, text: 'Page items' },
+  // { value: TYPE_VIDEO, label: 'Video', options: [
+  //   {
+  //     'type': TYPE_FILE,
+  //     'name': 'options[video]',
+  //     'label': 'Video',
+  //   },
+  // ] },
+  { value: TYPE_HEADING, label: 'Heading' },
+  // { value: TYPE_FEATURE, label: 'Feature' },
+  // { value: TYPE_CUSTOMER_REVIEW, label: 'Customer review' },
+  // { value: TYPE_CUSTOMER_REVIEW_2, label: 'Customer review (no avatar)' },
+  // { value: TYPE_TEAM, label: 'Team' },
+  // { value: TYPE_STATUS, label: 'Status' },
+  // { value: TYPE_PARTNER, label: 'Partner' },
+  // { value: TYPE_CONTACT, label: 'Contact Form' },
+  { value: TYPE_BLOCK, label: 'Block' },
 ];
 
 const customOptions = [];

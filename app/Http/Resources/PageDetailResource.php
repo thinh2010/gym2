@@ -24,6 +24,7 @@ class PageDetailResource extends JsonResource
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
             'meta_keywords' => $this->meta_keywords,
+            'blocks' => BlockResource::collection($this->blocks),
         ];
     }
 }

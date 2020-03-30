@@ -9,6 +9,7 @@
 /public/images/*.gif
 /public/fonts/
 /public/stats.html
+/public/*
 /storage/*.key
 /vendor
 /public/*.js

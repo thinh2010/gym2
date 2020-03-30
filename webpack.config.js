@@ -36,6 +36,9 @@ module.exports = {
         options: {
           symbolId: 'icon-[name]',
         },
+        exclude: [
+          path.resolve(__dirname, "resources/frontend/*"),
+        ],
       },
     ],
   },
