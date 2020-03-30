@@ -7,6 +7,7 @@ use App\BlockContent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Http\Resources\BlockContentDetailResource;
 
 class BlockContentController extends Controller
 {
@@ -70,9 +71,9 @@ class BlockContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BlockContent $blockContent)
     {
-        return response()->json(BlockContent::findOrFail($id));
+        return new BlockContentDetailResource($blockContent);
     }
 
     /**
@@ -93,14 +94,14 @@ class BlockContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $blockContentId)
+    public function update(Request $request, $id)
     {
         // $this->validate($request, [
         //     'title' => 'required|max:255',
         // ]);
 
         $data = $request->all();
-        $blockContent = BlockContent::find($blockContentId);
+        $blockContent = BlockContent::find($id);
         $oldImage = $blockContent->image;
 
         $blockContent->fill($data);

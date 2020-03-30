@@ -4,7 +4,7 @@ services:
         build: docker/php
         working_dir: /var/www
         volumes:
-            - ./:/var/www
+            - ./:/var/www:cached
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=db"

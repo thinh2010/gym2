@@ -11,13 +11,13 @@ Vue.use(Router);
 
 /* Layout */
 import Layout from '@/layout';
-import PageList from '@/views/pages/index';
+import PageList from '@/views/pages/Index';
 
 /* Router for modules */
 import elementUiRoutes from './modules/element-ui';
 // import componentRoutes from './modules/components';
 // import chartsRoutes from './modules/charts';
-// import tableRoutes from './modules/table';
+import tableRoutes from './modules/table';
 import adminRoutes from './modules/admin';
 // import nestedRoutes from './modules/nested';
 import errorRoutes from './modules/error';
@@ -127,7 +127,7 @@ export const asyncRoutes = [
   // componentRoutes,
   // chartsRoutes,
   // nestedRoutes,
-  // tableRoutes,
+  tableRoutes,
   adminRoutes,
   {
     path: '/pages',
@@ -156,15 +156,36 @@ export const asyncRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/blocks/index'),
+        component: () => import('@/views/blocks/Index'),
         name: 'Blocks',
-        meta: { title: 'blocks', icon: 'documentation', noCache: false },
+        meta: { title: 'blocks', icon: 'component', noCache: false },
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/blocks/Form'),
+        name: 'AddBlock',
+        meta: { title: 'addBlock', noCache: false },
+        hidden: true,
       },
       {
         path: 'edit/:id(\\d+)',
-        component: () => import('@/views/blocks/index'),
+        component: () => import('@/views/blocks/Form'),
         name: 'EditBlock',
         meta: { title: 'editBlocks', noCache: false },
+        hidden: true,
+      },
+      {
+        path: ':id(\\d+)/block-content/add',
+        component: () => import('@/views/block-contents/Form'),
+        name: 'AddBlockContent',
+        meta: { title: 'addBlockContent', noCache: false },
+        hidden: true,
+      },
+      {
+        path: ':id(\\d+)/block-content/:bid(\\d+)/edit',
+        component: () => import('@/views/block-contents/Form'),
+        name: 'EditBlockContent',
+        meta: { title: 'editBlockContent', noCache: false },
         hidden: true,
       },
     ],

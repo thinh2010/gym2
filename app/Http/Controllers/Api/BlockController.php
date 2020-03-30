@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Resources\BlockResource;
-use Illuminate\Http\Request;
+use App\Http\Resources\BlockDetailResource;
 use Illuminate\Support\Arr;
 
 class BlockController extends Controller
@@ -22,7 +22,7 @@ class BlockController extends Controller
      */
     public function index(Request $request)
     {
-        searchParams = $request->all();
+        $searchParams = $request->all();
         $blockQuery = Block::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $type = Arr::get($searchParams, 'type', '');
@@ -46,7 +46,7 @@ class BlockController extends Controller
      */
     public function enabledBlocks()
     {
-        return response()->json(Block::orderBy('id')->where('is_enabled', true)->get());
+        return BlockResource::collection(Block::orderBy('id')->where('is_enabled', true)->get());
     }
 
     /**
@@ -114,9 +114,10 @@ class BlockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Block $block)
     {
-        return response()->json(Block::with('blockContents')->findOrFail($id));
+        return new BlockDetailResource($block);
+        // return response()->json(Block::with('blockContents')->findOrFail($id));
     }
 
     /**
@@ -210,7 +211,7 @@ class BlockController extends Controller
         // save the order of block contents
         if (count($data) > 0) {
             foreach ($data as $key => $block) {
-                $entity = BlockContent::find($block['id']);
+                $entity = Block::find($block['id']);
                 $entity->fill(['sort' => $block['sort']]);
                 $entity->save();
             }

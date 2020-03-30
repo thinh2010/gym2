@@ -27,8 +27,24 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('permissions', 'PermissionController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
     Route::apiResource('pages', 'Api\PageController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::put('/pages/{page}/addBlock/{block}', 'Api\PageController@addBlock')->name('add_block');
+    Route::post('/pages/{page}/update_block_order', 'Api\PageController@updateBlockOrder')->name('update_block_order');
+    Route::delete('/pages/{page}/block/{block}', 'Api\PageController@removeBlock')->name('remove_block');
 
     Route::apiResource('blocks', 'Api\BlockController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+
+    Route::post('/blocks/{id}/edit', 'Api\BlockController@update')->name('postUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::get('/enabled_blocks', 'Api\BlockController@enabledBlocks')->name('enabled_blocks')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/blocks/update_order', 'Api\BlockController@updateOrder')->name('update_order');
+
+    // block contents
+    Route::apiResource('block_contents', 'Api\BlockContentController')->only(['show', 'destroy'])->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+
+    Route::post('/blocks/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/block_contents/{id}/edit', 'Api\BlockContentController@update')->name('update_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/block_contents/update_order', 'Api\BlockContentController@updateOrder')->name('update_order');
+
+
 
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {
     //     Route::get('/', 'Api\PageController@index')->name('index');
@@ -63,12 +79,12 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::post('/update-order', 'Api\ItemController@updateOrder')->name('update_order');
     });
 
-    Route::group(['prefix' => '/block_contents', 'as' => 'api.block_contents.'], function () {
-        Route::get('/', 'Api\BlockContentController@index')->name('index');
-        Route::get('/{id}', 'Api\BlockContentController@show')->name('show');
-        Route::delete('/{blockContent}', 'Api\BlockContentController@destroy')->name('destroy');
-        Route::post('/update_order', 'Api\BlockContentController@updateOrder')->name('update_order');
-    });
+    // Route::group(['prefix' => '/block_contents', 'as' => 'api.block_contents.'], function () {
+    //     Route::get('/', 'Api\BlockContentController@index')->name('index');
+    //     Route::get('/{id}', 'Api\BlockContentController@show')->name('show');
+    //     Route::delete('/{blockContent}', 'Api\BlockContentController@destroy')->name('destroy');
+    //     
+    // });
 
     Route::group(['prefix' => '/setting', 'as' => 'api.setting.'], function () {
         Route::get('/', 'Api\SettingController@show')->name('show');

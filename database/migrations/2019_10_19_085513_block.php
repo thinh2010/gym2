@@ -22,6 +22,7 @@ class Block extends Migration
             $table->text('image')->nullable();
             $table->string('type')->default('block');
             $table->text('options')->nullable();
+            $table->integer('sort')->nullable();
 
             // flags
             $table->boolean('is_enabled');
