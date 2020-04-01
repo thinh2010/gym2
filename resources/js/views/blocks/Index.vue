@@ -20,37 +20,38 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Title">
+      <el-table-column align="center" label="Tiêu đề">
         <template slot-scope="scope">
           <span>{{ scope.row.title }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Type">
+      <el-table-column align="center" label="Loại">
         <template slot-scope="scope">
           <span>{{ scope.row.type }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Description" width="120">
+      <el-table-column align="center" label="Mô tả">
         <template slot-scope="scope">
           <span>{{ scope.row.description }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Enabeld?">
+      <el-table-column align="center" label="Kích hoạt?">
         <template slot-scope="scope">
           <span>{{ scope.row.is_enabled }}</span>
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Actions" width="120">
+      <el-table-column align="center" label="Thao tác">
         <template slot-scope="scope">
           <router-link :to="{ name: 'EditBlock', params: { id: scope.row.id } }">
             <el-button type="primary" size="small" icon="el-icon-edit">
               Sửa
             </el-button>
           </router-link>
+          <el-button type="danger" @click="onDelete(scope.row.id)">Xóa</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -88,6 +89,22 @@ export default {
       const { data } = await blockApi.list(this.query);
       this.list = data;
       this.loadingList = false;
+    },
+    async onDelete(id) {
+      const confirm = await this.$confirm('Bạn có chắc là muốn xóa block này chứ?', 'Warning', {
+        confirmButtonText: 'Xóa',
+        cancelButtonText: 'Hủy',
+        type: 'warning',
+      });
+
+      if (confirm) {
+        await blockApi.destroy(id);
+        this.$message({
+          type: 'success',
+          message: 'Xóa thành công',
+        });
+        this.getList();
+      }
     },
     handleFilter() {
       console.log('filter');
