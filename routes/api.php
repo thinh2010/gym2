@@ -69,15 +69,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     //     Route::post('/{id}/block_contents/{blockContentId}', 'Api\BlockContentController@update')->name('update_block_content');
     // });
 
-    Route::group(['prefix' => '/pages/{page}/items', 'as' => 'api.items.'], function () {
-        Route::get('/', 'Api\ItemController@index')->name('index');
-        Route::get('/enabled', 'Api\ItemController@enabledItems')->name('enabled');
-        Route::post('/', 'Api\ItemController@store')->name('store');
-        Route::get('/{item}', 'Api\ItemController@show')->name('show');
-        Route::post('/{item}/edit', 'Api\ItemController@update')->name('update');
-        Route::delete('/{item}', 'Api\ItemController@destroy')->name('destroy');
-        Route::post('/update-order', 'Api\ItemController@updateOrder')->name('update_order');
-    });
+    // Route::group(['prefix' => '/pages/{page}/items', 'as' => 'api.items.'], function () {
+    //     Route::get('/', 'Api\ItemController@index')->name('index');
+    //     Route::get('/enabled', 'Api\ItemController@enabledItems')->name('enabled');
+    //     Route::post('/', 'Api\ItemController@store')->name('store');
+    //     Route::get('/{item}', 'Api\ItemController@show')->name('show');
+    //     Route::post('/{item}/edit', 'Api\ItemController@update')->name('update');
+    //     Route::delete('/{item}', 'Api\ItemController@destroy')->name('destroy');
+    //     Route::post('/update-order', 'Api\ItemController@updateOrder')->name('update_order');
+    // });
 
     // Route::group(['prefix' => '/block_contents', 'as' => 'api.block_contents.'], function () {
     //     Route::get('/', 'Api\BlockContentController@index')->name('index');
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //     
     // });
 
-    Route::group(['prefix' => '/setting', 'as' => 'api.setting.'], function () {
+    Route::group(['prefix' => '/settings', 'as' => 'api.settings.'], function () {
         Route::get('/', 'Api\SettingController@show')->name('show');
         Route::post('/{setting}', 'Api\SettingController@update')->name('update');
     });

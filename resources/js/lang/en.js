@@ -7,6 +7,7 @@ export default {
     editBlock: 'Edit block',
     addBlockContent: 'Add Block Content',
     editBlockContent: 'Edit Block Content',
+    settings: 'Settings',
     dashboard: 'Dashboard',
     introduction: 'Introduction',
     documentation: 'Documentation',

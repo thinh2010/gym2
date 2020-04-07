@@ -11,6 +11,7 @@ export default {
     editBlock: 'Sửa Block',
     addBlockContent: 'Thêm mới Block con',
     editBlockContent: 'Sửa Block con',
+    settings: 'Cài đặt',
     dashboard: 'Giao diện chính',
     introduction: 'Giới thiệu',
     documentation: 'Tài liệu',
