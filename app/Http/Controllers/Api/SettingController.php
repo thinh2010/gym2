@@ -7,6 +7,7 @@ use App\Block;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Http\Resources\SettingResource;
 
 class SettingController extends Controller
 {
@@ -17,7 +18,7 @@ class SettingController extends Controller
      */
     public function show()
     {
-        return response()->json(Setting::first());
+        return new SettingResource(Setting::first());
     }
 
     /**

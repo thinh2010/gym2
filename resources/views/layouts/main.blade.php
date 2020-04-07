@@ -71,6 +71,69 @@
 <body class="body js-body">
     <div id="body">
         @yield('content')
+    </div>
+
+    <footer class="site-footer" id="footer">
+        <div class="site-container">
+            <a href="/" class="icon-logo img--full">
+                <img src="{{ $site_settings->logo }}" width="220" alt="{{ $site_settings->company_name }}" />
+            </a>
+
+            <form action="#" method="post"
+                class="site-footer__newsletter">
+                <h2 class="-gamma">Sign up for our Newsletter</h2>
+                <div class="input">
+                    <input name="cm-name" type="text" class="input--text" placeholder="Name" />
+                </div>
+                <div class="input">
+                    <input name="cm-ulilthk-ulilthk" type="email" required class="input--text"
+                        placeholder="Email" />
+                </div>
+                <div class="submit">
+                    <input class="submit" type="submit" value="Sign Up" />
+                </div>
+            </form>
+            <nav class="site-footer__nav">
+                <ul>
+                    <li><a href="#">Membership Info</a></li>
+                    <li><a href="#">Our Gyms</a></li>
+                    <li><a href="#">PACK45</a></li>
+                    <li><a href="#">Classes</a></li>
+                    <li><a href="#">Zones &amp; Gym Equipment</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Social</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Help &amp; FAQs</a></li>
+                </ul>
+            </nav>
+
+            <!-- <ul class="site-footer__social">
+                <li><a href="https://www.facebook.com/easyGym" target="_blank" class="svg-social_facebook"
+                        data-grunticon-embed>Facebook</a></li>
+                <li><a href="https://twitter.com/easygym" target="_blank" class="svg-social_twitter"
+                        data-grunticon-embed>Twitter</a></li>
+                <li><a href="https://instagram.com/easygym/" target="_blank" class="svg-social_instagram"
+                        data-grunticon-embed>Instagram</a></li>
+            </ul> -->
+            <div class="site-footer__baseline">
+                <hr class="hr" />
+                <p>© 2020 easyGym. <a href="#">Privacy Policy</a> | <a href="gym-rules.html">Gym
+                        Rules</a> | <a href="#">Terms and Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+    <div class="overlay">
+        <div class="opening-soon-video-overlay js-opening-soon-video"></div>
+        <div class="newsletter-confirm">
+            <i class="svg-tick">Tick icon</i>
+            <hr class="hr" />
+            <h2 class="heading -alpha">Great!</h2>
+            <p>Thanks for registering your email.</p> <a href="javascript:;"
+                class="js-close-modal newsletter-confirm__close"></a>
+        </div>
+    </div>
 </body>
 
 

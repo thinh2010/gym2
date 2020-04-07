@@ -190,6 +190,19 @@ export const asyncRoutes = [
     ],
   },
   adminRoutes,
+  {
+    path: '/settings',
+    component: Layout,
+    redirect: '/settings/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/settings/Form'),
+        name: 'Settings',
+        meta: { title: 'settings', icon: 'admin', noCache: false },
+      },
+    ],
+  },
   // {
   //   path: '/theme',
   //   component: Layout,

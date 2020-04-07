@@ -115,7 +115,7 @@ img[data-src] {
 }
 
 .text--orange {
-  color: #f96b30
+  color: #be202f
 }
 
 .bg--dark {
@@ -154,7 +154,7 @@ img[data-src] {
 }
 
 .highlight-orange i {
-  color: #f96b30
+  color: #be202f
 }
 
 .push--bottom {
@@ -1340,7 +1340,7 @@ textarea {
 a {
   text-decoration: none;
   outline: none;
-  color: #f96b30
+  color: #be202f
 }
 
 a:hover {
@@ -1465,7 +1465,7 @@ img {
 .site-header {
   width: 100%;
   height: 50px;
-  background-color: #f96b30;
+  background-color: #be202f;
   overflow: hidden;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -1482,7 +1482,7 @@ img {
 }
 
 .site-logo {
-  background-image: url("../img/logo.png");
+  background-image: url("../img/logo2.png");
   background-repeat: no-repeat;
   background-position: right center;
   background-size: 103px 20px;
@@ -1512,9 +1512,9 @@ img {
 
 @media (min-width: 520px) {
   .site-logo {
-    width: 250px;
+    width: 200px;
     padding: 0 0 0 35px;
-    background-size: 218px 60px
+    background-size: 183px 60px
   }
 }
 
@@ -1701,11 +1701,11 @@ img {
 }
 
 .section-title__social a:hover {
-  border-color: #f96b30
+  border-color: #be202f
 }
 
 .section-title__social a:hover svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .anchor-site-section {
@@ -1904,7 +1904,7 @@ img {
   display: block;
   float: left;
   background-image: url("../img/part_of_the_easy_gym_family.jpg");
-  background-color: #f96b30;
+  background-color: #be202f;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px
@@ -2081,7 +2081,7 @@ img {
   width: 50px;
   height: 50px;
   bottom: 0;
-  background-color: #f96b30;
+  background-color: #be202f;
   border: 0;
   color: #fff;
   text-indent: -99999px;
@@ -2277,7 +2277,7 @@ img {
   max-width: 480px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: #f96b30;
+  background-color: #be202f;
   border-radius: 5px;
   text-align: center;
   display: block;
@@ -2366,7 +2366,7 @@ img {
   text-align: center;
   text-transform: uppercase;
   outline: none;
-  border: solid 2px #f96b30;
+  border: solid 2px #be202f;
   border-radius: 5px;
   letter-spacing: -0.5px;
   line-height: 1em;
@@ -2411,35 +2411,35 @@ img {
 }
 
 .btn.-fill {
-  background-color: #f96b30;
-  border-color: #f96b30;
+  background-color: #be202f;
+  border-color: #be202f;
   color: #fff
 }
 
 .btn.-fill:hover {
-  color: #f96b30;
+  color: #be202f;
   background-color: transparent
 }
 
 .btn.-fill:hover svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .btn.-fill[disabled]:hover {
-  background-color: #f96b30;
-  border-color: #f96b30;
+  background-color: #be202f;
+  border-color: #be202f;
   color: #fff
 }
 
 .btn.-empty {
   background-color: transparent;
-  border-color: #f96b30;
-  color: #f96b30
+  border-color: #be202f;
+  color: #be202f
 }
 
 .btn.-empty:hover {
   color: #fff;
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 .btn.-empty:hover svg {
@@ -2448,23 +2448,23 @@ img {
 
 .btn.-empty[disabled]:hover {
   background-color: transparent;
-  border-color: #f96b30;
-  color: #f96b30
+  border-color: #be202f;
+  color: #be202f
 }
 
 .btn.-empty.-reverse {
-  background-color: #f96b30;
+  background-color: #be202f;
   border-color: #fff;
   color: #fff
 }
 
 .btn.-empty.-reverse:hover {
   background-color: #fff;
-  color: #f96b30
+  color: #be202f
 }
 
 .btn.-empty.-reverse[disabled]:hover {
-  background-color: #f96b30;
+  background-color: #be202f;
   color: #fff
 }
 
@@ -2478,7 +2478,7 @@ img {
 
 .btn.-frosted:hover {
   background-color: transparent;
-  color: #f96b30
+  color: #be202f
 }
 
 .btn.-frosted-white {
@@ -2503,7 +2503,7 @@ img {
 }
 
 .btn:hover {
-  background-color: #f96b30;
+  background-color: #be202f;
   color: #fff;
   text-decoration: none
 }
@@ -2951,7 +2951,7 @@ a.checkerboard__item .checkerboard__text {
 }
 
 .checkerboard__text .checkerboard__para.-bordered {
-  border-left: 6px solid #f96b30;
+  border-left: 6px solid #be202f;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
   padding-left: 1.5em
@@ -3104,7 +3104,7 @@ blockquote p:after {
 .nav-header .nav__item {
   height: 100%;
   float: right;
-  border-left: 1px solid #fe9363
+  border-left: 1px solid #bb434f
 }
 
 .nav-header .nav__item .nav__link {
@@ -3129,15 +3129,15 @@ blockquote p:after {
 }
 
 .nav-header .nav__item .nav__link:hover span {
-  color: #f96b30
+  color: #be202f
 }
 
 .nav-header .nav__item .nav__link:hover svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .nav-header .nav__item .nav__link:hover .span-menu__bar {
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 @media (min-width: 380px) {
@@ -3438,7 +3438,7 @@ blockquote p:after {
     top: 50%;
     margin-top: -12px;
     right: 0;
-    background: #f96b30;
+    background: #be202f;
     transform: translate3d(-110%, 0, 0);
     transition: transform .3s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1)
@@ -3451,7 +3451,7 @@ blockquote p:after {
     padding: 0 5px;
     z-index: 2;
     overflow: hidden;
-    color: #f96b30;
+    color: #be202f;
     white-space: nowrap;
     width: 0%;
     opacity: 0;
@@ -3550,11 +3550,11 @@ blockquote p:after {
 }
 
 .nav-menu.-site .nav__item.-social a:hover {
-  border-color: #f96b30
+  border-color: #be202f
 }
 
 .nav-menu.-site .nav__item.-social a:hover svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .nav-menu .nav__item {
@@ -3575,7 +3575,7 @@ blockquote p:after {
 }
 
 .nav-menu .nav__item a:hover {
-  color: #f96b30
+  color: #be202f
 }
 
 @media (min-width: 380px) {
@@ -3697,11 +3697,11 @@ blockquote p:after {
 }
 
 .cbx-nav-menu.-locations:checked~.site-header .nav__item.-locations .nav__link span {
-  color: #f96b30
+  color: #be202f
 }
 
 .cbx-nav-menu.-locations:checked~.site-header .nav__item.-locations .nav__link svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .cbx-nav-menu.-locations:checked~.site-header .cbx-nav-reset {
@@ -3760,11 +3760,11 @@ blockquote p:after {
 }
 
 .cbx-nav-menu.-site:checked~.site-header .nav__item.-site .nav__link span {
-  color: #f96b30
+  color: #be202f
 }
 
 .cbx-nav-menu.-site:checked~.site-header .nav__item.-site .nav__link .span-menu__bar {
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 .cbx-nav-menu.-site:checked~.site-header .cbx-nav-reset {
@@ -4142,7 +4142,7 @@ blockquote p:after {
 }
 
 .nav-blocks__content .btn:hover svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .nav-blocks__content .btn svg {
@@ -4275,7 +4275,7 @@ blockquote p:after {
   height: 100px;
   bottom: 120px;
   z-index: 1;
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 .hero .hero__bubble.-two.-price-1299-per-month,
@@ -4947,7 +4947,7 @@ blockquote p:after {
 }
 
 .intro-area__inner .btn:hover .svg-chevron-right.-white svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .intro-area__inner.-small p {
@@ -5296,7 +5296,7 @@ blockquote p:after {
 
 .select-theme-easygym .select-options>li:hover {
   text-decoration: none;
-  color: #f96b30
+  color: #be202f
 }
 
 div.select-theme-easygym {
@@ -5331,7 +5331,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 
 .select-target:hover {
   text-decoration: none;
-  color: #f96b30
+  color: #be202f
 }
 
 .select-target::-ms-expand {
@@ -5340,7 +5340,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 
 .infoBox {
   position: absolute;
-  background-color: #f96b30;
+  background-color: #be202f;
   margin-bottom: 85px;
   color: #fff;
   border-radius: 5px;
@@ -5351,7 +5351,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   content: '';
   width: 15px;
   height: 15px;
-  background: #f96b30;
+  background: #be202f;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -5474,7 +5474,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 }
 
 .infoBox__link+.infoBox__link {
-  border-left: 1px solid #f96b30
+  border-left: 1px solid #be202f
 }
 
 .ribbon {
@@ -5519,7 +5519,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   border-radius: 100%;
   text-indent: -99999px;
   overflow: hidden;
-  border: solid 3px #f96b30;
+  border: solid 3px #be202f;
   display: block;
   margin: 0 auto 9px;
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2227.294px%22%20height%3D%2225.455px%22%20viewBox%3D%220%200%2027.294%2025.455%22%20enable-background%3D%22new%200%200%2027.294%2025.455%22%20xml%3Aspace%3D%22preserve%22%3E%20%3Cpath%20d%3D%22M26.954%2C22.585c0.228%2C0.322%2C0.341%2C0.673%2C0.341%2C1.051c0%2C0.512-0.18%2C0.942-0.539%2C1.293c-0.36%2C0.351-0.786%2C0.525-1.278%2C0.525%20%20H1.84c-0.664%2C0-1.184-0.293-1.562-0.881c-0.36-0.568-0.37-1.164-0.029-1.789L12.068%2C0.938C12.409%2C0.312%2C12.938%2C0%2C13.659%2C0%20%20c0.72%2C0%2C1.25%2C0.312%2C1.591%2C0.938L26.954%2C22.585z%20M13.602%2C16.535h0.085c0.265%2C0%2C0.511-0.109%2C0.738-0.327s0.359-0.469%2C0.397-0.753%20%20c0.228-1.23%2C0.53-3.589%2C0.909-7.074c0.019-0.246-0.052-0.483-0.213-0.71c-0.161-0.227-0.374-0.369-0.639-0.426%20%20c-0.796-0.151-1.601-0.151-2.415%2C0c-0.246%2C0.057-0.46%2C0.199-0.64%2C0.426c-0.18%2C0.228-0.261%2C0.464-0.241%2C0.71%20%20c0.379%2C3.485%2C0.682%2C5.843%2C0.909%2C7.074c0.038%2C0.284%2C0.171%2C0.535%2C0.397%2C0.753C13.119%2C16.425%2C13.355%2C16.535%2C13.602%2C16.535z%20%20%20M12.209%2C22.386c0.397%2C0.398%2C0.881%2C0.597%2C1.449%2C0.597s1.051-0.198%2C1.448-0.597c0.398-0.397%2C0.597-0.881%2C0.597-1.448%20%20c0-0.568-0.198-1.052-0.597-1.449c-0.397-0.397-0.88-0.597-1.448-0.597s-1.052%2C0.199-1.449%2C0.597s-0.597%2C0.881-0.597%2C1.449%20%20C11.613%2C21.505%2C11.812%2C21.989%2C12.209%2C22.386z%22%20fill%3D%22%23f96b30%22%20%2F%3E%3C%2Fsvg%3E");
@@ -5612,7 +5612,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 }
 
 .faq__title {
-  color: #f96b30;
+  color: #be202f;
   text-transform: uppercase;
   font-size: 1.3125rem;
   padding: 20px 0;
@@ -5732,7 +5732,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 .tabs__a.-is-selected,
 .tabs__a:hover {
   color: #fff;
-  background: #f96b30;
+  background: #be202f;
   text-decoration: none;
   border-left: 0
 }
@@ -5749,7 +5749,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   width: 0;
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 14px solid #f96b30
+  border-top: 14px solid #be202f
 }
 
 .tabs__a:active {
@@ -5901,7 +5901,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 }
 
 .contact-form .input .select-theme-easygym.select-target-focused {
-  border: solid 2px #f96b30;
+  border: solid 2px #be202f;
   padding-top: 17px;
   padding-right: 17px;
   padding-left: 17px
@@ -5948,7 +5948,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 
 .contact-form .form-input:focus {
   outline: none;
-  border: solid 2px #f96b30;
+  border: solid 2px #be202f;
   padding-right: 17px;
   padding-left: 17px
 }
@@ -5957,7 +5957,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   width: 100%;
   float: left;
   padding-top: 10px;
-  color: #f96b30;
+  color: #be202f;
   font-size: 1.125em
 }
 
@@ -5978,9 +5978,9 @@ div.select-theme-easygym.-contact {
 }
 
 div.select-theme-easygym.-contact.select-open {
-  border-right: solid 2px #f96b30;
-  border-bottom: solid 2px #f96b30;
-  border-left: solid 2px #f96b30;
+  border-right: solid 2px #be202f;
+  border-bottom: solid 2px #be202f;
+  border-left: solid 2px #be202f;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px
 }
@@ -6029,7 +6029,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .four-snippets__snippet .h2 {
   font-size: 2.5em;
-  color: #f96b30;
+  color: #be202f;
   text-transform: uppercase
 }
 
@@ -6228,7 +6228,7 @@ div.select-theme-easygym.-contact .select-options>li {
 .testimonials__bq-citation {
   width: 100%;
   max-width: 500px;
-  color: #f96b30;
+  color: #be202f;
   font-family: "proxima_cond_reg";
   margin-right: auto;
   margin-left: auto;
@@ -6257,7 +6257,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .class-timetable__filter-day:hover label {
-  color: #f96b30
+  color: #be202f
 }
 
 .class-timetable__filter-class {
@@ -6648,7 +6648,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .home-hero-grid__pre-logo {
-  color: #f96b30;
+  color: #be202f;
   text-transform: uppercase;
   margin-bottom: 0
 }
@@ -6731,7 +6731,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .home-hero-grid__hover-subtitle {
-  color: #f96b30;
+  color: #be202f;
   margin-bottom: 5px;
   font-size: .9375rem
 }
@@ -6889,7 +6889,7 @@ div.select-theme-easygym.-contact .select-options>li {
   width: 27.6972624799%;
   height: 100%;
   left: 0;
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 .flash-sale::after {
@@ -7135,7 +7135,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .flash-sale__text em {
-  color: #f96b30;
+  color: #be202f;
   font-style: normal
 }
 
@@ -7256,11 +7256,11 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .svg--orange {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .svg--orange svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .svg-opening-times {
@@ -7283,7 +7283,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .svg-chevron-right.-orange svg {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .svg-chevron-right.-white svg {
@@ -7436,7 +7436,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .home-hero-reduced-fees__footer p {
-  color: #f96b30;
+  color: #be202f;
   position: relative;
   z-index: 2;
   text-align: center
@@ -8039,7 +8039,7 @@ a.checkerboard__item:hover:after {
   bottom: -75px;
   left: -75px;
   z-index: 100;
-  background-color: #f96b30;
+  background-color: #be202f;
   background-size: 13px 27px;
   background-position: 50% 15%;
   text-indent: -99999px;
@@ -8560,7 +8560,7 @@ a.checkerboard__item:hover:after {
 
 .home-intro-body em,
 .home-intro-body i {
-  color: #f96b30;
+  color: #be202f;
   font-style: normal
 }
 
@@ -8763,9 +8763,9 @@ a.checkerboard__item:hover:after {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   position: absolute;
-  border: solid 10px #f96b30;
+  border: solid 10px #be202f;
   border: solid 10px rgba(249, 107, 48, 0.464);
-  background-color: #f96b30;
+  background-color: #be202f;
   background-color: rgba(249, 107, 48, 0.8);
   display: table;
   z-index: 97
@@ -8911,7 +8911,7 @@ a.checkerboard__item:hover:after {
   width: 100%;
   overflow: hidden;
   position: relative;
-  border: solid 2px #f96b30;
+  border: solid 2px #be202f;
   border-radius: 5px
 }
 
@@ -8931,7 +8931,7 @@ a.checkerboard__item:hover:after {
   width: 121%;
   height: 56px;
   border: 0;
-  color: #f96b30;
+  color: #be202f;
   font-family: 'Roboto', sans-serif;
   font-size: 21px;
   font-size: 1.3125rem
@@ -8954,7 +8954,7 @@ a.checkerboard__item:hover:after {
 .classes-intro__gym-selector .col.-location .svg-chevron-down>svg {
   width: 18px;
   height: 10px;
-  fill: #f96b30
+  fill: #be202f
 }
 
 .classes-intro__gym-selector .col.-submit {
@@ -8988,9 +8988,9 @@ a.checkerboard__item:hover:after {
 
 div.select-theme-easygym.-classes {
   width: calc(100% - 56px);
-  border-right: solid 2px #f96b30;
-  border-bottom: solid 2px #f96b30;
-  border-left: solid 2px #f96b30;
+  border-right: solid 2px #be202f;
+  border-bottom: solid 2px #be202f;
+  border-left: solid 2px #be202f;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   z-index: 6
@@ -9156,7 +9156,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-index-article:hover .blog-index-article__inner {
-  background-color: #f96b30
+  background-color: #be202f
 }
 
 .blog-index-article:hover .blog-index-article__inner .heading a,
@@ -9173,13 +9173,13 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-index-article:hover .blog-article__category a {
-  color: #f96b30;
+  color: #be202f;
   background-color: #fff;
   text-decoration: none
 }
 
 .blog-index-article__unpublished {
-  background: #f96b30;
+  background: #be202f;
   text-align: center;
   text-transform: uppercase;
   padding: 5px 0;
@@ -9311,7 +9311,7 @@ div.select-theme-easygym.-classes .select-content {
   line-height: 15px;
   text-transform: uppercase;
   text-align: center;
-  background-color: #f96b30;
+  background-color: #be202f;
   padding-right: 15px;
   padding-left: 15px
 }
@@ -9335,8 +9335,8 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .load-more__btn {
-  background-color: #f96b30;
-  border: solid 1px #f96b30;
+  background-color: #be202f;
+  border: solid 1px #be202f;
   color: #fff;
   margin-right: auto;
   margin-left: auto
@@ -9344,11 +9344,11 @@ div.select-theme-easygym.-classes .select-content {
 
 .load-more__btn:hover {
   background-color: #fff;
-  color: #f96b30
+  color: #be202f
 }
 
 .load-more__btn:hover .icon {
-  fill: #f96b30
+  fill: #be202f
 }
 
 .load-more__btn.loading .icon {
@@ -9371,7 +9371,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .return-to-blog a {
-  color: #f96b30;
+  color: #be202f;
   font-size: 1.25em;
   display: inline-block
 }
@@ -9393,7 +9393,7 @@ div.select-theme-easygym.-classes .select-content {
 
 .blog-article h3 {
   margin-bottom: 7px;
-  color: #f96b30
+  color: #be202f
 }
 
 .blog-article .h3 {
@@ -9401,7 +9401,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article blockquote {
-  border-left: 3px #f96b30 solid;
+  border-left: 3px #be202f solid;
   padding-left: 15px;
   font-size: 1.125em;
   margin: 10px 0
@@ -9486,7 +9486,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article__unpublished {
-  background: #f96b30;
+  background: #be202f;
   text-align: center;
   text-transform: uppercase;
   padding: 5px 0;
@@ -9524,7 +9524,7 @@ div.select-theme-easygym.-classes .select-content {
   font-size: 21px;
   font-size: 1.3125rem;
   line-height: 1.3333333333;
-  color: #f96b30;
+  color: #be202f;
   display: block;
   text-align: center;
   margin-bottom: 20px;
@@ -9545,7 +9545,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article__summary-admin {
-  border: 1px dotted #f96b30;
+  border: 1px dotted #be202f;
   padding: 10px 15px 0;
   margin-bottom: 10px
 }
@@ -9556,7 +9556,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article__item-admin {
-  border: 1px dotted #f96b30;
+  border: 1px dotted #be202f;
   padding: 10px 15px;
   margin-bottom: 10px
 }
@@ -9591,7 +9591,7 @@ div.select-theme-easygym.-classes .select-content {
 
 .blog-exercise__subtitle {
   font-family: "proxima_reg";
-  color: #f96b30
+  color: #be202f
 }
 
 .blog-exercise__col {
@@ -9696,8 +9696,8 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article-neighbours .blog-article-neighbours__item:hover {
-  background-color: #f96b30;
-  border-top: solid 1px #f96b30;
+  background-color: #be202f;
+  border-top: solid 1px #be202f;
   text-decoration: none
 }
 
@@ -9976,7 +9976,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .careers-results__table .td.-careers {
-  color: #f96b30
+  color: #be202f
 }
 
 .careers-none-suitable {
@@ -10013,7 +10013,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .career-job-desc .heading .value {
-  color: #f96b30;
+  color: #be202f;
   font-style: normal
 }
 
@@ -11061,7 +11061,7 @@ div.select-theme-easygym.-classes .select-content {
   padding: .7em 0 .5em;
   border: 3px solid #98a2a9;
   font-family: "FFDINWebProCondBold";
-  color: #f96b30;
+  color: #be202f;
   letter-spacing: -1px;
   font-size: 28px;
   font-size: 1.75rem
@@ -11150,7 +11150,7 @@ div.select-theme-easygym.-classes .select-content {
 .partner-bubble {
   width: 160px;
   height: 160px;
-  background-color: #f96b30;
+  background-color: #be202f;
   border-radius: 100%;
   display: block;
   position: relative;
@@ -11671,7 +11671,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .partner-favourites__per-serving {
-  color: #f96b30;
+  color: #be202f;
   margin-top: -5px;
   text-align: left;
   font-family: "proxima_reg";
