@@ -19,6 +19,8 @@ Route::post('/contact', 'HomeController@contact')->name('contact');
 //     Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');
 // });
 
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => 'web'], function() {
 	Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

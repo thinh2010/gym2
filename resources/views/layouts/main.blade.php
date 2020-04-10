@@ -4,8 +4,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <link rel="dns-prefetch" href="assets.zendesk.html">
-    <title>Low Cost Gym | No Contract | Gyms Near Me - easyGym</title>
+    <title>{{ config('app.name', 'Low Cost Gym | No Contract | Gyms Near Me - vGym') }}</title>
     <meta name="description"
         content="easyGym - low cost no contract gym memberships, premium gym equipment &amp; free gym classes. Pay as you go gyms throughout the UK. Join today!" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,18 +26,11 @@
     <meta property="fb:admins" content="799377696" />
     <meta property="fb:app_id" content="1011327512217988" />
     <meta property="fb:pages" content="215168371844812" />
-    <meta property="og:site_name" content="easyGym" />
+    <meta property="og:site_name" content="vGym" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Low Cost Gym | No Contract | Gyms Near Me - easyGym" />
+    <meta property="og:title" content="Low Cost Gym | No Contract | Gyms Near Me - vGym" />
     <meta property="og:description"
-        content="easyGym - low cost no contract gym memberships, premium gym equipment & free gym classes. Pay as you go gyms throughout the UK. Join today!" />
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:site" content="@easygym" />
-    <meta property="twitter:title" content="Low Cost Gym | No Contract | Gyms Near Me - easyGym" />
-    <meta property="twitter:description"
-        content="easyGym - low cost no contract gym memberships, premium gym equipment & free gym classes. Pay as you go gyms throughout the UK. Join today!" />
-    <meta property="twitter:image" content="https://www.easygym.co.uk/easygym/img/backgrounds/new_hero_home_600.jpg" />
-    <meta property="twitter:url" content="//www.easygym.co.uk/" />
+        content="vGym - low cost no contract gym memberships, premium gym equipment & free gym classes. Pay as you go gyms throughout the UK. Join today!" />
     <script type="text/javascript">
 
         var pageName = 'home';

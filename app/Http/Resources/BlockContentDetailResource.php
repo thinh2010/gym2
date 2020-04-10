@@ -17,7 +17,8 @@ class BlockContentDetailResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'type' => $this->type,
+            'css_class' => $this->css_class,
+            'other_text' => $this->other_text,
             'description' => $this->description,
             'is_enabled' => $this->is_enabled,
             'image' => strval($this->image),

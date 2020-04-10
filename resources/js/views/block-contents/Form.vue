@@ -7,6 +7,12 @@
             <el-form-item label="Tiêu đề" prop="title">
               <el-input v-model="entity.title" name="title" />
             </el-form-item>
+            <el-form-item label="CSS class" prop="css_class">
+              <el-input v-model="entity.css_class" name="css_class" />
+            </el-form-item>
+            <el-form-item label="Text" prop="other_text">
+              <el-input v-model="entity.other_text" name="other_text" />
+            </el-form-item>
             <el-form-item label="Mô tả">
               <el-input v-model="entity.description" type="textarea" name="description" />
             </el-form-item>
@@ -112,6 +118,7 @@ export default {
         if (this.entity.image === '') {
           formData.set('image', '');
         }
+        formData.set('content', _.get(this.entity, 'content', ''));
 
         if (this.isEditing()) {
           await blockContentApi.postUpdate(this.entity.id, formData);

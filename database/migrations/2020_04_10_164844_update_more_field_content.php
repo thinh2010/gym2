@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateForeignKeyBlockContent extends Migration
+class UpdateMoreFieldContent extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class UpdateForeignKeyBlockContent extends Migration
     public function up()
     {
         Schema::table('block_contents', function (Blueprint $table) {
-            $table->dropForeign('block_contents_block_id_index');
-            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
+            $table->string('css_class')->nullable();
+            $table->string('other_text')->nullable();
         });
     }
 
@@ -27,7 +27,8 @@ class UpdateForeignKeyBlockContent extends Migration
     public function down()
     {
         Schema::table('block_contents', function (Blueprint $table) {
-            //
+            $table->dropColumn('css_class');
+            $table->dropColumn('other_text');
         });
     }
 }

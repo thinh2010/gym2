@@ -28,23 +28,33 @@
                         <span class="nav-header__title">Locations</span>
                     </label>
                 </li>
+                @guest
+                <li class="nav__item">
+                    <a href="/login"
+                        class="nav__link -desktop vertical-align-children">
+                        <span class="nav-header__title">Đăng nhập</span>
+                    </a>
+                </li>
                 <li class="nav__item">
                     <a href="#"
                         class="nav__link -desktop vertical-align-children">
-                        <span class="nav-header__title">Member Zone</span>
+                        <span class="nav-header__title">Đăng ký</span>
                     </a>
                 </li>
+                @else
                 <li class="nav__item">
                     <a href="#"
                         class="nav__link -desktop vertical-align-children">
-                        <span class="nav-header__title">Join Now</span>
+                        <span class="nav-header__title">Hi {{ Auth::user()->name }}</span>
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="#" class="nav__link -desktop vertical-align-children">
-                        <span class="nav-header__title">Franchise</span>
+                    <a href="/logout"
+                        class="nav__link -desktop vertical-align-children">
+                        <span class="nav-header__title">Đăng xuất</span>
                     </a>
                 </li>
+                @endguest
             </ul>
         </nav>
         <input type="reset" value="" class="cbx-nav-reset" />

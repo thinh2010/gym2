@@ -10,35 +10,15 @@ export const TYPE_TEXT = 'Text';
 export const TYPE_HEADING = 'Heading';
 export const TYPE_UNDER_HEADING = 'UnderHeading';
 export const TYPE_CLASSES = 'Classes';
-export const TYPE_FEATURE = 'Feature';
-export const TYPE_CUSTOMER_REVIEW = 'Customer_review';
-export const TYPE_CUSTOMER_REVIEW_2 = 'Customer_review_2';
-export const TYPE_TEAM = 'Team';
-export const TYPE_STATUS = 'status';
-export const TYPE_PARTNER = 'partner';
+export const TYPE_INFO = 'Info';
 export const TYPE_VIDEO = 'Video';
-export const TYPE_CONTACT = 'contact';
 export const TYPE_BLOCK = 'block';
-export const TYPE_PAGE_ITEMS = 'page_items';
 
 export const BLOCK_TYPES = [
-  // { value: TYPE_VIDEO, label: 'Video', options: [
-  //   {
-  //     'type': TYPE_FILE,
-  //     'name': 'options[video]',
-  //     'label': 'Video',
-  //   },
-  // ] },
   { value: TYPE_HEADING, label: 'Heading' },
   { value: TYPE_UNDER_HEADING, label: 'Under heading' },
   { value: TYPE_CLASSES, label: 'Classes' },
-  // { value: TYPE_FEATURE, label: 'Feature' },
-  // { value: TYPE_CUSTOMER_REVIEW, label: 'Customer review' },
-  // { value: TYPE_CUSTOMER_REVIEW_2, label: 'Customer review (no avatar)' },
-  // { value: TYPE_TEAM, label: 'Team' },
-  // { value: TYPE_STATUS, label: 'Status' },
-  // { value: TYPE_PARTNER, label: 'Partner' },
-  // { value: TYPE_CONTACT, label: 'Contact Form' },
+  { value: TYPE_INFO, label: 'Information' },
   { value: TYPE_BLOCK, label: 'Block' },
 ];
 
