@@ -9,6 +9,8 @@ class BlockContent extends Model
     protected $fillable = [
         'id',
         'title',
+        'css_class',
+        'other_text',
         'content',
         'description',
         'image',

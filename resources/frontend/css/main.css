@@ -4100,7 +4100,8 @@ blockquote p:after {
 
 .nav-blocks__content>h2>* {
   color: #333;
-  text-transform: uppercase
+  text-transform: uppercase;
+  font-size: 1.4rem
 }
 
 .nav-blocks__content p {

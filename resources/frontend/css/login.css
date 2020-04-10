@@ -1,0 +1,98 @@
+/*
+max-width: 480px and orientation:landscape
+max-width: 767px
+min-width: 768px
+min-width: 768px and max-width: 991px
+min-width: 992px
+min-width: 992px and max-width: 1199px
+min-width: 1200px
+*/
+
+/* CSS Reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+body, html {
+  width:100vw; height: 100%; color:black; overflow-x: hidden; background:rgba(215,225,234,.8);}
+body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-family: "Roboto", sans-serif; }
+p, span {margin:0 1rem 0 1rem; line-height:150%}
+span {display:block;}
+
+.page {width:100%; margin:0 auto 0 auto;}
+.dontShow1st {display:none;}
+.dontShow { animation: dontShowAnime 0.5s linear 0s forwards; }
+@keyframes dontShowAnime { 0% {opacity:1; transform:translateX(0);} 100% {opacity:0; transform:translateX(150%) }  }
+.show { display:block; opacity:0; animation: showAnime 0.5s linear 0s forwards;  }
+.show1st { display:block;  }
+@keyframes showAnime { 0% {opacity:0; transform:translateY(50%); } 100% {opacity:1; transform:translateY(0%);}  }
+.bringIn { display:flex; opacity:0; animation: bringInAnime 0.5s linear 0s forwards;  }
+@keyframes bringInAnime { 0% {opacity:0;} 100% {opacity:1;} }
+.bringOut { animation: bringOutAnime 0.5s linear 0s forwards;  }
+@keyframes bringOutAnime { 0% {opacity:1;} 100% {opacity:0;} }
+
+.shadow {   text-shadow: 0em 0em 0.02em rgba(0,0,0,1.0), -0.02em -0.02em 0.02em rgba(0,0,0,1.0), 0.02em -0.02em 0.02em rgba(0,0,0,1.0), -0.02em 0.02em 0.02em rgba(0,0,0,1.0), 0.02em 0.02em 0.02em rgba(0,0,0,1.0); }
+
+/*General*/
+.containerFullScreen {width:100%;}
+#toolbar {position:absolute; top:0; width:100%; background-color:#f96b30; z-index:1000;}
+#toolbar .containerFullScreen {display:flex; align-items:center; }
+#logoTitle {width:60%; justify-content:flex-start; padding-left:4vw; letter-spacing:0.1rem; color:white; }
+#menuBtn { margin-left:auto; margin-right: 6vw; display:none; }
+.divBtn { background-color:#f96b30; color:white; text-align:center; border-radius:15px; width:150px; margin:0 auto 60px auto;
+  padding:15px; box-shadow: 2px 4px 4px rgba(0, 0, 0, .6); }
+.btnChooseGym { font-size:26px; padding:5px 0; }
+.postCode { font-size:18px; }
+#gyms {display:flex; justify-content: space-between; width:600px; ;}
+.btnDiv {margin-top:30px; margin-bottom:100px; color:white; }
+.btn {display:block; background-color:#f96b30; text-align:center; border-radius:15px; width:150px; margin:auto; padding: 10px 15px 10px 15px; box-shadow: 2px 4px 4px rgba(0, 0, 0, .6)}
+.btn:active {opacity:0.4; box-shadow:none; }
+
+/*pg00*/
+.pgTitle { font-size:40px; color:black; margin-bottom:60px; text-decoration:underline; }
+.subTitle {font-size:24px; margin:50px auto; }
+#gov { font-size:20px;}
+#below {font-weight:600; margin-bottom:30px; margin-top:70px;}
+.egInput, #formGender, #dobDiv, #startDateDiv, .paymentBox {background: rgba(255,255,255,.1); border: none; border-bottom:1px solid #f96b30; border-radius: 2px;
+	font-size: 20px; margin-bottom:30px; outline: 0; padding: 30px 20px 10px 20px; width: 100%;
+	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; background-color: #e8eeef;
+	color:black; -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	font-family: "Futura"; }
+::placeholder { color:#969696; font-style:italic; font-family: "Futura"; }
+.lblAlert { animation: lblAlertAnime 3s linear 1;  }
+@keyframes lblAlertAnime { 0% {color:white; opacity:1;} 5% {color:white; opacity:0.3;} 20% { color:red;opacity:1 } 90% { color:red;opacity:1 } 95% { color:red; opacity:0.3} 100% {color:white; opacity:1;}  }
+.noData { animation: noDataAnime 1.5s both 2; }
+@keyframes noDataAnime { 0% {background-color:white; opacity:1;} 50% {background-color:red; opacity:0.3;} 100% {background-color:white; opacity:1;}  }
+
+
+@media only screen and (min-width: 320px) and (max-width: 991px) {
+  #toolbar, #hiddenBar, #toolbar div {height:70px;}
+  #logoTitle { font-size:1.3rem; line-height:70px; }
+  #separator {height: 120px;}
+
+	#ttlSelectGym {text-align:center;}
+  .pgTitle {font-size:1.5rem; font-weight:500; width:90%; margin:0 auto 30px auto; text-decoration:underline;}
+	.subTitle {font-size:15px; width:90%; margin:25px auto;}
+	#gov { font-size:12px;}
+	#below {font-weight:600; margin-bottom:25px; margin-top:30px;}
+	.egForm, .subPage, #pinDiv { width:90%; margin:auto; }
+	.egInput, #formGender, #dobDiv, #startDateDiv {font-size:15px; width:100%; margin-bottom:20px; padding:12px 20px 12px 20px; }
+	.btnDiv {margin-top:30px; margin-bottom:70px; }
+	.btn {font-size:15px; }
+
+} /* 320 - 767 */
+
+
+
+@media only screen and (min-width: 992px) {
+    .containerFullScreen {width:992px; margin-left:auto; margin-right:auto; padding:0 15px 0 15px;}
+
+    #toolbar, #hiddenBar, #toolbar div {height:80px;}
+    #toolbarIcon {height:74px;}
+    #logoTitle { font-size: 2rem; font-weight:bold; line-height:80px; padding:0;}
+    #menuBtn { font-size:2rem;}
+    #separator {height: 160px;}
+
+		.btn {font-size:1.4rem; padding:15px 17px 15px 17px; }
+} /* 992+

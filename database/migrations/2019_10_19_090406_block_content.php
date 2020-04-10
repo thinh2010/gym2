@@ -27,7 +27,7 @@ class BlockContent extends Migration
 
             // Relationship
             $table->integer('block_id')->unsigned()->index();
-            $table->foreign('block_id')->references('id')->on('blocks');
+            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
 
             $table->timestamps();
         });

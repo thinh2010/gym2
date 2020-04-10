@@ -1,56 +1,224 @@
 <?php
+/**
+ * File UserController.php
+ *
+ * @author Tuan Duong <bacduong@gmail.com>
+ * @package Laravue
+ * @version 1.0
+ */
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\User;
-use Validator;
+use App\Http\Resources\PermissionResource;
+use App\Http\Resources\UserResource;
+use App\Laravue\JsonResponse;
+use App\Laravue\Models\Permission;
+use App\Laravue\Models\Role;
+use App\Laravue\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
+/**
+ * Class UserController
+ *
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
-    public function login()
+    const ITEM_PER_PAGE = 15;
+
+    /**
+     * Display a listing of the user resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response|ResourceCollection
+     */
+    public function index(Request $request)
     {
-        $credentials = [
-            'email' => request('email'), 
-            'password' => request('password')
-        ];
+        $searchParams = $request->all();
+        $userQuery = User::query();
+        $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
+        $role = Arr::get($searchParams, 'role', '');
+        $keyword = Arr::get($searchParams, 'keyword', '');
 
-        if (Auth::attempt($credentials)) {
-            $success['token'] = Auth::user()->createToken('MyApp')->accessToken;
-            $success['user'] = Auth::user();
-
-            return response()->json(['success' => $success]);
+        if (!empty($role)) {
+            $userQuery->whereHas('roles', function($q) use ($role) { $q->where('name', $role); });
         }
 
-        return response()->json(['error' => 'Invalid Credentials.'], 401);
+        if (!empty($keyword)) {
+            $userQuery->where('name', 'LIKE', '%' . $keyword . '%');
+            $userQuery->where('email', 'LIKE', '%' . $keyword . '%');
+        }
+
+        return UserResource::collection($userQuery->paginate($limit));
     }
 
-    public function register(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $validator = Validator::make(
+            $request->all(),
+            array_merge(
+                $this->getValidationRules(),
+                [
+                    'password' => ['required', 'min:6'],
+                    'confirmPassword' => 'same:password',
+                ]
+            )
+        );
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['errors' => $validator->errors()], 403);
+        } else {
+            $params = $request->all();
+            $user = User::create([
+                'name' => $params['name'],
+                'email' => $params['email'],
+                'password' => Hash::make($params['password']),
+            ]);
+            $role = Role::findByName($params['role']);
+            $user->syncRoles($role);
+
+            return new UserResource($user);
         }
-
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-
-        $user = User::create($input);
-        $success['token'] = $user->createToken('MyApp')->accessToken;
-        $success['name'] = $user->name;
-
-        return response()->json(['success' => $success]);
     }
 
-    public function getDetails()
+    /**
+     * Display the specified resource.
+     *
+     * @param  User $user
+     * @return UserResource|\Illuminate\Http\JsonResponse
+     */
+    public function show(User $user)
     {
-        return response()->json(['success' => Auth::user()]);
+        return new UserResource($user);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param User    $user
+     * @return UserResource|\Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, User $user)
+    {
+        if ($user === null) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+        if ($user->isAdmin()) {
+            return response()->json(['error' => 'Admin can not be modified'], 403);
+        }
+
+        $validator = Validator::make($request->all(), $this->getValidationRules(false));
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 403);
+        } else {
+            $email = $request->get('email');
+            $found = User::where('email', $email)->first();
+            if ($found && $found->id !== $user->id) {
+                return response()->json(['error' => 'Email has been taken'], 403);
+            }
+
+            $user->name = $request->get('name');
+            $user->email = $email;
+            $user->save();
+            return new UserResource($user);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param User    $user
+     * @return UserResource|\Illuminate\Http\JsonResponse
+     */
+    public function updatePermissions(Request $request, User $user)
+    {
+        if ($user === null) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        if ($user->isAdmin()) {
+            return response()->json(['error' => 'Admin can not be modified'], 403);
+        }
+
+        $permissionIds = $request->get('permissions', []);
+        $rolePermissionIds = array_map(
+            function($permission) {
+                return $permission['id'];
+            },
+
+            $user->getPermissionsViaRoles()->toArray()
+        );
+
+        $newPermissionIds = array_diff($permissionIds, $rolePermissionIds);
+        $permissions = Permission::allowed()->whereIn('id', $newPermissionIds)->get();
+        $user->syncPermissions($permissions);
+        return new UserResource($user);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        if ($user->isAdmin()) {
+            response()->json(['error' => 'Ehhh! Can not delete admin user'], 403);
+        }
+
+        try {
+            $user->delete();
+        } catch (\Exception $ex) {
+            response()->json(['error' => $ex->getMessage()], 403);
+        }
+
+        return response()->json(null, 204);
+    }
+
+    /**
+     * Get permissions from role
+     *
+     * @param User $user
+     * @return array|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function permissions(User $user)
+    {
+        try {
+            return new JsonResponse([
+                'user' => PermissionResource::collection($user->getDirectPermissions()),
+                'role' => PermissionResource::collection($user->getPermissionsViaRoles()),
+            ]);
+        } catch (\Exception $ex) {
+            response()->json(['error' => $ex->getMessage()], 403);
+        }
+    }
+
+    /**
+     * @param bool $isNew
+     * @return array
+     */
+    private function getValidationRules($isNew = true)
+    {
+        return [
+            'name' => 'required',
+            'email' => $isNew ? 'required|email|unique:users' : 'required|email',
+            'roles' => [
+                'required',
+                'array'
+            ],
+        ];
     }
 }
