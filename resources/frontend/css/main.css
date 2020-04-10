@@ -949,64 +949,6 @@ textarea:focus {
   }
 }
 
-@font-face {
-  font-family: 'proxima_reg';
-  src: url("../fonts/proximanovacond-regular-webfont.eot");
-  src: url("../fonts/proximanovacond-regular-webfontd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-regular-webfont.woff2") format("woff2"), url("../fonts/proximanovacond-regular-webfont.woff") format("woff"), url("../fonts/proximanovacond-regular-webfont.ttf") format("truetype"), url("../fonts/proximanovacond-regular-webfont.svg#proxima_nova_cn_rgregular") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
-
-@font-face {
-  font-family: 'proxima_cond_reg';
-  src: url("../fonts/proximanovacond-regular-webfont.eot");
-  src: url("../fonts/proximanovacond-regular-webfontd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-regular-webfont.woff2") format("woff2"), url("../fonts/proximanovacond-regular-webfont.woff") format("woff"), url("../fonts/proximanovacond-regular-webfont.ttf") format("truetype"), url("../fonts/proximanovacond-regular-webfont.svg#proxima_cond_reg") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
-
-@font-face {
-  font-family: 'proxima_cond_reg_it';
-  src: url("../fonts/proximanovacond-regularit-webfont.eot");
-  src: url("../fonts/proximanovacond-regularit-webfontd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-regularit-webfont.woff2") format("woff2"), url("../fonts/proximanovacond-regularit-webfont.woff") format("woff"), url("../fonts/proximanovacond-regularit-webfont.ttf") format("truetype"), url("../fonts/proximanovacond-regularit-webfont.svg#proxima_nova_condensedRgIt") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
-
-@font-face {
-  font-family: 'proxima_semi';
-  src: url("../fonts/proximanovacond-semibold-webfont.eot");
-  src: url("../fonts/proximanovacond-semibold-webfontd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-semibold-webfont.woff2") format("woff2"), url("../fonts/proximanovacond-semibold-webfont.woff") format("woff"), url("../fonts/proximanovacond-semibold-webfont.ttf") format("truetype"), url("../fonts/proximanovacond-semibold-webfont.svg#proxima_nova_cn_rgregular") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
-
-@font-face {
-  font-family: 'proxima_bold';
-  src: url("../fonts/proximanovacond-bold-webfont.eot");
-  src: url("../fonts/proximanovacond-bold-webfontd41d.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-bold-webfont.html") format("woff2"), url("../fonts/proximanovacond-bold-webfont.woff") format("woff"), url("../fonts/proximanovacond-bold-webfont.ttf") format("truetype"), url("../fonts/proximanovacond-bold-webfont.svg#proxima_nova_cn_rgregular") format("svg");
-  font-weight: normal;
-  font-style: normal
-}
-
-@font-face {
-  font-family: 'FFDINWebProCondBoldItalic';
-  src: url("../fonts/2E685E_0_0.eot");
-  src: url("../fonts/2E685E_0_0d41d.eot?#iefix") format("embedded-opentype"), url("../fonts/2E685E_0_0.woff2") format("woff2"), url("../fonts/2E685E_0_0.woff") format("woff"), url("../fonts/2E685E_0_0.ttf") format("truetype")
-}
-
-@font-face {
-  font-family: 'FFDINWebProCondBold';
-  src: url("../fonts/2E685E_1_0.eot");
-  src: url("../fonts/2E685E_1_0d41d.eot?#iefix") format("embedded-opentype"), url("../fonts/2E685E_1_0.woff2") format("woff2"), url("../fonts/2E685E_1_0.woff") format("woff"), url("../fonts/2E685E_1_0.ttf") format("truetype")
-}
-
-@font-face {
-  font-family: 'freshdaily';
-  src: url("../fonts/fresh_daily-webfont.eot");
-  src: url("../fonts/fresh_daily-webfont.eot") format("embedded-opentype"), url("../fonts/fresh_daily-webfont.woff2") format("woff2"), url("../fonts/fresh_daily-webfont.woff") format("woff"), url("../fonts/fresh_daily-webfont.ttf") format("truetype"), url("../fonts/fresh_daily-webfont.svg#fresh_daily-webfont") format("svg")
-}
-
 h1,
 h2,
 h3,
@@ -1485,7 +1427,7 @@ img {
   background-image: url("../img/logo2.png");
   background-repeat: no-repeat;
   background-position: right center;
-  background-size: 103px 20px;
+  background-size: auto 38px;
   width: 123px;
   height: 100%;
   padding: 0 0 0 20px;
@@ -1506,7 +1448,7 @@ img {
 @media (min-width: 380px) {
   .site-logo {
     width: 164px;
-    background-size: 129px 25px
+    background-size: auto 50px
   }
 }
 
@@ -1514,7 +1456,7 @@ img {
   .site-logo {
     width: 200px;
     padding: 0 0 0 35px;
-    background-size: 183px 60px
+    background-size: auto 60px
   }
 }
 
@@ -2493,7 +2435,7 @@ img {
 }
 
 .btn.-contact {
-  font-family: "FFDINWebProCondBoldItalic"
+  font-family: "Roboro"
 }
 
 .btn[disabled] {
@@ -4938,7 +4880,7 @@ blockquote p:after {
 }
 
 .intro-area__inner .btn {
-  font-family: "FFDINWebProCondBoldItalic"
+  font-family: "Roboro"
 }
 
 .intro-area__inner .btn.-large {
@@ -5780,7 +5722,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 .tabs__title {
   margin-bottom: 0;
   padding: 1em;
-  font-family: 'FFDINWebProCondBoldItalic'
+  font-family: 'Roboro'
 }
 
 @media (min-width: 750px) {
@@ -7156,7 +7098,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .flash-sale__btn .btn {
-  font-family: "FFDINWebProCondBoldItalic"
+  font-family: "Roboro"
 }
 
 @media (min-width: 500px) {
@@ -7731,7 +7673,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .hero.-home .btn {
   bottom: 0;
-  font-family: "FFDINWebProCondBoldItalic"
+  font-family: "Roboro"
 }
 
 .hero.-home .btn:after {
@@ -12067,7 +12009,7 @@ div.select-theme-easygym.-classes .select-content {
 
 .btn--thank-you {
   margin-top: 50px;
-  font-family: FFDINWebProCondBoldItalic;
+  font-family: Roboro;
   font-size: 1.3em;
   font-weight: 400
 }
@@ -12117,7 +12059,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .sts h1 {
-  font-family: 'FFDINWebProCondBoldItalic';
+  font-family: 'Roboro';
   letter-spacing: 5px;
   font-size: 100px;
   text-transform: uppercase;
