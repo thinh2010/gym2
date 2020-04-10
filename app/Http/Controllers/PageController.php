@@ -11,17 +11,6 @@ use App\Mail\Contact;
 class PageController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-        parent::__construct();
-    }
-
-    /**
      * Show the Page list
      *
      * @return \Illuminate\Http\Response

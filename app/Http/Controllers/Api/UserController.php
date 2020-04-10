@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\PermissionResource;
 use App\Http\Resources\UserResource;
@@ -20,6 +20,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Validator;
+use App\Http\Controllers\Controller;
 
 /**
  * Class UserController

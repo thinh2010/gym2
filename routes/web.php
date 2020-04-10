@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/page/{page_slug}', 'PageController@index')->name('page');
 Route::get('/page/{page_slug}/{item_slug}', 'PageController@viewItem')->name('item_show');
@@ -19,6 +19,8 @@ Route::post('/contact', 'HomeController@contact')->name('contact');
 //     Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');
 // });
 
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => 'web'], function() {
 	Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

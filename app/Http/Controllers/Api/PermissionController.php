@@ -6,11 +6,12 @@
  * @package Laravue
  * @version 1.0
  */
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\PermissionResource;
 use Illuminate\Http\Request;
 use App\Laravue\Models\Permission;
+use App\Http\Controllers\Controller;
 
 /**
  * Class PermissionController
