@@ -210,8 +210,8 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Zones &amp; equipment">
-                    <span>Zones &amp; equipment</span>
+                <a href="/page/trang-thiet-bi" data-letters="Trang thiết bị">
+                    <span>Trang thiết bị</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
