@@ -1155,7 +1155,9 @@ h6,
 
 .-peta {
   font-size: 50px;
-  font-size: 3.125rem
+  font-size: 3.125rem;
+  font-weight: bold;
+  font-style: italic;
 }
 
 @media (min-width: 760px) {
@@ -1167,8 +1169,8 @@ h6,
 
 @media (min-width: 1220px) {
   .-peta {
-    font-size: 140px;
-    font-size: 8.75rem
+    font-size: 90px;
+    font-size: 5.75rem
   }
 }
 
@@ -1213,7 +1215,9 @@ h6,
 .-mega {
   font-size: 30px;
   font-size: 1.875rem;
-  margin-bottom: 2.0625rem
+  margin-bottom: 2.0625rem;
+  font-weight: bold;
+  font-style: italic;
 }
 
 @media (min-width: 760px) {

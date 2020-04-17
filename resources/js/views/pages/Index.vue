@@ -295,7 +295,7 @@ export default {
     },
     async onSaveNew() {
       this.savingNew = true;
-      const valid = await this.$refs['form'].validate();
+      const valid = await this.$refs['newPageForm'].validate();
       if (valid) {
         const { data } = await pageApi.store(this.newPage);
         this.pageTree.push({

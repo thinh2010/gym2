@@ -62,7 +62,12 @@
 
 <body class="body js-body">
     <div id="body">
-        @yield('content')
+
+        @include("components.menu")
+
+        <main class="site-main" id="main">
+            @yield('content')
+        </main>
     </div>
 
     <footer class="site-footer" id="footer">

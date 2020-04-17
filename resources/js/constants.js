@@ -12,13 +12,17 @@ export const TYPE_UNDER_HEADING = 'UnderHeading';
 export const TYPE_CLASSES = 'Classes';
 export const TYPE_INFO = 'Info';
 export const TYPE_VIDEO = 'Video';
-export const TYPE_BLOCK = 'block';
+export const TYPE_PAGE_HEADING = 'PageHeading';
+export const TYPE_ITEM_ODDS = 'ItemOdds';
+export const TYPE_BLOCK = 'Block';
 
 export const BLOCK_TYPES = [
   { value: TYPE_HEADING, label: 'Heading' },
   { value: TYPE_UNDER_HEADING, label: 'Under heading' },
   { value: TYPE_CLASSES, label: 'Classes' },
   { value: TYPE_INFO, label: 'Information' },
+  { value: TYPE_PAGE_HEADING, label: 'Page heading' },
+  { value: TYPE_ITEM_ODDS, label: 'Item Odds' },
   { value: TYPE_BLOCK, label: 'Block' },
 ];
 
