@@ -2439,7 +2439,7 @@ img {
 }
 
 .btn.-contact {
-  font-family: "Roboro"
+  font-family: "Roboto"
 }
 
 .btn[disabled] {
@@ -3119,7 +3119,8 @@ blockquote p:after {
 
 .nav-header .nav__item .nav-header__title {
   display: none;
-  white-space: nowrap
+  white-space: nowrap;
+  font-style: italic;
 }
 
 @media (min-width: 520px) {
@@ -3145,7 +3146,7 @@ blockquote p:after {
 }
 
 .nav-header .nav__item.-locations:hover .svg-location {
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2217.067px%22%20height%3D%2223.261px%22%20viewBox%3D%223.102%201.454%2017.067%2023.261%22%20enable-background%3D%22new%203.102%201.454%2017.067%2023.261%22%20xml%3Aspace%3D%22preserve%22%20fill%3D%22%23f96b30%22%3E%20%3Cpath%20d%3D%22M11.636%2C1.455c2.343%2C0%2C4.351%2C0.873%2C6.024%2C2.618s2.509%2C3.846%2C2.509%2C6.303c0%2C1.245-0.251%2C2.566-0.752%2C3.964%20%20s-1.107%2C2.646-1.818%2C3.745s-1.422%2C2.113-2.133%2C3.042c-0.711%2C0.929-1.317%2C1.644-1.818%2C2.145l-0.752%2C0.752%20%20c-0.533%2C0.469-0.974%2C0.699-1.321%2C0.691c-0.347-0.008-0.772-0.238-1.273-0.691c-0.194-0.194-0.453-0.461-0.776-0.8%20%20c-0.323-0.339-0.901-1.026-1.733-2.061S6.23%2C19.094%2C5.599%2C18.06c-0.631-1.034-1.204-2.262-1.721-3.685s-0.775-2.756-0.776-4%20%20c0-2.457%2C0.836-4.558%2C2.509-6.303s3.681-2.618%2C6.024-2.618L11.636%2C1.455z%20M11.636%2C14.012c1.115%2C0%2C2.069-0.392%2C2.861-1.176%20%20c0.792-0.784%2C1.188-1.733%2C1.188-2.848c0-1.115-0.396-2.068-1.188-2.861c-0.792-0.793-1.746-1.189-2.861-1.188%20%20S9.571%2C6.336%2C8.788%2C7.127S7.613%2C8.872%2C7.612%2C9.988c-0.001%2C1.116%2C0.391%2C2.065%2C1.176%2C2.848S10.522%2C14.011%2C11.636%2C14.012z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  background-image: url("../img/location.png");
   background-repeat: no-repeat
 }
 
@@ -3515,7 +3516,8 @@ blockquote p:after {
   padding: .4em 0;
   text-align: center;
   text-transform: uppercase;
-  text-decoration: none
+  text-decoration: none;
+  font-style: italic;
 }
 
 .nav-menu .nav__item a:hover {
@@ -3914,7 +3916,7 @@ blockquote p:after {
   display: block;
   width: 80px;
   height: 80px;
-  border: solid 6px #e96f44;
+  border: solid 6px #be202f;
   border-radius: 100%;
   position: relative;
   left: 50%;
@@ -3937,17 +3939,17 @@ blockquote p:after {
 }
 
 .nav-blocks__content.-user:before {
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%22200px%22%20height%3D%22200px%22%20viewBox%3D%220%200%20200%20200%22%20enable-background%3D%22new%200%200%20200%20200%22%20xml%3Aspace%3D%22preserve%22%3E%20%3Cpath%20d%3D%22M31.905%2C138.443c19.188-16.734%2C41.869-25.1%2C68.05-25.1c26.178%2C0%2C48.862%2C8.366%2C68.051%2C25.1%20%20%20%20c19.187%2C16.734%2C29.82%2C37.225%2C31.904%2C61.468H0C2.081%2C175.669%2C12.717%2C155.177%2C31.905%2C138.443z%20M132.754%2C79.206%20%20%20%20c-9.075%2C9.074-20.007%2C13.61-32.798%2C13.61c-12.794%2C0-23.727-4.535-32.798-13.61c-9.074-9.071-13.61-20.004-13.61-32.798%20%20%20%20c0-12.791%2C4.535-23.723%2C13.61-32.798C76.229%2C4.539%2C87.161%2C0%2C99.955%2C0c12.791%2C0%2C23.723%2C4.539%2C32.798%2C13.61%20%20%20%20c9.071%2C9.074%2C13.609%2C20.007%2C13.609%2C32.798C146.363%2C59.202%2C141.824%2C70.135%2C132.754%2C79.206z%22%20fill%3D%22%23e9744b%22%20%2F%3E%3C%2Fsvg%3E");
+  background-image: url("../img/user.png");
   background-repeat: no-repeat
 }
 
 .nav-blocks__content.-sync:before {
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%22200px%22%20height%3D%22200px%22%20viewBox%3D%220%200%20200%20200%22%20enable-background%3D%22new%200%200%20200%20200%22%20xml%3Aspace%3D%22preserve%22%3E%20%3Ctitle%3ESynchronise%20Icon%3C%2Ftitle%3E%20%3Cpath%20d%3D%22M100%2C170.312c14.136%2C0%2C27.01-3.833%2C38.615-11.499c11.605-7.658%2C20.166-17.741%2C25.667-30.241l27.238%2C11.605%20%20c-7.739%2C17.855-19.906%2C32.292-36.499%2C43.302C138.428%2C194.499%2C120.093%2C200%2C100%2C200c-27.531%2C0-51.042-9.741-70.532-29.24L0%2C200%20%20v-78.573h79.24l-28.792%2C29.02C63.688%2C163.696%2C80.208%2C170.312%2C100%2C170.312z%20M170.76%2C29.24L200%2C0v78.573h-79.24l29.02-29.02%20%20C136.532%2C36.312%2C119.938%2C29.688%2C100%2C29.688c-14.136%2C0-26.978%2C3.833-38.501%2C11.499c-11.54%2C7.666-20.06%2C17.741-25.562%2C30.241%20%20L8.708%2C59.823C16.593%2C41.968%2C28.76%2C27.531%2C45.199%2C16.52C61.646%2C5.509%2C79.907%2C0%2C100%2C0C127.677%2C0%2C151.261%2C9.749%2C170.76%2C29.24z%22%20fill%3D%22%23e9744b%22%20%2F%3E%3C%2Fsvg%3E");
+  background-image: url("../img/sync.png");
   background-repeat: no-repeat
 }
 
 .nav-blocks__content.-ticket:before {
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%22200px%22%20height%3D%22200px%22%20viewBox%3D%220%200%20200%20200%22%20enable-background%3D%22new%200%200%20200%20200%22%20xml%3Aspace%3D%22preserve%22%3E%20%3Ctitle%3ETicket%20Icon%3C%2Ftitle%3E%20%3Cpath%20d%3D%22M199.75%2C78.466L78.474%2C199.75l-24.749-24.741c1.934-2.227%2C2.674-6.096%2C2.235-11.59c-0.447-5.511-2.455-10.046-6.023-13.606%20%20s-8.103-5.576-13.598-6.015c-5.503-0.455-9.363%2C0.293-11.59%2C2.227L0%2C121.284L121.276%2C0l24.749%2C24.749%20%20c-2.089%2C2.227-2.902%2C6.128-2.455%2C11.704c0.447%2C5.568%2C2.455%2C10.135%2C6.023%2C13.712c3.56%2C3.56%2C8.168%2C5.576%2C13.817%2C6.015%20%20c5.649%2C0.439%2C9.51-0.374%2C11.59-2.455L199.75%2C78.466z%20M85.611%2C164.085l78.466-78.483l-49.938-49.929l-78.466%2C78.474L85.611%2C164.085z%20%20%20M49.938%2C114.147l64.202-64.21l35.673%2C35.665l-64.202%2C64.21L49.938%2C114.147z%22%20fill%3D%22%23e9744b%22%20%2F%3E%3C%2Fsvg%3E");
+  background-image: url("../img/ticket.png");
   background-repeat: no-repeat;
   background-size: 46px 46px
 }
@@ -3965,7 +3967,7 @@ blockquote p:after {
 }
 
 .nav-blocks__content.-laptop:before {
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%22200px%22%20height%3D%22200px%22%20viewBox%3D%220%200%20200%20200%22%20enable-background%3D%22new%200%200%20200%20200%22%20xml%3Aspace%3D%22preserve%22%3E%20%3Ctitle%3ELaptop%20Icon%3C%2Ftitle%3E%20%3Cpath%20d%3D%22M199.196%2C181.535c0.738%2C2.815-0.114%2C6.563-2.563%2C11.235c-2.45%2C4.673-5.451%2C7.009-9.013%2C7.009H12.513%20%20c-4.153%2C0-7.528-1.817-10.124-5.451s-3.074-7.901-1.444-12.793l16.906-60.078h32.043v14.245h99.681v-14.245h32.708L199.196%2C181.535%20%20z%20M178.056%2C12.211v102.123H21.412V12.211c0-3.261%2C1.006-6.044%2C3.001-8.347c2.004-2.296%2C4.567-3.448%2C7.682-3.448h135.277%20%20c3.115%2C0%2C5.678%2C1.152%2C7.682%2C3.448C177.05%2C6.168%2C178.056%2C8.95%2C178.056%2C12.211z%20M156.697%2C92.975v-71.2H42.771v71.2H156.697z%22%20fill%3D%22%23e9744b%22%20%2F%3E%3C%2Fsvg%3E");
+  background-image: url("../img/laptop.png");
   background-repeat: no-repeat;
   background-size: 40px 40px
 }
@@ -4884,7 +4886,7 @@ blockquote p:after {
 }
 
 .intro-area__inner .btn {
-  font-family: "Roboro"
+  font-family: "Roboto"
 }
 
 .intro-area__inner .btn.-large {
@@ -5726,7 +5728,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 .tabs__title {
   margin-bottom: 0;
   padding: 1em;
-  font-family: 'Roboro'
+  font-family: 'Roboto'
 }
 
 @media (min-width: 750px) {
@@ -7102,7 +7104,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .flash-sale__btn .btn {
-  font-family: "Roboro"
+  font-family: "Roboto"
 }
 
 @media (min-width: 500px) {
@@ -7677,7 +7679,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .hero.-home .btn {
   bottom: 0;
-  font-family: "Roboro"
+  font-family: "Roboto"
 }
 
 .hero.-home .btn:after {
@@ -12013,7 +12015,7 @@ div.select-theme-easygym.-classes .select-content {
 
 .btn--thank-you {
   margin-top: 50px;
-  font-family: Roboro;
+  font-family: Roboto;
   font-size: 1.3em;
   font-weight: 400
 }
@@ -12063,7 +12065,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .sts h1 {
-  font-family: 'Roboro';
+  font-family: 'Roboto';
   letter-spacing: 5px;
   font-size: 100px;
   text-transform: uppercase;

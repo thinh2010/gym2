@@ -14,6 +14,7 @@ export const TYPE_INFO = 'Info';
 export const TYPE_VIDEO = 'Video';
 export const TYPE_PAGE_HEADING = 'PageHeading';
 export const TYPE_ITEM_ODDS = 'ItemOdds';
+export const TYPE_SINGLE_PAGE_BLOCK = 'SinglePageBlock';
 export const TYPE_BLOCK = 'Block';
 
 export const BLOCK_TYPES = [
@@ -23,6 +24,7 @@ export const BLOCK_TYPES = [
   { value: TYPE_INFO, label: 'Information' },
   { value: TYPE_PAGE_HEADING, label: 'Page heading' },
   { value: TYPE_ITEM_ODDS, label: 'Item Odds' },
+  { value: TYPE_SINGLE_PAGE_BLOCK, label: 'Single Page Block' },
   { value: TYPE_BLOCK, label: 'Block' },
 ];
 
