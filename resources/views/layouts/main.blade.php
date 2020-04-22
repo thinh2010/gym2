@@ -116,8 +116,8 @@
             </ul> -->
             <div class="site-footer__baseline">
                 <hr class="hr" />
-                <p>© 2020 easyGym. <a href="#">Privacy Policy</a> | <a href="gym-rules.html">Gym
-                        Rules</a> | <a href="#">Terms and Conditions</a></p>
+                <p>© 2020 vGym. <a href="/page/gym-rules">Gym
+                        Rules</a> | <a href="/page/terms-and-conditions">Terms and Conditions</a></p>
             </div>
         </div>
     </footer>
