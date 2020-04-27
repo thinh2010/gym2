@@ -20,11 +20,13 @@ class PageDetailResource extends JsonResource
             'slug' => $this->slug,
             'type' => $this->type,
             'description' => $this->description,
+            'image' => strval($this->image),
             'is_enabled' => $this->is_enabled,
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
             'meta_keywords' => $this->meta_keywords,
             'blocks' => BlockResource::collection($this->blocks),
+            'parent_id' => $this->parent_id
         ];
     }
 }

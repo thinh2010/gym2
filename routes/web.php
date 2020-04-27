@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/page/{page_slug}', 'PageController@view')->name('page');
-Route::get('/page/{page_slug}/{item_slug}', 'PageController@viewItem')->name('item_show');
+Route::get('/page/{slug}', 'PageController@view')->name('page');
+Route::get('/page/{page_slug}/{slug}', 'PageController@viewItem')->name('pageItem');
 Route::post('/contact', 'HomeController@contact')->name('contact');
 // Route::group(['middleware' => 'web'], function () {
 //     Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');

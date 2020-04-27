@@ -6,14 +6,6 @@ class BlockContentResource extends Resource {
     super('block_contents');
   }
 
-  postUpdate(id, resource) {
-    return request({
-      url: '/' + this.uri + '/' + id + '/edit',
-      method: 'post',
-      data: resource,
-    });
-  }
-
   store(id, resource) {
     return request({
       url: '/blocks/' + id + '/' + this.uri,

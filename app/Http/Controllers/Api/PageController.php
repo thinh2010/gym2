@@ -6,6 +6,7 @@ use App\Page;
 use App\Block;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Resources\PageResource;
 use App\Http\Resources\PageDetailResource;
 
@@ -18,7 +19,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return PageResource::collection(Page::all());
+        return PageResource::collection(Page::whereNull('parent_id')->get());
         // return response()->json(Page::orderBy('id')->get());
     }
 
@@ -52,6 +53,17 @@ class PageController extends Controller
 
         if (empty($data['slug'])) {
             $data['slug'] = $this->make_slug($data['title']);
+        }
+
+        if (isset($data['image'])) {
+            $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
+            $page_image_path = config('constant.page_image_path');
+            if (!File::isDirectory($page_image_path)) {
+                File::makeDirectory($page_image_path, 0775, true);
+            }
+            $data['image']->move($page_image_path, $image_file_name);
+            $page->image = '/' . $page_image_path . '/' . $image_file_name;
+            $page->save();
         }
 
         $page = Page::create($data);
@@ -98,8 +110,24 @@ class PageController extends Controller
 
         $data = $request->all();
         $page = Page::find($id);
+        $oldImage = $page->image;
 
         $page->fill($data);
+
+        if (isset($data['image'])) {
+
+            $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
+            $page_image_path = config('constant.page_image_path');
+            if (!File::isDirectory($page_image_path)) {
+                File::makeDirectory($page_image_path, 0775, true);
+            }
+            $data['image']->move($page_image_path, $image_file_name);
+            
+            $page->image = '/' . $page_image_path . '/' . $image_file_name;
+            if (File::isFile($oldImage)) {
+                File::delete($oldImage);
+            }
+        }
         $page->save();
 
         return response()->json(['message' => 'success', 'data' => $page->jsonSerialize()]);

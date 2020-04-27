@@ -15,20 +15,19 @@ class PageController extends FController
      *
      * @return \Illuminate\Http\Response
      */
-    public function view($page_slug)
+    public function view($slug)
     {
-        $page = Page::where('slug', $page_slug)->with('blocks.blockContents')->get()->first();
+        $page = Page::where('slug', $slug)->with('blocks.blockContents')->get()->first();
         $pages = Page::notHomepage()->active()->get();
         $homepage = Page::with('blocks.blockContents')->active()->homepage()->get()->first();
         return view('page', ['page' => $page, 'homepage' => $homepage, 'pages' => $pages]);
     }
 
-    public function viewItem($page_slug, $item_slug)
+    public function viewItem($page_slug, $slug)
     {
-        $page = Page::where('slug', $page_slug)->first();
+        $page = Page::where('slug', $slug)->with('blocks.blockContents')->get()->first();
         $pages = Page::notHomepage()->active()->get();
         $homepage = Page::with('blocks.blockContents')->active()->homepage()->get()->first();
-        $item = Item::where('slug', $item_slug)->first();
-        return view('item', ['page' => $page, 'homepage' => $homepage, 'pages' => $pages, 'item' => $item]);
+        return view('page', ['page' => $page, 'homepage' => $homepage, 'pages' => $pages]);
     }
 }

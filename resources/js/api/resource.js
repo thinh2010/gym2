@@ -40,6 +40,13 @@ class Resource {
       method: 'delete',
     });
   }
+  postUpdate(id, resource) {
+    return request({
+      url: '/' + this.uri + '/' + id + '/edit',
+      method: 'post',
+      data: resource,
+    });
+  }
 }
 
 export { Resource as default };

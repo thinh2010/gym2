@@ -6,14 +6,6 @@ class BlockResource extends Resource {
     super('blocks');
   }
 
-  postUpdate(id, resource) {
-    return request({
-      url: '/' + this.uri + '/' + id + '/edit',
-      method: 'post',
-      data: resource,
-    });
-  }
-
   getEnabled() {
     return request({
       url: '/enabled_blocks',

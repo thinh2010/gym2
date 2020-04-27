@@ -4,12 +4,9 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <title>{{ config('app.name', 'Low Cost Gym | No Contract | Gyms Near Me - vGym') }}</title>
-    <meta name="description"
-        content="easyGym - low cost no contract gym memberships, premium gym equipment &amp; free gym classes. Pay as you go gyms throughout the UK. Join today!" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    @meta_tags
     <script type="text/javascript">
-        var base = '/'; var siteName = 'easygym';
+        var base = '/'; var siteName = 'vGym';
     </script>
     <link rel="shortcut icon" href="/favicon.ico" />
 
