@@ -45,6 +45,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/block_contents/{id}/edit', 'Api\BlockContentController@update')->name('update_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
     Route::post('/block_contents/update_order', 'Api\BlockContentController@updateOrder')->name('update_order');
 
+    Route::apiResource('categories', 'Api\CategoryController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    // Route::group(['prefix' => '/categories', 'as' => 'api.categories.'], function () {
+    //     Route::post('/{id}/edit', 'Api\CategoryController@update')->name('postUpdate');
+    // })->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/categories/{id}/edit', 'Api\CategoryController@update')->name('postCategoryUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    
+
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {
     //     Route::get('/', 'Api\PageController@index')->name('index');
     //     Route::post('/', 'Api\PageController@store')->name('store');

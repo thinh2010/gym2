@@ -12,6 +12,8 @@ Vue.use(Router);
 /* Layout */
 import Layout from '@/layout';
 import PageList from '@/views/pages/Index';
+import CategoriesList from '@/views/content/Category';
+import CategoryForm from '@/views/content/CategoryForm';
 
 /* Router for modules */
 // import elementUiRoutes from './modules/element-ui';
@@ -185,6 +187,37 @@ export const asyncRoutes = [
         component: () => import('@/views/block-contents/Form'),
         name: 'EditBlockContent',
         meta: { title: 'editBlockContent', noCache: false },
+        hidden: true,
+      },
+    ],
+  },
+  {
+    path: '/blogs',
+    component: Layout,
+    redirect: '/blogs/categories',
+    meta: {
+      title: 'blogs',
+      icon: 'nested',
+    },
+    children: [
+      {
+        path: 'categories',
+        component: CategoriesList,
+        name: 'Categories',
+        meta: { title: 'blogCategories', icon: 'list', noCache: false },
+      },
+      {
+        path: 'categories/add',
+        component: () => import('@/views/content/CategoryForm'),
+        name: 'AddCategory',
+        meta: { title: 'addBlogCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'categories/edit/:id(\\d+)',
+        component: CategoryForm,
+        name: 'EditCategory',
+        meta: { title: 'editBlogCategories', noCache: false },
         hidden: true,
       },
     ],

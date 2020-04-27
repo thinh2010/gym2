@@ -17,6 +17,10 @@ export const TYPE_ITEM_ODDS = 'ItemOdds';
 export const TYPE_SINGLE_PAGE_BLOCK = 'SinglePageBlock';
 export const TYPE_BLOCK = 'Block';
 
+// content type
+export const TYPE_BLOG = 'blog';
+export const TYPE_FAQ = 'faq';
+
 export const BLOCK_TYPES = [
   { value: TYPE_HEADING, label: 'Heading' },
   { value: TYPE_UNDER_HEADING, label: 'Under heading' },
