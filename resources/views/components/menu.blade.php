@@ -240,7 +240,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Gym rules">
+                <a href="/page/gym-rules" data-letters="Gym rules">
                     <span>Gym rules</span>
                 </a>
             </li>

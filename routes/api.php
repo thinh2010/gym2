@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/pages/{page}/addBlock/{block}', 'Api\PageController@addBlock')->name('add_block');
     Route::post('/pages/{page}/update_block_order', 'Api\PageController@updateBlockOrder')->name('update_block_order');
     Route::delete('/pages/{page}/block/{block}', 'Api\PageController@removeBlock')->name('remove_block');
+    Route::post('/pages/{id}/edit', 'Api\PageController@update')->name('pageUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
     Route::apiResource('blocks', 'Api\BlockController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
@@ -43,8 +44,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/blocks/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
     Route::post('/block_contents/{id}/edit', 'Api\BlockContentController@update')->name('update_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
     Route::post('/block_contents/update_order', 'Api\BlockContentController@updateOrder')->name('update_order');
-
-
 
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {
     //     Route::get('/', 'Api\PageController@index')->name('index');

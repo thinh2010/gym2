@@ -14,9 +14,11 @@ class Page extends Model
         'slug',
         'type',
         'title',
+        'image',
         'content',
         'description',
         'footer_bg',
+        'parent_id',
         'meta_title',
         'is_enabled',
         'footer_text',
@@ -29,10 +31,10 @@ class Page extends Model
         'type' => self::TYPE_PAGE
     ];
 
-    public function getIsEnabledAttribute($value)
-    {
-        return (bool) $value;
-    }
+    // public function getIsEnabledAttribute($value)
+    // {
+    //     return (bool) $value;
+    // }
 
     public function blocks()
     {
@@ -57,5 +59,13 @@ class Page extends Model
     public function scopeNotHomepage($query)
     {
         return $query->where('type', '!=', self::TYPE_HOMEPAGE);
+    }
+
+    public function parent() {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function children(){
+        return $this->hasMany(self::class, 'parent_id');
     }
 }

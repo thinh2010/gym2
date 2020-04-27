@@ -10,17 +10,6 @@ use App\Mail\Contact;
 class HomeController extends FController
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-        parent::__construct();
-    }
-
-    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
@@ -30,6 +19,8 @@ class HomeController extends FController
         $pages = Page::notHomepage()->active()->get();
 
         $homepage = Page::with('blocks.blockContents')->active()->homepage()->get()->first();
+
+        $this->setMeta($homepage);
 
         if ($homepage == NULL) {
             return view('welcome');

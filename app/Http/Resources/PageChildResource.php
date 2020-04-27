@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PageResource extends JsonResource
+class PageChildResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,7 @@ class PageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'children' => PageChildResource::collection($this->children)
+            'label' => $this->title,
         ];
     }
 }

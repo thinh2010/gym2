@@ -12,17 +12,17 @@
       <el-container v-if="isEditing()" v-loading="loadingEntity">
         <el-tabs v-model="activeTab" style="width: 100%;" type="border-card">
           <el-tab-pane label="Nội dung" name="content">
-            <el-form v-show="currentEdit != 0" ref="form" :model="entity" label-width="150px" :rules="rules">
+            <el-form v-show="currentEdit != 0" id="form" ref="form" :model="entity" label-width="150px" :rules="rules">
               <el-row>
                 <el-col :span="12"><div class="grid-content">
                   <el-form-item label="Tiêu đề trang" prop="title">
-                    <el-input v-model="entity.title" />
+                    <el-input v-model="entity.title" name="title" />
                   </el-form-item>
                   <el-form-item label="Slug" prop="slug">
-                    <el-input v-model="entity.slug" />
+                    <el-input v-model="entity.slug" name="slug" />
                   </el-form-item>
                   <el-form-item label="Loại trang" prop="type">
-                    <el-select v-model="entity.type" placeholder="Loại trang">
+                    <el-select v-model="entity.type" name="type" placeholder="Loại trang">
                       <el-option
                         v-for="item in pageTypes"
                         :key="item.value"
@@ -31,40 +31,47 @@
                       />
                     </el-select>
                   </el-form-item>
+                  <el-form-item label="Kích hoạt">
+                    <el-switch v-model="entity.is_enabled" name="is_enabled" :active-value="1" :inactive-value="0" />
+                  </el-form-item>
+                  <el-form-item label="Page cha">
+                    <el-select v-model="entity.parent_id" filterable placeholder="Chọn page cha">
+                      <el-option
+                        v-for="item in pageTree"
+                        :key="item.id"
+                        :label="item.label"
+                        :value="item.id"
+                      />
+                    </el-select>
+                  </el-form-item>
                 </div></el-col>
                 <el-col :span="12"><div class="grid-content">
                   <el-form-item label="Tiêu đề thẻ meta">
-                    <el-input v-model="entity.meta_title" />
+                    <el-input v-model="entity.meta_title" name="meta_title" />
                   </el-form-item>
                   <el-form-item label="Từ khóa thẻ meta">
-                    <el-input v-model="entity.meta_keywords" />
+                    <el-input v-model="entity.meta_keywords" name="meta_keywords" />
                   </el-form-item>
                   <el-form-item label="Mô tả thẻ meta">
-                    <el-input v-model="entity.meta_description" />
+                    <el-input v-model="entity.meta_description" name="meta_description" />
+                  </el-form-item>
+                  <el-form-item label="Ảnh">
+                    <image-upload :imageurl="entity.image" @changeImage="onFileChange" @removeImage="onFileRemove" />
                   </el-form-item>
                 </div></el-col>
-              </el-row>
-              <el-row>
-                <el-col :span="24">
-                  <div class="grid-content">
-                    <el-form-item label="Kích hoạt">
-                      <el-switch v-model="entity.is_enabled" name="is_enabled" :value="entity.is_enabled" />
-                    </el-form-item>
-                  </div>
-                </el-col>
               </el-row>
               <el-row>
                 <el-col :span="24">
                   <div class="grid-content">
                     <el-form-item label="Mô tả ngắn">
-                      <el-input v-model="entity.description" type="textarea" />
+                      <el-input v-model="entity.description" name="description" type="textarea" />
                     </el-form-item>
                   </div>
                 </el-col>
                 <el-col :span="24">
                   <div class="grid-content">
                     <el-form-item label="Nội dung">
-                      <tinymce v-model="entity.content" :height="300" />
+                      <tinymce v-model="entity.content" name="content" :height="300" />
                     </el-form-item>
                   </div>
                 </el-col>
@@ -165,6 +172,7 @@
 import PageResource from '@/api/page';
 import BlockResource from '@/api/block';
 import { PAGE_TYPES } from '@/constants';
+import ImageUpload from '@/components/Upload/Image';
 import Tinymce from '@/components/Tinymce';
 import Sortable from 'sortablejs';
 
@@ -173,7 +181,7 @@ const blockApi = new BlockResource();
 
 export default {
   name: 'Page',
-  components: { Tinymce },
+  components: { Tinymce, ImageUpload },
   data() {
     return {
       list: [],
@@ -209,6 +217,8 @@ export default {
       enabledBlocks: [],
       blockArray: [],
       newList: [],
+      uploadImage: {},
+      changeFileFlag: false,
     };
   },
   computed: {
@@ -227,6 +237,18 @@ export default {
       }
       return [];
     },
+    pageOptions: function() {
+      const data = [];
+      this.enabledBlocks.map(item => {
+        const found = this.entity.blocks.find(block => {
+          return block.id === item.id;
+        });
+        if (found === undefined) { // not in selected blocks
+          data.push(item);
+        }
+      });
+      return data;
+    },
   },
   watch: {
     list: function(val) {
@@ -235,6 +257,7 @@ export default {
         this.pageTree.push({
           id: item.id,
           label: item.title,
+          children: item.children,
         });
       });
     },
@@ -282,8 +305,26 @@ export default {
     async onSubmit() {
       this.saving = true;
       const valid = await this.$refs['form'].validate();
+      const form = document.getElementById('form');
+      const formData = new FormData(form);
+
+      for (const [key, value] of Object.entries(this.entity)) {
+        if (key === 'parent_id' && value === null) {
+          continue;
+        }
+        // console.log(`${key}: ${value}`);
+        formData.set(key, value === null ? '' : value);
+      }
+
+      if (this.changeFileFlag) {
+        formData.set('image', _.get(this.uploadImage, 'raw', ''));
+      }
+
+      if (this.entity.image === '') {
+        formData.set('image', '');
+      }
       if (valid) {
-        await pageApi.update(this.currentEdit, this.entity);
+        await pageApi.postUpdate(this.entity.id, formData);
       } else {
         return false;
       }
@@ -403,6 +444,16 @@ export default {
         type: 'success',
         message: 'Sắp xếp thành công!',
       });
+    },
+    onFileChange(file) {
+      console.log(file);
+      this.uploadImage = file;
+      this.changeFileFlag = true;
+      this.entity.image = URL.createObjectURL(file.raw);
+    },
+    onFileRemove() {
+      this.entity.image = '';
+      this.uploadImage = {};
     },
   },
 };
