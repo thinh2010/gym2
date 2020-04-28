@@ -83,8 +83,10 @@ export default {
         image: '',
         is_enabled: 1,
         content: '',
-        block_contents: [],
         type: '',
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: '',
       },
       fileList: [],
       saving: false,
@@ -143,11 +145,15 @@ export default {
         const form = document.getElementById('form');
         const formData = new FormData(form);
 
-        if (formData.get('is_enabled') === 'on') {
-          formData.set('is_enabled', 1);
-        } else {
-          formData.set('is_enabled', 0);
+        for (const key in this.entity) {
+          formData.set(key, this.entity[key]);
         }
+
+        // if (formData.get('is_enabled') === 'on') {
+        //   formData.set('is_enabled', 1);
+        // } else {
+        //   formData.set('is_enabled', 0);
+        // }
 
         if (this.changeFileFlag) {
           formData.set('image', _.get(this.uploadImage, 'raw', ''));
@@ -157,8 +163,9 @@ export default {
           formData.set('image', '');
         }
 
-        formData.set('content', _.get(this.entity, 'content', ''));
-        formData.set('type', this.entity.type);
+        // formData.set('content', _.get(this.entity, 'content', ''));
+        // formData.set('type', this.entity.type);
+        // formData.set('parent_id', this.entity.parent_id);
 
         if (this.isEditing()) {
           await categoryApi.postUpdate(this.entity.id, formData);
@@ -176,7 +183,7 @@ export default {
       });
     },
     async onDelete(id) {
-      const confirm = await this.$confirm('Bạn có chắc là muốn xóa block này chứ?', 'Warning', {
+      const confirm = await this.$confirm('Bạn có chắc là muốn xóa danh mục này chứ?', 'Warning', {
         confirmButtonText: 'Xóa',
         cancelButtonText: 'Hủy',
         type: 'warning',
@@ -188,7 +195,7 @@ export default {
           type: 'success',
           message: 'Xóa thành công',
         });
-        this.$router.push({ name: 'Blocks' });
+        this.$router.push({ name: 'Categories' });
       }
     },
     onFileChange(file) {
@@ -202,9 +209,6 @@ export default {
     },
     isEditing() {
       return _.get(this.$route.params, 'id', 0) !== 0;
-    },
-    handleCreate() {
-      this.$router.push({ name: 'AddBlockContent', params: { id: this.entity.id }});
     },
   },
 };

@@ -17,6 +17,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'is_enabled' => $this->is_enabled,
             'children' => CategoryNodeResource::collection($this->children)
         ];
     }

@@ -26,6 +26,7 @@ class CategoryController extends Controller
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $type = Arr::get($searchParams, 'type', '');
         $keyword = Arr::get($searchParams, 'keyword', '');
+        $display = Arr::get($searchParams, 'display', '');
 
         if (!empty($type)) {
             $categoryQuery->where('type', $type);
@@ -35,11 +36,17 @@ class CategoryController extends Controller
             $categoryQuery->where('title', 'LIKE', '%' . $keyword . '%');
         }
 
+        // if ($display == 'tree') {
+        //     return $categoryQuery->get()->toTree();
+        // }
+
+        // return $categoryQuery->whereNull('parent_id')->with('children')->get();
+
         return CategoryResource::collection($categoryQuery->paginate($limit));
     }
     
     /**
-     * Display a listing of the enabled blocks.
+     * Display a listing of the enabled categories.
      *
      * @return \Illuminate\Http\Response
      */
@@ -95,20 +102,25 @@ class CategoryController extends Controller
             $data['options'] = json_encode($options);
         }
 
-        $block = Category::create($data);
+        $category = Category::create($data);
 
         if (isset($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
-            $block_image_path = config('constant.block_image_path');
-            if (!File::isDirectory($block_image_path)) {
-                File::makeDirectory($block_image_path, 0775, true);
+            $category_image_path = config('constant.category_image_path');
+            if (!File::isDirectory($category_image_path)) {
+                File::makeDirectory($category_image_path, 0775, true);
             }
-            $data['image']->move($block_image_path, $image_file_name);
-            $block->image = '/' . $block_image_path . '/' . $image_file_name;
-            $block->save();
+            $data['image']->move($category_image_path, $image_file_name);
+            $category->image = '/' . $category_image_path . '/' . $image_file_name;
+            $category->save();
         }
 
-        return response()->json(['message' => 'success', 'data' => $block->jsonSerialize()]);
+        if ($data['parent_id'] !== '') {
+            $parent = Category::find($data['parent_id']);
+            $parent->appendNode($category);
+        }
+
+        return response()->json(['message' => 'success', 'data' => $category->jsonSerialize()]);
     }
 
     /**
@@ -120,7 +132,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return new CategoryDetailResource($category);
-        // return response()->json(Category::with('blockContents')->findOrFail($id));
+        // return response()->json(Category::with('categoryContents')->findOrFail($id));
     }
 
     /**
@@ -148,11 +160,15 @@ class CategoryController extends Controller
         // ]);
 
         $data = $request->all();
-        $block = Category::find($id);
-        $oldImage = $block->image;
+        $category = Category::find($id);
+        $oldImage = $category->image;
+
+        if (empty($data['slug'])) {
+            $data['slug'] = $this->make_slug($data['title']);
+        }
 
         if (isset($data['options']) && !empty($data['options'])) {
-            $options = $block->options ? $block->options : (object)[];
+            $options = $category->options ? $category->options : (object)[];
             foreach ($data['options'] as $key => $option) {
                 $tmp = [];
                 if ($key == 'video' || $key == 'file' || $key == 'image') {
@@ -171,51 +187,56 @@ class CategoryController extends Controller
         }
         
         
-        $block->fill($data);
+        $category->fill($data);
 
-        if (isset($data['image'])) {
+        if (isset($data['image']) && is_uploaded_file($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
-            $block_image_path = config('constant.block_image_path');
-            if (!File::isDirectory($block_image_path)) {
-                File::makeDirectory($block_image_path, 0775, true);
+            $category_image_path = config('constant.category_image_path');
+            if (!File::isDirectory($category_image_path)) {
+                File::makeDirectory($category_image_path, 0775, true);
             }
-            $data['image']->move($block_image_path, $image_file_name);
-            $block->image = '/' . $block_image_path . '/' . $image_file_name;
+            $data['image']->move($category_image_path, $image_file_name);
+            $category->image = '/' . $category_image_path . '/' . $image_file_name;
             if (File::isFile($oldImage)) {
                 File::delete($oldImage);
             }
         }
 
-        $block->save();
-        return response()->json(['message' => 'success', 'data' => $block->jsonSerialize()]);
+        $category->save();
+
+        if ($data['parent_id'] !== '') {
+            $parent = Category::find($data['parent_id']);
+            $parent->appendNode($category);
+        }
+        return response()->json(['message' => 'success', 'data' => $category->jsonSerialize()]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Category  $block
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $block)
+    public function destroy(Category $category)
     {
-        $block->delete();
+        $category->delete();
 
         return response()->json(['message' => 'success']);
     }
 
     /**
-     * re-order blocks
+     * re-order categories
      *
      * @param  array  $data contains list of CategoryContent
      * @return \Illuminate\Http\Response
      */
     public function updateOrder(Request $request) {
         $data = $request->all();
-        // save the order of block contents
+        // save the order of category contents
         if (count($data) > 0) {
-            foreach ($data as $key => $block) {
-                $entity = Category::find($block['id']);
-                $entity->fill(['sort' => $block['sort']]);
+            foreach ($data as $key => $category) {
+                $entity = Category::find($category['id']);
+                $entity->fill(['sort' => $category['sort']]);
                 $entity->save();
             }
         }

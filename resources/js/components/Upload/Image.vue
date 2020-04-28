@@ -10,7 +10,6 @@
       :on-change="handleChange"
       :on-remove="handleRemove"
       :file-list="fileList"
-      name="file"
     >
       <i class="el-icon-plus" />
     </el-upload>

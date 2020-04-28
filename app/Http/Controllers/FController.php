@@ -63,7 +63,7 @@ class FController extends BaseController
             sprintf('/^[%s]+|[%s]+$/', $quotedReplacement, $quotedReplacement) => '',
         );
         //Some URL was encode, decode first
-        $title = urldecode($title);
+        $title = urldecode($string);
         $map = array_merge($map, $default);
         return strtolower(preg_replace(array_keys($map), array_values($map), $title));
     }

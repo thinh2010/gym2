@@ -23,21 +23,9 @@
         </template>
       </el-table-column>
 
-      <el-table-column align="center" label="Loại">
-        <template slot-scope="scope">
-          <span>{{ scope.row.type }}</span>
-        </template>
-      </el-table-column>
-
-      <el-table-column align="center" label="Mô tả">
-        <template slot-scope="scope">
-          <span>{{ scope.row.description }}</span>
-        </template>
-      </el-table-column>
-
       <el-table-column align="center" label="Kích hoạt?">
         <template slot-scope="scope">
-          <span>{{ scope.row.is_enabled }}</span>
+          <boolean-view :value="scope.row.is_enabled" />
         </template>
       </el-table-column>
 
@@ -58,20 +46,23 @@
 <script>
 import Resource from '@/api/resource';
 import { BLOCK_TYPES } from '@/constants';
+import BooleanView from '@/components/Table/BooleanView';
 
 const categoryApi = new Resource('categories');
 
 export default {
   name: 'Category',
+  components: { BooleanView },
   data() {
     return {
       list: [],
       loadingList: false,
       query: {
         page: 1,
-        limit: 15,
+        limit: 100,
         keyword: '',
         type: 'blog',
+        display: 'tree',
       },
       types: [],
     };
@@ -88,7 +79,7 @@ export default {
       this.loadingList = false;
     },
     async onDelete(id) {
-      const confirm = await this.$confirm('Bạn có chắc là muốn xóa block này chứ?', 'Warning', {
+      const confirm = await this.$confirm('Bạn có chắc là muốn xóa danh mục này chứ?', 'Warning', {
         confirmButtonText: 'Xóa',
         cancelButtonText: 'Hủy',
         type: 'warning',
