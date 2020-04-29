@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Article;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategoryDetailResource;
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\ArticleDetailResource;
 use Illuminate\Support\Arr;
 
-class CategoryController extends Controller
+class ArticleController extends Controller
 {
     const ITEM_PER_PAGE = 15;
 
@@ -22,27 +23,21 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $searchParams = $request->all();
-        $categoryQuery = Category::query();
+        $articleQuery = Article::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
-        $type = Arr::get($searchParams, 'type', '');
         $keyword = Arr::get($searchParams, 'keyword', '');
-        $display = Arr::get($searchParams, 'display', '');
-
-        if (!empty($type)) {
-            $categoryQuery->where('type', $type);
-        }
 
         if (!empty($keyword)) {
-            $categoryQuery->where('title', 'LIKE', '%' . $keyword . '%');
+            $articleQuery->where('title', 'LIKE', '%' . $keyword . '%');
         }
 
         // if ($display == 'tree') {
-        //     return $categoryQuery->get()->toTree();
+        //     return $articleQuery->get()->toTree();
         // }
 
-        // return $categoryQuery->whereNull('parent_id')->with('children')->get();
+        // return $articleQuery->whereNull('category_id')->with('children')->get();
 
-        return CategoryResource::collection($categoryQuery->paginate($limit));
+        return ArticleResource::collection($articleQuery->paginate($limit));
     }
     
     /**
@@ -50,9 +45,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function enabledCategorys()
+    public function enabledArticles()
     {
-        return CategoryResource::collection(Category::orderBy('id')->where('is_enabled', true)->get());
+        return ArticleResource::collection(Article::orderBy('id')->where('is_enabled', true)->get());
     }
 
     /**
@@ -89,12 +84,12 @@ class CategoryController extends Controller
                 $tmp = [];
                 if ($key == 'video' || $key == 'file' || $key == 'image') {
                     $fileName = time().rand(11111,99999).$option->getClientOriginalName();
-                    $category_file_path = config('constant.category_file_path');
-                    if (!File::isDirectory($category_file_path)) {
-                        File::makeDirectory($category_file_path, 0775, true);
+                    $article_file_path = config('constant.article_file_path');
+                    if (!File::isDirectory($article_file_path)) {
+                        File::makeDirectory($article_file_path, 0775, true);
                     }
-                    $option->move($category_file_path, $fileName);
-                    $options->{$key} = '/' . $category_file_path . '/' . $fileName;
+                    $option->move($article_file_path, $fileName);
+                    $options->{$key} = '/' . $article_file_path . '/' . $fileName;
                 } else {
                     $options->{$key} = $option;
                 }
@@ -102,25 +97,20 @@ class CategoryController extends Controller
             $data['options'] = json_encode($options);
         }
 
-        $category = Category::create($data);
+        $article = Article::create($data);
 
         if (isset($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
-            $category_image_path = config('constant.category_image_path');
-            if (!File::isDirectory($category_image_path)) {
-                File::makeDirectory($category_image_path, 0775, true);
+            $article_image_path = config('constant.article_image_path');
+            if (!File::isDirectory($article_image_path)) {
+                File::makeDirectory($article_image_path, 0775, true);
             }
-            $data['image']->move($category_image_path, $image_file_name);
-            $category->image = '/' . $category_image_path . '/' . $image_file_name;
-            $category->save();
+            $data['image']->move($article_image_path, $image_file_name);
+            $article->image = '/' . $article_image_path . '/' . $image_file_name;
+            $article->save();
         }
 
-        if (isset($data['parent_id']) && $data['parent_id'] !== '') {
-            $parent = Category::find($data['parent_id']);
-            $parent->appendNode($category);
-        }
-
-        return response()->json(['message' => 'success', 'data' => $category->jsonSerialize()]);
+        return response()->json(['message' => 'success', 'data' => $article->jsonSerialize()]);
     }
 
     /**
@@ -129,10 +119,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Article $article)
     {
-        return new CategoryDetailResource($category);
-        // return response()->json(Category::with('categoryContents')->findOrFail($id));
+        return new ArticleDetailResource($article);
+        // return response()->json(Article::with('articleContents')->findOrFail($id));
     }
 
     /**
@@ -160,25 +150,25 @@ class CategoryController extends Controller
         // ]);
 
         $data = $request->all();
-        $category = Category::find($id);
-        $oldImage = $category->image;
+        $article = Article::find($id);
+        $oldImage = $article->image;
 
         if (empty($data['slug'])) {
             $data['slug'] = $this->make_slug($data['title']);
         }
 
         if (isset($data['options']) && !empty($data['options'])) {
-            $options = $category->options ? $category->options : (object)[];
+            $options = $article->options ? $article->options : (object)[];
             foreach ($data['options'] as $key => $option) {
                 $tmp = [];
                 if ($key == 'video' || $key == 'file' || $key == 'image') {
                     $fileName = time().rand(11111,99999).$option->getClientOriginalName();
-                    $category_file_path = config('constant.category_file_path');
-                    if (!File::isDirectory($category_file_path)) {
-                        File::makeDirectory($category_file_path, 0775, true);
+                    $article_file_path = config('constant.article_file_path');
+                    if (!File::isDirectory($article_file_path)) {
+                        File::makeDirectory($article_file_path, 0775, true);
                     }
-                    $option->move($category_file_path, $fileName);
-                    $options->{$key} = '/' . $category_file_path . '/' . $fileName;
+                    $option->move($article_file_path, $fileName);
+                    $options->{$key} = '/' . $article_file_path . '/' . $fileName;
                 } else {
                     $options->{$key} = $option;
                 }
@@ -187,39 +177,34 @@ class CategoryController extends Controller
         }
         
         
-        $category->fill($data);
+        $article->fill($data);
 
         if (isset($data['image']) && is_uploaded_file($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
-            $category_image_path = config('constant.category_image_path');
-            if (!File::isDirectory($category_image_path)) {
-                File::makeDirectory($category_image_path, 0775, true);
+            $article_image_path = config('constant.article_image_path');
+            if (!File::isDirectory($article_image_path)) {
+                File::makeDirectory($article_image_path, 0775, true);
             }
-            $data['image']->move($category_image_path, $image_file_name);
-            $category->image = '/' . $category_image_path . '/' . $image_file_name;
+            $data['image']->move($article_image_path, $image_file_name);
+            $article->image = '/' . $article_image_path . '/' . $image_file_name;
             if (File::isFile($oldImage)) {
                 File::delete($oldImage);
             }
         }
 
-        $category->save();
-
-        if ($data['parent_id'] !== '') {
-            $parent = Category::find($data['parent_id']);
-            $parent->appendNode($category);
-        }
-        return response()->json(['message' => 'success', 'data' => $category->jsonSerialize()]);
+        $article->save();
+        return response()->json(['message' => 'success', 'data' => $article->jsonSerialize()]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Category  $category
+     * @param  Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Article $article)
     {
-        $category->delete();
+        $article->delete();
 
         return response()->json(['message' => 'success']);
     }
@@ -227,16 +212,16 @@ class CategoryController extends Controller
     /**
      * re-order categories
      *
-     * @param  array  $data contains list of CategoryContent
+     * @param  array  $data contains list of ArticleContent
      * @return \Illuminate\Http\Response
      */
     public function updateOrder(Request $request) {
         $data = $request->all();
-        // save the order of category contents
+        // save the order of article contents
         if (count($data) > 0) {
-            foreach ($data as $key => $category) {
-                $entity = Category::find($category['id']);
-                $entity->fill(['sort' => $category['sort']]);
+            foreach ($data as $key => $article) {
+                $entity = Article::find($article['id']);
+                $entity->fill(['sort' => $article['sort']]);
                 $entity->save();
             }
         }

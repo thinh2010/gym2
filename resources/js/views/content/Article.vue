@@ -25,13 +25,13 @@
 
       <el-table-column align="center" label="Kích hoạt?">
         <template slot-scope="scope">
-          <boolean-view :value="scope.row.is_enabled === 1" />
+          <boolean-view :value="scope.row.is_enabled" />
         </template>
       </el-table-column>
 
       <el-table-column align="center" label="Thao tác">
         <template slot-scope="scope">
-          <router-link :to="{ name: 'EditCategory', params: { id: scope.row.id } }">
+          <router-link :to="{ name: 'EditArticle', params: { id: scope.row.id } }">
             <el-button type="primary" size="small" icon="el-icon-edit">
               Sửa
             </el-button>
@@ -45,13 +45,12 @@
 
 <script>
 import Resource from '@/api/resource';
-import { BLOCK_TYPES } from '@/constants';
 import BooleanView from '@/components/Table/BooleanView';
 
-const categoryApi = new Resource('categories');
+const articleApi = new Resource('articles');
 
 export default {
-  name: 'Category',
+  name: 'Article',
   components: { BooleanView },
   data() {
     return {
@@ -61,20 +60,19 @@ export default {
         page: 1,
         limit: 100,
         keyword: '',
-        type: 'blog',
+        type: '',
         display: 'tree',
       },
-      types: [],
     };
   },
   created() {
     this.getList();
-    this.types = BLOCK_TYPES;
+    this.query.type = this.$route.meta.type;
   },
   methods: {
     async getList() {
       this.loadingList = true;
-      const { data } = await categoryApi.list(this.query);
+      const { data } = await articleApi.list(this.query);
       this.list = data;
       this.loadingList = false;
     },
@@ -86,7 +84,7 @@ export default {
       });
 
       if (confirm) {
-        await categoryApi.destroy(id);
+        await articleApi.destroy(id);
         this.$message({
           type: 'success',
           message: 'Xóa thành công',
@@ -98,7 +96,7 @@ export default {
       console.log('filter');
     },
     handleCreate() {
-      this.$router.push({ name: 'AddCategory' });
+      this.$router.push({ name: 'AddArticle' });
     },
   },
 };

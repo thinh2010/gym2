@@ -18,8 +18,8 @@
                 <el-form-item label="Kích hoạt">
                   <el-switch v-model="entity.is_enabled" name="is_enabled" :value="entity.is_enabled" :active-value="1" :inactive-value="0" />
                 </el-form-item>
-                <el-form-item label="Danh mục cha">
-                  <el-select v-model="entity.parent_id" filterable placeholder="Chọn danh mục cha">
+                <el-form-item label="Danh mục" prop="category_id">
+                  <el-select v-model="entity.category_id" filterable placeholder="Chọn danh mục">
                     <el-option
                       v-for="item in categories"
                       :key="item.id"
@@ -65,15 +65,15 @@
 </template>
 
 <script>
-import { TYPE_BLOG } from '@/constants';
 import Tinymce from '@/components/Tinymce';
 import ImageUpload from '@/components/Upload/Image';
 import Resource from '@/api/resource';
 
+const articleApi = new Resource('articles');
 const categoryApi = new Resource('categories');
 
 export default {
-  name: 'FormCategory',
+  name: 'FormArticle',
   components: { Tinymce, ImageUpload },
   data() {
     return {
@@ -95,6 +95,9 @@ export default {
         title: [
           { required: true, message: 'Hãy điền tiêu đề', trigger: 'blur' },
         ],
+        category_id: [
+          { required: true, message: 'Hãy chọn danh mục', trigger: 'blur' },
+        ],
       },
       uploadImage: {},
       changeFileFlag: false,
@@ -103,22 +106,20 @@ export default {
     };
   },
   created() {
-    this.entity.type = TYPE_BLOG;
+    this.entity.type = this.$route.meta.type;
     this.activeTab = _.get(this.$route.query, 'tab', 'content');
     this.getCategories();
 
     if (this.isEditing()) {
-      this.getCategory();
+      this.getArticle();
     }
   },
   methods: {
     async getCategories() {
       this.loading = true;
-      const { data } = await categoryApi.list({ type: TYPE_BLOG });
+      const { data } = await categoryApi.list({ type: this.$route.meta.type });
+      console.log(data);
       data.map(item => {
-        if (this.isEditing() && item.id === this.entity.id) {
-          return;
-        }
         this.categories.push({
           id: item.id,
           label: item.title,
@@ -126,9 +127,9 @@ export default {
       });
       this.loading = false;
     },
-    async getCategory() {
+    async getArticle() {
       this.loading = true;
-      const { data } = await categoryApi.get(this.$route.params.id);
+      const { data } = await articleApi.get(this.$route.params.id);
       this.entity = data;
       if (this.entity.image !== '') {
         this.fileList.push({
@@ -139,9 +140,9 @@ export default {
       this.loading = false;
     },
     async onSubmit() {
-      this.saving = true;
       const valid = await this.$refs['form'].validate();
       if (valid) {
+        this.saving = true;
         const form = document.getElementById('form');
         const formData = new FormData(form);
 
@@ -168,12 +169,14 @@ export default {
         // formData.set('parent_id', this.entity.parent_id);
 
         if (this.isEditing()) {
-          await categoryApi.postUpdate(this.entity.id, formData);
+          await articleApi.postUpdate(this.entity.id, formData);
         } else {
-          const { data } = await categoryApi.store(formData);
-          this.$router.push({ name: 'EditCategory', params: { id: data.id }});
+          const { data } = await articleApi.store(formData);
+          this.$router.push({ name: 'EditArticle', params: { id: data.id }});
         }
       } else {
+        console.log('flse');
+        this.saving = false;
         return false;
       }
       this.saving = false;
@@ -190,7 +193,7 @@ export default {
       });
 
       if (confirm) {
-        await categoryApi.destroy(id);
+        await articleApi.destroy(id);
         this.$message({
           type: 'success',
           message: 'Xóa thành công',

@@ -20,7 +20,7 @@ import CategoryForm from '@/views/content/CategoryForm';
 // import componentRoutes from './modules/components';
 // import chartsRoutes from './modules/charts';
 // import tableRoutes from './modules/table';
-import adminRoutes from './modules/admin';
+// import adminRoutes from './modules/admin';
 // import nestedRoutes from './modules/nested';
 import errorRoutes from './modules/error';
 // import excelRoutes from './modules/excel';
@@ -194,7 +194,7 @@ export const asyncRoutes = [
   {
     path: '/blogs',
     component: Layout,
-    redirect: '/blogs/categories',
+    // redirect: '/blogs/categories',
     meta: {
       title: 'blogs',
       icon: 'nested',
@@ -204,25 +204,45 @@ export const asyncRoutes = [
         path: 'categories',
         component: CategoriesList,
         name: 'Categories',
-        meta: { title: 'blogCategories', icon: 'list', noCache: false },
+        meta: { type: 'blog', title: 'blogCategories', icon: 'list', noCache: false },
       },
       {
         path: 'categories/add',
         component: () => import('@/views/content/CategoryForm'),
         name: 'AddCategory',
-        meta: { title: 'addBlogCategory', noCache: false },
+        meta: { type: 'blog', title: 'addBlogCategory', noCache: false },
         hidden: true,
       },
       {
         path: 'categories/edit/:id(\\d+)',
         component: CategoryForm,
         name: 'EditCategory',
-        meta: { title: 'editBlogCategories', noCache: false },
+        meta: { type: 'blog', title: 'editBlogCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles',
+        component: () => import('@/views/content/Article'),
+        name: 'Articles',
+        meta: { type: 'blog', title: 'blogArticles', icon: 'list', noCache: false },
+      },
+      {
+        path: 'articles/add',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'AddArticle',
+        meta: { type: 'blog', title: 'addBlogArticle', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles/edit/:id(\\d+)',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'EditArticle',
+        meta: { type: 'blog', title: 'editBlogArticle', noCache: false },
         hidden: true,
       },
     ],
   },
-  adminRoutes,
+  // adminRoutes,
   {
     path: '/settings',
     component: Layout,
