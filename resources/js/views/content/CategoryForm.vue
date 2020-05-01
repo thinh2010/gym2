@@ -65,7 +65,6 @@
 </template>
 
 <script>
-import { TYPE_BLOG } from '@/constants';
 import Tinymce from '@/components/Tinymce';
 import ImageUpload from '@/components/Upload/Image';
 import Resource from '@/api/resource';
@@ -103,7 +102,7 @@ export default {
     };
   },
   created() {
-    this.entity.type = TYPE_BLOG;
+    this.entity.type = this.$route.meta.type;
     this.activeTab = _.get(this.$route.query, 'tab', 'content');
     this.getCategories();
 
@@ -114,7 +113,7 @@ export default {
   methods: {
     async getCategories() {
       this.loading = true;
-      const { data } = await categoryApi.list({ type: TYPE_BLOG });
+      const { data } = await categoryApi.list({ type: this.$route.meta.type });
       data.map(item => {
         if (this.isEditing() && item.id === this.entity.id) {
           return;
@@ -164,14 +163,14 @@ export default {
         }
 
         // formData.set('content', _.get(this.entity, 'content', ''));
-        // formData.set('type', this.entity.type);
+        formData.set('type', this.entity.type);
         // formData.set('parent_id', this.entity.parent_id);
 
         if (this.isEditing()) {
           await categoryApi.postUpdate(this.entity.id, formData);
         } else {
           const { data } = await categoryApi.store(formData);
-          this.$router.push({ name: 'EditCategory', params: { id: data.id }});
+          this.$router.push({ name: `${this.$route.meta.type}EditCategory`, params: { id: data.id }});
         }
       } else {
         return false;

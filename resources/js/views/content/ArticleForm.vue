@@ -172,7 +172,7 @@ export default {
           await articleApi.postUpdate(this.entity.id, formData);
         } else {
           const { data } = await articleApi.store(formData);
-          this.$router.push({ name: 'EditArticle', params: { id: data.id }});
+          this.$router.push({ name: `${this.$route.meta.type}EditArticle`, params: { id: data.id }});
         }
       } else {
         console.log('flse');
@@ -198,7 +198,7 @@ export default {
           type: 'success',
           message: 'Xóa thành công',
         });
-        this.$router.push({ name: 'Categories' });
+        this.$router.push({ name: `${this.$route.meta.type}Categories` });
       }
     },
     onFileChange(file) {

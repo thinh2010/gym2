@@ -19,8 +19,20 @@ Route::post('/contact', 'HomeController@contact')->name('contact');
 //     Route::get(env('LARAVUE_PATH'), 'LaravueController@index')->where('any', '.*')->name('laravue');
 // });
 
+//content 
+
+Route::get('/category/{slug}', 'CategoryController@view')->name('category');
+Route::get('/category/{page_slug}/{slug}', 'CategoryController@view2')->name('category2');
+
+
+Route::get('/article/{slug}', 'ArticleController@view')->name('article');
+
+Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/faqs', 'FaqController@index')->name('faq');
+
+
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::group(['middleware' => 'web'], function() {
-	Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
+    Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

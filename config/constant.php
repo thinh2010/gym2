@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'article_image_path' => 'images/articles',
     'block_image_path' => 'images/blocks',
     'block_content_image_path' => 'images/block_contents',
     'block_file_path' => 'block/files',

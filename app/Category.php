@@ -30,4 +30,10 @@ class Category extends Model
         'is_enabled' => true,
         'type' => self::TYPE_BLOG
     ];
+
+    public function articles()
+    {
+        return $this->hasMany('App\Article')->orderBy('id', 'desc');
+    }
+
 }

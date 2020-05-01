@@ -72,7 +72,7 @@ export default {
       loadingList: false,
       query: {
         page: 1,
-        limit: 15,
+        limit: 100,
         keyword: '',
         type: '',
       },

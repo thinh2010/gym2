@@ -220,7 +220,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Blog">
+                <a href="/blog" data-letters="Blog">
                     <span>Blog</span>
                 </a>
             </li>
@@ -230,7 +230,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Help &amp; FAQ">
+                <a href="/faqs" data-letters="Help &amp; FAQ">
                     <span>Help &amp; FAQ</span>
                 </a>
             </li>

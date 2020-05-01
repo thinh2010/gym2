@@ -31,7 +31,7 @@
 
       <el-table-column align="center" label="Thao tác">
         <template slot-scope="scope">
-          <router-link :to="{ name: 'EditArticle', params: { id: scope.row.id } }">
+          <router-link :to="{ name: `${$route.meta.type}EditArticle`, params: { id: scope.row.id } }">
             <el-button type="primary" size="small" icon="el-icon-edit">
               Sửa
             </el-button>
@@ -96,7 +96,7 @@ export default {
       console.log('filter');
     },
     handleCreate() {
-      this.$router.push({ name: 'AddArticle' });
+      this.$router.push({ name: `${this.$route.meta.type}AddArticle` });
     },
   },
 };

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\ArticleDetailResource;
 use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Builder;
 
 class ArticleController extends Controller
 {
@@ -26,9 +27,16 @@ class ArticleController extends Controller
         $articleQuery = Article::query();
         $limit = Arr::get($searchParams, 'limit', static::ITEM_PER_PAGE);
         $keyword = Arr::get($searchParams, 'keyword', '');
+        $type = Arr::get($searchParams, 'type', '');
 
         if (!empty($keyword)) {
             $articleQuery->where('title', 'LIKE', '%' . $keyword . '%');
+        }
+
+        if (!empty($type)) {
+            $articleQuery->whereHas('category', function (Builder $query) use ($type) {
+                                    $query->where('type', $type);
+                                });
         }
 
         // if ($display == 'tree') {
