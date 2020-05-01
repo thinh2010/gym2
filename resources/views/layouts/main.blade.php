@@ -28,6 +28,7 @@
     <meta property="og:title" content="Low Cost Gym | No Contract | Gyms Near Me - vGym" />
     <meta property="og:description"
         content="vGym - low cost no contract gym memberships, premium gym equipment & free gym classes. Pay as you go gyms throughout the UK. Join today!" />
+    <script type="text/javascript" src="/gym/js/main.js"></script>
     <script type="text/javascript">
 
         var pageName = 'home';
@@ -40,7 +41,7 @@
 
         window.addEventListener('load', function load(event) {
 
-            loadJS("/gym/js/main.js");
+            // loadJS("/gym/js/main.js");
 
             loadJS("/gym/img/svg/embed/grunticon.loader.js", function () {
                 var embeddedSVGdir = '/gym/img/svg/embed/';
@@ -113,11 +114,15 @@
             </ul> -->
             <div class="site-footer__baseline">
                 <hr class="hr" />
-                <p>© 2020 vGym. <a href="/page/gym-rules">Gym
+                <p>© 2020 vGym. <a href="/page/policy">Privacy Policy</a> | <a href="/page/gym-rules">Gym
                         Rules</a> | <a href="/page/terms-and-conditions">Terms and Conditions</a></p>
             </div>
         </div>
     </footer>
+
+    @section('js')
+    @show
+
     <div class="overlay">
         <div class="opening-soon-video-overlay js-opening-soon-video"></div>
         <div class="newsletter-confirm">

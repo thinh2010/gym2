@@ -12,13 +12,15 @@ Vue.use(Router);
 /* Layout */
 import Layout from '@/layout';
 import PageList from '@/views/pages/Index';
+import CategoriesList from '@/views/content/Category';
+import CategoryForm from '@/views/content/CategoryForm';
 
 /* Router for modules */
 // import elementUiRoutes from './modules/element-ui';
 // import componentRoutes from './modules/components';
 // import chartsRoutes from './modules/charts';
 // import tableRoutes from './modules/table';
-import adminRoutes from './modules/admin';
+// import adminRoutes from './modules/admin';
 // import nestedRoutes from './modules/nested';
 import errorRoutes from './modules/error';
 // import excelRoutes from './modules/excel';
@@ -189,7 +191,110 @@ export const asyncRoutes = [
       },
     ],
   },
-  adminRoutes,
+  {
+    path: '/blogs',
+    component: Layout,
+    // redirect: '/blogs/categories',
+    meta: {
+      title: 'blogs',
+      icon: 'nested',
+      type: 'blog',
+    },
+    children: [
+      {
+        path: 'categories',
+        component: CategoriesList,
+        name: 'blogCategories',
+        meta: { type: 'blog', title: 'blogCategories', icon: 'list', noCache: false },
+      },
+      {
+        path: 'categories/add',
+        component: () => import('@/views/content/CategoryForm'),
+        name: 'blogAddCategory',
+        meta: { type: 'blog', title: 'addBlogCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'categories/edit/:id(\\d+)',
+        component: CategoryForm,
+        name: 'blogEditCategory',
+        meta: { type: 'blog', title: 'editBlogCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles',
+        component: () => import('@/views/content/Article'),
+        name: 'blogArticles',
+        meta: { type: 'blog', title: 'blogArticles', icon: 'list', noCache: false },
+      },
+      {
+        path: 'articles/add',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'blogAddArticle',
+        meta: { type: 'blog', title: 'addBlogArticle', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles/edit/:id(\\d+)',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'blogEditArticle',
+        meta: { type: 'blog', title: 'editBlogArticle', noCache: false },
+        hidden: true,
+      },
+    ],
+  },
+  {
+    path: '/faqs',
+    component: Layout,
+    meta: {
+      title: 'faqs',
+      icon: 'nested',
+      type: 'faq',
+    },
+    children: [
+      {
+        path: 'categories',
+        component: CategoriesList,
+        name: 'faqCategories',
+        meta: { type: 'faq', title: 'faqCategories', icon: 'list', noCache: false },
+      },
+      {
+        path: 'categories/add',
+        component: () => import('@/views/content/CategoryForm'),
+        name: 'faqAddCategory',
+        meta: { type: 'faq', title: 'addFaqCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'categories/edit/:id(\\d+)',
+        component: CategoryForm,
+        name: 'faqEditCategory',
+        meta: { type: 'faq', title: 'editFaqCategory', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles',
+        component: () => import('@/views/content/Article'),
+        name: 'faqArticles',
+        meta: { type: 'faq', title: 'faqArticles', icon: 'list', noCache: false },
+      },
+      {
+        path: 'articles/add',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'faqAddArticle',
+        meta: { type: 'faq', title: 'addFaqArticle', noCache: false },
+        hidden: true,
+      },
+      {
+        path: 'articles/edit/:id(\\d+)',
+        component: () => import('@/views/content/ArticleForm'),
+        name: 'faqEditArticle',
+        meta: { type: 'faq', title: 'editFaqArticle', noCache: false },
+        hidden: true,
+      },
+    ],
+  },
+  // adminRoutes,
   {
     path: '/settings',
     component: Layout,
