@@ -43,7 +43,7 @@ class SettingController extends Controller
         $data = $request->all();
         $setting->fill($data);
 
-        if (isset($data['logo'])) {
+        if (isset($data['logo']) && is_uploaded_file($data['logo'])) {
             $image_file_name = time().rand(11111,99999).$data['logo']->getClientOriginalName();
             $logo_image_path = config('constant.logo_image_path');
             if (!File::isDirectory($logo_image_path)) {
@@ -56,7 +56,7 @@ class SettingController extends Controller
             }
         }
 
-        if (isset($data['footer_bg'])) {
+        if (isset($data['footer_bg']) && is_uploaded_file($data['footer_bg'])) {
             $image_file_name = time().rand(11111,99999).$data['footer_bg']->getClientOriginalName();
             $image_path = config('constant.image_path');
             if (!File::isDirectory($image_path)) {

@@ -326,6 +326,7 @@ export default {
       if (valid) {
         await pageApi.postUpdate(this.entity.id, formData);
       } else {
+        this.saving = false;
         return false;
       }
       this.saving = false;

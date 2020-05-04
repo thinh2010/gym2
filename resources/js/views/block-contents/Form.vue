@@ -135,6 +135,7 @@ export default {
           });
         }
       } else {
+        this.saving = false;
         return false;
       }
       this.saving = false;

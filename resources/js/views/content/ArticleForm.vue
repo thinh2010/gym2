@@ -175,7 +175,6 @@ export default {
           this.$router.push({ name: `${this.$route.meta.type}EditArticle`, params: { id: data.id }});
         }
       } else {
-        console.log('flse');
         this.saving = false;
         return false;
       }

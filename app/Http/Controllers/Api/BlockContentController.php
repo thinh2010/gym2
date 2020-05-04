@@ -106,7 +106,7 @@ class BlockContentController extends Controller
 
         $blockContent->fill($data);
 
-        if (isset($data['image'])) {
+        if (isset($data['image']) && is_uploaded_file($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
             $block_content_image_path = config('constant.block_content_image_path');
             if (!File::isDirectory($block_content_image_path)) {

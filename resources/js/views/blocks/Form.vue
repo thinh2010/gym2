@@ -220,6 +220,7 @@ export default {
           this.$router.push({ name: 'EditBlock', params: { id: data.id }});
         }
       } else {
+        this.saving = false;
         return false;
       }
       this.saving = false;

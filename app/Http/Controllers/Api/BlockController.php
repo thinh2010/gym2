@@ -170,7 +170,7 @@ class BlockController extends Controller
         
         $block->fill($data);
 
-        if (isset($data['image'])) {
+        if (isset($data['image']) && is_uploaded_file($data['image'])) {
             $image_file_name = time().rand(11111,99999).$data['image']->getClientOriginalName();
             $block_image_path = config('constant.block_image_path');
             if (!File::isDirectory($block_image_path)) {
