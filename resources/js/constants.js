@@ -10,6 +10,7 @@ export const TYPE_TEXT = 'Text';
 export const TYPE_HEADING = 'Heading';
 export const TYPE_UNDER_HEADING = 'UnderHeading';
 export const TYPE_CLASSES = 'Classes';
+export const TYPE_CLASS_HEADING = 'ClassHeading';
 export const TYPE_INFO = 'Info';
 export const TYPE_VIDEO = 'Video';
 export const TYPE_PAGE_HEADING = 'PageHeading';
@@ -25,6 +26,7 @@ export const BLOCK_TYPES = [
   { value: TYPE_HEADING, label: 'Heading' },
   { value: TYPE_UNDER_HEADING, label: 'Under heading' },
   { value: TYPE_CLASSES, label: 'Classes' },
+  { value: TYPE_CLASS_HEADING, label: 'Class Heading' },
   { value: TYPE_INFO, label: 'Information' },
   { value: TYPE_PAGE_HEADING, label: 'Page heading' },
   { value: TYPE_ITEM_ODDS, label: 'Item Odds' },

@@ -44,6 +44,7 @@ mix
   .copy('resources/frontend/js/error.js', 'public/gym/js')
   .copyDirectory('resources/frontend/img', 'public/gym/img')
   .copyDirectory('resources/frontend/fonts', 'public/gym/fonts')
+  .copyDirectory('resources/frontend/fullcalendar', 'public/gym/fullcalendar')
   .extract([
     'vue',
     'axios',

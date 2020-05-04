@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class FController extends BaseController
 {
@@ -23,6 +25,25 @@ class FController extends BaseController
         $this->meta->setTitle($site_settings->meta_title)
                     ->setKeywords($site_settings->meta_keyword)
                     ->setDescription($site_settings->meta_description);
+
+    }
+
+    public function getInstance() {
+        return Http::withHeaders([
+            'X-Client-Id' => '0700892b43274f1b9fa10c5c94e25e1c',
+            'X-Client-Secret' => '422f2ec7108b434ea1b0c1ef2c8e84fda4c29567541c480081a998816951db5d',
+        ]);
+    }
+
+    public function testApi() {
+        $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
+
+        $client = $this->getInstance();
+
+        // $response = $client->get($baseUrl . 'odata/CLubs/1?$expand=availablePaymentPlans');
+        $response = $client->get($baseUrl . 'odata/Classes?$filter=clubId eq 1');
+        dd($response->json());
+
     }
 
     protected function setMeta($entity) {

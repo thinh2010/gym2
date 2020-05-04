@@ -98,6 +98,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     });
 });
 
+// Perfect Gym
+Route::group(['prefix' => '/other', 'as' => 'api.perfect_gym.'], function () {
+    Route::get('/classes/{clubId}', 'Api\OtherController@getClasses')->name('get_classes');
+});
+
 
 // Fake APIs
 Route::get('/table/list', function () {
