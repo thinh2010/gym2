@@ -1,5 +1,5 @@
 <section class="site-section classes-intro">
-    <div class="site-container -mw-830">
+    <div class="site-container -mw-1240">
     	<div class="classes-into__heading -hecto">
     		<p>{{ $block->description }}</p>
     	</div>
