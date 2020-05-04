@@ -22,7 +22,7 @@
 				<select class="select-target select-theme-easygym js-location-dropdown caps" id="GymSelect">
 					<option value="">Select gym</option>
 					@foreach ($clubs as $key => $club)
-						<option value="{{ $club["id"] }}">{{ $club['name'] }}</option>
+						<option value="{{ $club['id'] }}">{{ $club['name'] }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -47,79 +47,27 @@
 	
 	<script type="text/javascript">
 		var calendarEl = document.getElementById('calendar');
+		var calendar;
 
 		$('#GymSelect').change(function() {
 			var clubId = $(this).val();
-			$.get("/api/other/classes/" + clubId, function(data, status){
-			    console.log(data, status);
-			  });
-		});
-		
-		$('#GymSelect').change(function() {
-			var calendar = new FullCalendar.Calendar(calendarEl, {
-	      plugins: [ 'interaction', 'dayGrid' ],
-	      // defaultDate: '2020-02-12',
-	      // editable: true,
-	      eventLimit: true, // allow "more" link when too many events
-	      events: [
-	        {
-	          title: 'All Day Event',
-	          start: '2020-02-01'
-	        },
-	        {
-	          title: 'Long Event',
-	          start: '2020-02-07',
-	          end: '2020-02-10'
-	        },
-	        {
-	          groupId: 999,
-	          title: 'Repeating Event',
-	          start: '2020-02-09T16:00:00'
-	        },
-	        {
-	          groupId: 999,
-	          title: 'Repeating Event',
-	          start: '2020-02-16T16:00:00'
-	        },
-	        {
-	          title: 'Conference',
-	          start: '2020-02-11',
-	          end: '2020-02-13'
-	        },
-	        {
-	          title: 'Meeting',
-	          start: '2020-02-12T10:30:00',
-	          end: '2020-02-12T12:30:00'
-	        },
-	        {
-	          title: 'Lunch',
-	          start: '2020-02-12T12:00:00'
-	        },
-	        {
-	          title: 'Meeting',
-	          start: '2020-02-12T14:30:00'
-	        },
-	        {
-	          title: 'Happy Hour',
-	          start: '2020-02-12T17:30:00'
-	        },
-	        {
-	          title: 'Dinner',
-	          start: '2020-02-12T20:00:00'
-	        },
-	        {
-	          title: 'Birthday Party',
-	          start: '2020-02-13T07:00:00'
-	        },
-	        {
-	          title: 'Click for Google',
-	          url: 'http://google.com/',
-	          start: '2020-02-28'
-	        }
-	      ]
-	    });
+			if (clubId != '') {
+				$.get("/api/other/classes/" + clubId, function(data, status){
+				    calendar = new FullCalendar.Calendar(calendarEl, {
+				    	locale: 'vi',
+						plugins: [ 'interaction', 'dayGrid' ],
+						// defaultDate: '2020-02-12',
+						// editable: true,
+						eventLimit: true, // allow "more" link when too many events
+						events: data.data
+					});
 
-	    calendar.render();
-		})
+					calendar.render();
+				});
+			} else {
+				$('#calendar').html('');
+			}
+			console.log(clubId);
+		});
 	</script>
 @endsection

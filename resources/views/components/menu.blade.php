@@ -205,7 +205,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Classes">
+                <a href="/page/classes" data-letters="Classes">
                     <span>Classes</span>
                 </a>
             </li>
