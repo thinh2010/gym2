@@ -18,11 +18,11 @@
                         </span>
                     </label>
                 </li>
-                <li class="nav__item -locations">
-                    <label for="cbx-locations-nav-menu" class="js-nav-link nav__link vertical-align-children">
-                        <span class="svg-location"></span>
-                        <span class="nav-header__title">Locations</span>
-                    </label>
+                <li class="nav__item">
+                    <a href="/tham-gia"
+                        class="nav__link -desktop vertical-align-children">
+                        <span class="nav-header__title">Tham gia</span>
+                    </a>
                 </li>
                 @guest
                 <li class="nav__item">
@@ -39,7 +39,7 @@
                 </li>
                 @else
                 <li class="nav__item">
-                    <a href="#"
+                    <a href="/profile"
                         class="nav__link -desktop vertical-align-children">
                         <span class="nav-header__title">Hi {{ Auth::user()->name }}</span>
                     </a>

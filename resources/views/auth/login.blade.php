@@ -7,7 +7,7 @@
     <form method="POST" class="egForm" action="{{ route('login') }}">
         @csrf
 
-        <input id="email" type="email" class="egInput @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Tên đăng nhập hoặc Email">
+        <input id="email" type="text" class="egInput @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Số điện thoại hoặc Email">
         @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

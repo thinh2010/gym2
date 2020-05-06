@@ -14,7 +14,7 @@
 <!-- Top Toolbar -->
 <div id="toolbar">
   <div class="containerFullScreen">
-    <div id="logoTitle"> vGym</div>
+    <div id="logoTitle"><a href="/">vGym</a></div>
     <div id="toolbarOptions">
 
     </div> <!--toolbarOptions-->

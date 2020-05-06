@@ -24,15 +24,15 @@ Route::post('/contact', 'HomeController@contact')->name('contact');
 Route::get('/category/{slug}', 'CategoryController@view')->name('category');
 Route::get('/category/{page_slug}/{slug}', 'CategoryController@view2')->name('category2');
 
-
 Route::get('/article/{slug}', 'ArticleController@view')->name('article');
 
 Route::get('/blog', 'BlogController@index')->name('blog');
 Route::get('/faqs', 'FaqController@index')->name('faq');
 
-
 Auth::routes();
+Route::get('/profile', 'Auth\ProfileController@index')->name('profile');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/tham-gia', 'JoinController@index')->name('join');
 Route::group(['middleware' => 'web'], function() {
     Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });
