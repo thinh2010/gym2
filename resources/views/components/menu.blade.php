@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="#"
+                    <a href="/register"
                         class="nav__link -desktop vertical-align-children">
                         <span class="nav-header__title">Đăng ký</span>
                     </a>

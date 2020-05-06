@@ -46,6 +46,15 @@ class FController extends BaseController
 
     }
 
+    public function getClubs() {
+        $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
+
+        $client = $this->getInstance();
+        $response = $client->get($baseUrl . 'odata/Clubs?$filter=isDeleted eq false&$expand=availablePaymentPlans');
+
+        return $response->json()['value'];
+    }
+
     protected function setMeta($entity) {
         $this->meta->prependTitle($entity->meta_title)
                     ->setKeywords($entity->meta_keywords)

@@ -14,7 +14,8 @@ class JoinController extends FController
      */
     public function index()
     {
-        
-        return view('join.step1');
+        $clubs = $this->getClubs();
+        dd($clubs);
+        return view('join.step1', ['clubs' => $clubs]);
     }
 }
