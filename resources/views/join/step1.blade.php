@@ -198,7 +198,7 @@
             margin-bottom: 10px;
         }
         .panel-body .nextStep.available {
-            background: #ec681d;
+            background: #be202f;
             color: #fff;
         }
         .nextStep {
@@ -212,33 +212,52 @@
             font-size: 25px;
             text-transform: uppercase;
         }
+        .payment-plans {
+            margin-top: 20px;
+            /*visibility: hidden;*/
+            display: none;
+        }
         .plan-detail {
-            margin: 0 5px;
+            margin: 20px 20px;
+            transition: all 0.2s;
         }
         .plan-detail span {
             display: block;
+            font-weight: bold;
+            font-size: 28px;
+            margin: 20px 0;
+        }
+        .plan-detail span.price {
+            font-size: 34px;
         }
         .plan-detail .box {
             border: 1px solid #0ba8d8;
             background-color: #0ba8d8;
             display: block;
-            padding: 5px;
+            color: #fff;
+            text-align: center;
+            padding: 25px 5px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .plan-detail:hover, .plan-detail.selected {
+            margin-top: 0;
         }
         .plan1 .box {
-            border: 1px solid #0bd812;
-            background-color: #0bd812;
+            border: 1px solid #d8af0b;
+            background-color: #d8af0b;
         }
         .plan2 .box {
-            border: 1px solid #0bd812;
-            background-color: #0bd812;
+            border: 1px solid #d8670b;
+            background-color: #d8670b;
         }
         .plan3 .box {
-            border: 1px solid #0bd812;
-            background-color: #0bd812;
+            border: 1px solid #d8260b;
+            background-color: #d8260b;
         }
         .plan4 .box {
-            border: 1px solid #0bd812;
-            background-color: #0bd812;
+            border: 1px solid #0ba5d8;
+            background-color: #0ba5d8;
         }
     </style>
 @endsection
@@ -248,9 +267,24 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script type="text/javascript">
-            $('.payment-plans').slick({
-                slidesToShow: 4,
-                slidesToScroll: 4
-            });
+        
+        $('#GymSelect').change(function() {
+            var clubId = $(this).val();
+            $('.payment-plans').hide()
+            if (clubId != '') {
+                $(`.plan${clubId}`).show();
+                $('.payment-plans').slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                });
+            }
+        })
+
+        $('.plan-detail').on('click', function() {
+            $('.plan-detail').removeClass('selected');
+            $(this).addClass('selected');
+            $('.nextStep').addClass('available');
+            $('.nextStep').removeAttr('disabled');
+        })
     </script>
 @endsection
