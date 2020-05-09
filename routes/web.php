@@ -32,7 +32,12 @@ Route::get('/faqs', 'FaqController@index')->name('faq');
 Auth::routes();
 Route::get('/profile', 'Auth\ProfileController@index')->name('profile');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::get('/tham-gia', 'JoinController@index')->name('join');
+Route::get('/tham-gia/step-2', function() {
+	return redirect('/tham-gia');
+});
+Route::post('/tham-gia/step-2', 'JoinController@step2')->name('step2');
 Route::group(['middleware' => 'web'], function() {
     Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

@@ -16,6 +16,8 @@ class FController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected $meta;
 
+    protected $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
+
     public function __construct(MetaInterface $meta) 
     {
         // Fetch the Site Settings object
@@ -36,23 +38,25 @@ class FController extends BaseController
     }
 
     public function testApi() {
-        $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
-
         $client = $this->getInstance();
 
         // $response = $client->get($baseUrl . 'odata/CLubs/1?$expand=availablePaymentPlans');
-        $response = $client->get($baseUrl . 'odata/Classes?$filter=clubId eq 1');
+        $response = $client->get($this->baseUrl . 'odata/Classes?$filter=clubId eq 1');
         dd($response->json());
 
     }
 
     public function getClubs() {
-        $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
-
         $client = $this->getInstance();
-        $response = $client->get($baseUrl . 'odata/Clubs?$filter=isDeleted eq false&$expand=availablePaymentPlans');
+        $response = $client->get($this->baseUrl . 'odata/Clubs?$filter=isDeleted eq false&$expand=availablePaymentPlans');
 
         return $response->json()['value'];
+    }
+
+    public function getPlan($id) {
+        $client = $this->getInstance();
+        $response = $client->get($this->baseUrl . 'odata/PaymentPlans('.$id.')');
+        return $response->json();
     }
 
     protected function setMeta($entity) {
