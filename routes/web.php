@@ -37,7 +37,13 @@ Route::get('/tham-gia', 'JoinController@index')->name('join');
 Route::get('/tham-gia/step-2', function() {
 	return redirect('/tham-gia');
 });
+Route::get('/tham-gia/step-3', function() {
+	return redirect('/tham-gia');
+});
 Route::post('/tham-gia/step-2', 'JoinController@step2')->name('step2');
+Route::post('/tham-gia/step-3', 'JoinController@step3')->name('step3');
+Route::post('/tham-gia/thanh-toan', 'JoinController@payment')->name('payment');
+Route::get('/thanh-toan/{payment}', 'JoinController@paymentResult')->name('paymentResult');
 Route::group(['middleware' => 'web'], function() {
     Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });

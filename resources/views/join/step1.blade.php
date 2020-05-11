@@ -11,7 +11,7 @@
                         <a data-toggle="collapse" data-parent="" href="javascript::void(0)"> <span class="num">1</span>
                             <ul>
                                 <li>Chọn gói tập</li>
-                            </ul> <span class="caret"></span>
+                            </ul>
                             <div class="clearfix"></div>
                         </a>
                     </div>
@@ -57,6 +57,7 @@
                                     </div>
                                 @endforeach
                                 <input type="hidden" name="paymentPlanId" id="paymentPlanId">
+                                <input type="hidden" name="clubId" id="clubId">
                                     
                                 <button class="nextStep step1-done" type="submit" disabled="">Tiếp theo</button>
                                 <div class="clearfix"></div>
@@ -70,9 +71,8 @@
                     <div class="panel-heading">
                         <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">2</span>
                             <ul>
-                                <li><strong>Step 2</strong></li>
-                                <li>Your Information</li>
-                            </ul> <span class="caret"></span>
+                                <li>Thông tin cá nhân</li>
+                            </ul>
                             <div class="clearfix"></div>
                         </a>
                     </div>
@@ -83,9 +83,8 @@
                     <div class="panel-heading">
                         <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">3</span>
                             <ul>
-                                <li><strong>Step 3</strong></li>
-                                <li>Payment</li>
-                            </ul> <span class="caret"></span>
+                                <li>Thanh toán</li>
+                            </ul>
                             <div class="clearfix"></div>
                         </a>
                     </div>
@@ -288,6 +287,7 @@
             $('.nextStep').removeAttr('disabled');
 
             $('#paymentPlanId').val($(this).data('id'));
+            $('#clubId').val($('#GymSelect').val());
         })
     </script>
 @endsection

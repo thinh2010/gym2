@@ -19,7 +19,7 @@
                 <!-- End Step One -->
                 <!-- Step Two -->
                 <div class="panel panel-default">
-                    <div class="panel-heading active">
+                    <div class="panel-heading">
                         <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">2</span>
                             <ul>
                                 <li>Thông tin cá nhân</li>
@@ -27,41 +27,27 @@
                             <div class="clearfix"></div>
                         </a>
                     </div>
-                    <div id="step1" class="panel-collapse collapse in">
-                        <div class="panel-body panel-body1">
-                            @guest
-                                <p>Mời bạn <a href="/register">Đăng ký</a> hoặc <a href="/login">Đăng nhập</a> để tiếp tục</p>
-                            @else
-                                <table>
-                                    <tr>
-                                        <td width="200px">Tên</td>
-                                        <td>{{ Auth::user()->name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td width="200px">Email</td>
-                                        <td>{{ Auth::user()->email }}</td>
-                                    </tr>
-                                </table>
-                                <form action="/tham-gia/step-3" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="paymentPlanId" value="{{ $plan['id'] }}">
-                                    <input type="hidden" name="clubId" value="{{ $clubId }}">
-                                    <button class="nextStep step1-done available" type="submit">Tiếp theo</button>
-                                </form>
-                            @endguest
-                        </div>
-                    </div>
                 </div>
                 <!-- End Step Two -->
                 <!-- Step Three -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading active">
                         <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">3</span>
                             <ul>
                                 <li>Thanh toán</li>
                             </ul>
                             <div class="clearfix"></div>
                         </a>
+                    </div>
+                    <div id="step1" class="panel-collapse collapse in">
+                        <div class="panel-body panel-body1">
+                            <p>Tổng tiền thanh toán: <b>{{ number_format($plan['membershipFee']['gross'], 0) }} VNĐ</b></p>
+                            <form action="/tham-gia/thanh-toan" method="POST">
+                                @csrf
+                                <input type="hidden" name="paymentPlanId" value="{{ $plan['id'] }}">
+                                <button class="nextStep step1-done available" type="submit">Thanh toán</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <!-- End Step Three -->
