@@ -85,6 +85,17 @@ class JoinController extends FController
 
         if ($secureHash === $ownSecureHash) {
             // check hash ok
+            $data = $request->only([
+                'vpc_MerchTxnRef', 
+                'vpc_OrderInfo', 
+                'vpc_TxnResponseCode', 
+                'vpc_TransactionNo',
+                'vpc_Message',
+                'vpc_Card',
+                'vpc_CardUid'
+            ]);
+            $payment->fill($data);
+            $payment->save();
             return view('join.finish', ['payment' => $payment]);
         }
     }
