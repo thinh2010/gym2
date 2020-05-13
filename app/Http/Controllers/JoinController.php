@@ -36,11 +36,13 @@ class JoinController extends FController
 
     public function payment(Request $request) {
         $planId = $request->input('paymentPlanId');
+        $clubId = $request->input('clubId');
         $plan = $this->getPlan($planId);
         $price = $plan['membershipFee']['gross'];
 
         $payment = Payment::create([
             'plan_id' => $planId,
+            'club_id' => $clubId,
             'plan_name' => $plan['name'],
             'price' => $price,
             'vpc_TicketNo' => $this->getClientId(),
@@ -57,9 +59,9 @@ class JoinController extends FController
         $params['vpc_Command'] = 'pay';
         $params['vpc_Currency'] = 'VND';
         $params['vpc_Locale'] = 'vn';
-        $params['vpc_MerchTxnRef'] = 'vgym1p' . $payment->id; // ma giao dich
+        $params['vpc_MerchTxnRef'] = 'vgym1p' . rand(7,7) . $payment->id; // ma giao dich
         $params['vpc_Merchant'] = config('onepay.merchant');
-        $params['vpc_OrderInfo'] = 'VGym'; // ma don hang
+        $params['vpc_OrderInfo'] = $payment->id; // ma don hang
         $params['vpc_ReturnURL'] = env('APP_URL') . '/thanh-toan/' . $payment->id;
         $params['vpc_TicketNo'] = $this->getClientId();
         $params['vpc_Version'] = 2;

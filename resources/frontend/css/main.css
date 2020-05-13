@@ -1,4 +1,3 @@
-import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&display=swap');
 img[data-src] {
   visibility: hidden
 }
@@ -197,7 +196,7 @@ audio:not([controls]) {
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%
 }
@@ -920,7 +919,7 @@ textarea:focus {
 
 .flip-clock.-gym-view.flip-clock-wrapper .inn {
   border-radius: 6px !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 55px !important;
   font-weight: normal
 }
@@ -967,7 +966,7 @@ h1,
 .home-intro-body p {
   font-size: 30px;
   font-size: 1.875rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   letter-spacing: -2px;
   line-height: 1.1
 }
@@ -992,7 +991,7 @@ h2,
 .blog-exercise__value.-number {
   font-size: 17px;
   font-size: 1.0625rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   line-height: .875
 }
 
@@ -1273,7 +1272,7 @@ html {
 body {
   background: #fff;
   color: #777;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 body,
@@ -1859,7 +1858,7 @@ img {
   font-size: 1.0625rem;
   margin-bottom: 0;
   color: #bbb;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: none
 }
 
@@ -1978,7 +1977,7 @@ img {
 .site-footer__newsletter h2 {
   text-align: left;
   color: #bbb;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: italic;
   line-height: 1.22222em;
   text-transform: uppercase;
@@ -2001,7 +2000,7 @@ img {
   height: 50px;
   padding-right: 10px;
   padding-left: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 17px;
   font-size: 1.0625rem
 }
@@ -2109,7 +2108,7 @@ img {
 }
 
 .default-template__body * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   line-height: 1.5em;
   margin-bottom: 0;
   text-transform: none
@@ -2144,7 +2143,7 @@ img {
   left: -40px;
   font-size: 300px;
   font-size: 18.75rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: italic;
   text-align: left;
   text-transform: uppercase;
@@ -2413,7 +2412,7 @@ img {
 }
 
 .btn.-frosted {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: #fff;
@@ -2426,7 +2425,7 @@ img {
 }
 
 .btn.-frosted-white {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: #fff;
@@ -2439,7 +2438,7 @@ img {
 }
 
 .btn.-contact {
-  font-family: "Roboto"
+  font-family: "Lato"
 }
 
 .btn[disabled] {
@@ -2714,7 +2713,7 @@ img {
   border: solid 2px #fff;
   border-radius: 0;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 24px;
   font-size: 1.5rem
 }
@@ -3058,7 +3057,7 @@ blockquote p:after {
   display: block;
   padding-right: 15px;
   padding-left: 15px;
-  font-family: "proxima_cond_reg_it";
+  font-family: "Lato";
   color: #fff;
   text-decoration: none;
   transition: background-color .25s
@@ -3206,7 +3205,7 @@ blockquote p:after {
 .nav-menu.-locations .nav__item.-beta {
   font-size: 17px;
   font-size: 1.0625rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   line-height: .875
 }
 
@@ -3511,7 +3510,7 @@ blockquote p:after {
 
 .nav-menu .nav__item a {
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #999;
   padding: .4em 0;
   text-align: center;
@@ -4886,7 +4885,7 @@ blockquote p:after {
 }
 
 .intro-area__inner .btn {
-  font-family: "Roboto"
+  font-family: "Lato"
 }
 
 .intro-area__inner .btn.-large {
@@ -5370,7 +5369,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 
 .infoBox__info h3 {
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 21px;
   line-height: 1em;
   text-transform: uppercase;
@@ -5391,13 +5390,13 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 }
 
 .infoBox__info span {
-  font-family: "proxima_cond_reg_it";
+  font-family: "Lato";
   font-size: 18px;
   display: block
 }
 
 .infoBox__info .btn {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 17px;
   margin-top: 15px
 }
@@ -5454,7 +5453,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   display: inline-block;
   text-align: center;
   color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.3125em;
   position: relative;
   margin: 0
@@ -5664,7 +5663,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   color: #333;
   background: #fff;
   outline: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 26px;
   text-align: center;
   text-transform: uppercase;
@@ -5728,7 +5727,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 .tabs__title {
   margin-bottom: 0;
   padding: 1em;
-  font-family: 'Roboto'
+  font-family: 'Lato'
 }
 
 @media (min-width: 750px) {
@@ -5765,7 +5764,7 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 }
 
 .tabs__content .pack-workouts__caption>div p {
-  font-family: "proxima_cond_reg_it";
+  font-family: "Lato";
   font-size: inherit;
   line-height: 1.5em;
   text-transform: uppercase
@@ -6613,7 +6612,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .home-hero-grid__btn {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   display: inline-block;
   color: #fff;
   border: 2px solid #fff;
@@ -6673,7 +6672,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .home-hero-grid__hover-subtitle,
 .home-hero-grid__hover-title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase
 }
 
@@ -6779,7 +6778,7 @@ div.select-theme-easygym.-contact .select-options>li {
 .home-hero-grid__hover-remaining {
   font-size: 1.375rem;
   color: rgba(255, 255, 255, 0.5);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase;
   padding-top: 15px
 }
@@ -6893,7 +6892,7 @@ div.select-theme-easygym.-contact .select-options>li {
   transform: translateX(-40%) translateY(-50%);
   display: block;
   width: 68%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.25rem;
   text-align: left;
   text-transform: uppercase;
@@ -7104,7 +7103,7 @@ div.select-theme-easygym.-contact .select-options>li {
 }
 
 .flash-sale__btn .btn {
-  font-family: "Roboto"
+  font-family: "Lato"
 }
 
 @media (min-width: 500px) {
@@ -7565,7 +7564,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .hero.-home .hero__inner p {
   max-width: 330px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.0625em;
   text-transform: uppercase;
   line-height: 0.975;
@@ -7679,7 +7678,7 @@ div.select-theme-easygym.-contact .select-options>li {
 
 .hero.-home .btn {
   bottom: 0;
-  font-family: "Roboto"
+  font-family: "Lato"
 }
 
 .hero.-home .btn:after {
@@ -8145,7 +8144,7 @@ a.checkerboard__item:hover:after {
 
 .home-map__search .submit a {
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 20px;
   font-size: 1.25rem;
   text-transform: uppercase
@@ -8823,7 +8822,7 @@ a.checkerboard__item:hover:after {
 
 .classes-into__heading p {
   color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: inherit;
   line-height: .88em
 }
@@ -8879,7 +8878,7 @@ a.checkerboard__item:hover:after {
   height: 56px;
   border: 0;
   color: #be202f;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 21px;
   font-size: 1.3125rem
 }
@@ -8910,7 +8909,7 @@ a.checkerboard__item:hover:after {
 }
 
 .classes-intro__gym-selector .col.-submit .btn {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 21px;
   font-size: 1.3125rem
 }
@@ -8977,7 +8976,7 @@ div.select-theme-easygym.-classes .select-content {
 .classes-upsell p {
   text-align: center;
   color: #333;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 21px;
   font-size: 1.3125rem;
   text-transform: uppercase;
@@ -9039,7 +9038,7 @@ div.select-theme-easygym.-classes .select-content {
   margin-right: 5px;
   margin-bottom: 10px;
   margin-left: 5px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.3125em
 }
 
@@ -9252,7 +9251,7 @@ div.select-theme-easygym.-classes .select-content {
   padding-top: 9px;
   color: #fff;
   display: block;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 15px;
   font-size: .9375rem;
   line-height: 15px;
@@ -9268,7 +9267,7 @@ div.select-theme-easygym.-classes .select-content {
   line-height: 22px;
   display: inline-block;
   color: #a8a8a8;
-  font-family: "proxima_cond_reg_it"
+  font-family: "Lato"
 }
 
 .load-more {
@@ -9595,7 +9594,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-exercise__value.-number {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   margin-bottom: 15px
 }
 
@@ -9762,7 +9761,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-article__extras h3 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.5625em;
   margin-bottom: 30px
 }
@@ -9950,7 +9949,7 @@ div.select-theme-easygym.-classes .select-content {
 .career-job-desc .heading.-location,
 .career-job-desc .heading.-position {
   font-size: 1.3125rem;
-  font-family: "proxima_cond_reg_it";
+  font-family: "Lato";
   line-height: 1.3333em;
   color: #999
 }
@@ -9965,7 +9964,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .career-job-desc__body h4 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-transform: uppercase
 }
 
@@ -11177,7 +11176,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .partner-bubble__discount {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.125rem;
   line-height: 1;
   text-transform: uppercase
@@ -11796,7 +11795,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .partner-features__title {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 1.8125rem;
   line-height: 36px
 }
@@ -12015,7 +12014,7 @@ div.select-theme-easygym.-classes .select-content {
 
 .btn--thank-you {
   margin-top: 50px;
-  font-family: Roboto;
+  font-family: Lato;
   font-size: 1.3em;
   font-weight: 400
 }
@@ -12065,7 +12064,7 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .sts h1 {
-  font-family: 'Roboto';
+  font-family: 'Lato';
   letter-spacing: 5px;
   font-size: 100px;
   text-transform: uppercase;

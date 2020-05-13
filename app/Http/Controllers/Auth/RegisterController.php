@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\FController;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Butschster\Head\Contracts\MetaTags\MetaInterface;
 
-class RegisterController extends Controller
+class RegisterController extends FController
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,15 +29,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/tham-gia';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MetaInterface $meta)
     {
+        parent::__construct($meta);
         $this->middleware('guest');
     }
 
@@ -51,7 +53,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'phone' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'gender' => ['required', 'string', 'max:255'],
+            'birthdate' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -68,6 +72,8 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'name' => $data['name'],
             'email' => $data['email'],
+            'birthdate' => $data['birthdate'],
+            'gender' => $data['gender'],
             'password' => Hash::make($data['password']),
         ]);
     }

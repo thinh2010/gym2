@@ -69,7 +69,7 @@
                 <!-- Step Two -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">2</span>
+                        <a data-toggle="collapse" data-parent="" href="javascript::void(0)" class="collapsed"> <span class="num">2</span>
                             <ul>
                                 <li>Thông tin cá nhân</li>
                             </ul>
@@ -81,7 +81,7 @@
                 <!-- Step Three -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a data-toggle="collapse" data-parent="" href="" class="collapsed"> <span class="num">3</span>
+                        <a data-toggle="collapse" data-parent="" href="javascript::void(0)" class="collapsed"> <span class="num">3</span>
                             <ul>
                                 <li>Thanh toán</li>
                             </ul>

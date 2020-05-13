@@ -36,6 +36,7 @@ mix.webpackConfig(config);
 mix
   .js('resources/js/app.js', 'public/js')
   .js('resources/js/admin_app.js', 'public/js')
+  .copy('resources/frontend/css/font-lato.css', 'public/gym/css')
   .copy('resources/frontend/css/main.css', 'public/gym/css')
   .copy('resources/frontend/css/svg.css', 'public/gym/css')
   .copy('resources/frontend/css/login.css', 'public/gym/css')
