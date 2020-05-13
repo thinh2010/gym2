@@ -965,6 +965,7 @@ h1,
 .home-hero-reduced-fees__footer p,
 .home-intro-body p {
   font-size: 30px;
+  font-style: italic;
   font-size: 1.875rem;
   font-family: 'Lato', sans-serif;
   letter-spacing: -2px;
@@ -2356,7 +2357,8 @@ img {
 .btn.-fill {
   background-color: #be202f;
   border-color: #be202f;
-  color: #fff
+  color: #fff;
+  font-style: italic;
 }
 
 .btn.-fill:hover {
@@ -2413,6 +2415,7 @@ img {
 
 .btn.-frosted {
   font-family: 'Lato', sans-serif;
+  font-style: italic;
   letter-spacing: 1px;
   background-color: rgba(255, 255, 255, 0.2);
   border-color: #fff;
@@ -4048,7 +4051,8 @@ blockquote p:after {
 .nav-blocks__content>h2>* {
   color: #333;
   text-transform: uppercase;
-  font-size: 1.4rem
+  font-size: 1.4rem;
+  font-style: italic;
 }
 
 .nav-blocks__content p {
@@ -7773,7 +7777,8 @@ div.select-theme-easygym.-contact .select-options>li {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  position: absolute
+  position: absolute;
+  font-style: italic;
 }
 
 .hero.-home-pack>img {

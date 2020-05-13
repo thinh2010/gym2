@@ -77,7 +77,7 @@
 
             <form action="#" method="post"
                 class="site-footer__newsletter">
-                <h2 class="-gamma">Sign up for our Newsletter</h2>
+                <h2 class="-gamma">Đăng ký nhận bản tin</h2>
                 <div class="input">
                     <input name="cm-name" type="text" class="input--text" placeholder="Name" />
                 </div>
@@ -91,17 +91,14 @@
             </form>
             <nav class="site-footer__nav">
                 <ul>
-                    <li><a href="#">Membership Info</a></li>
-                    <li><a href="#">Our Gyms</a></li>
-                    <li><a href="#">PACK45</a></li>
-                    <li><a href="#">Classes</a></li>
-                    <li><a href="#">Zones &amp; Gym Equipment</a></li>
+                    <li><a href="/page/hoi-vien">Hội viên</a></li>
+                    <li><a href="/page/classes">Classes</a></li>
+                    <li><a href="/page/trang-thiet-bi">Trang thiết bị</a></li>
                 </ul>
                 <ul>
-                    <li><a href="#">Social</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Help &amp; FAQs</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/page/gym-rules">Gym rules</a></li>
+                    <li><a href="/faqs">Help &amp; FAQs</a></li>
                 </ul>
             </nav>
 
