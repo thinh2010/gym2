@@ -18,12 +18,6 @@
                         </span>
                     </label>
                 </li>
-                <li class="nav__item">
-                    <a href="/tham-gia"
-                        class="nav__link -desktop vertical-align-children">
-                        <span class="nav-header__title">Tham gia</span>
-                    </a>
-                </li>
                 @guest
                 <li class="nav__item">
                     <a href="/login"
@@ -48,6 +42,12 @@
                     <a href="/logout"
                         class="nav__link -desktop vertical-align-children">
                         <span class="nav-header__title">Đăng xuất</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/tham-gia"
+                        class="nav__link -desktop vertical-align-children">
+                        <span class="nav-header__title">Tham gia</span>
                     </a>
                 </li>
                 @endguest
@@ -201,12 +201,12 @@
             </li>
             <li class="nav__item -hecto -menu">
                 <a href="#" data-letters="Locations">
-                    <span>Locations</span>
+                    <span>Địa điểm phòng tập</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
                 <a href="/page/classes" data-letters="Classes">
-                    <span>Classes</span>
+                    <span>Lớp tập nhóm</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
@@ -215,18 +215,8 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Social">
-                    <span>Social</span>
-                </a>
-            </li>
-            <li class="nav__item -hecto -menu">
                 <a href="/blog" data-letters="Blog">
                     <span>Blog</span>
-                </a>
-            </li>
-            <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Careers">
-                    <span>Careers</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
@@ -236,17 +226,12 @@
             </li>
             <li class="nav__item -hecto -menu">
                 <a href="#" data-letters="Get in touch">
-                    <span>Get in touch</span>
+                    <span>Liên hệ</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
                 <a href="/page/gym-rules" data-letters="Gym rules">
-                    <span>Gym rules</span>
-                </a>
-            </li>
-            <li class="nav__item -hecto -menu -last">
-                <a href="#" data-letters="Franchise">
-                    <span>Franchise</span>
+                    <span>Nội quy phòng tập</span>
                 </a>
             </li>
             <li class="nav-sub-menu -top">

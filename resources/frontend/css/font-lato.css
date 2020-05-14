@@ -30,3 +30,13 @@
     url("../fonts/Lato/Lato-Italic1.woff2") format("woff2"); /* Modern Browsers */
   font-style: italic;
 }
+@font-face {
+  font-family: "LatoBlack";
+  src: url("../fonts/Lato/Lato-Black2.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/Lato/Lato-Black2.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/Lato/Lato-Black2.otf") format("opentype"), /* Open Type Font */
+    url("../fonts/Lato/Lato-Black2.svg") format("svg"), /* Legacy iOS */
+    url("../fonts/Lato/Lato-Black2.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("../fonts/Lato/Lato-Black2.woff") format("woff"), /* Modern Browsers */
+    url("../fonts/Lato/Lato-Black2.woff2") format("woff2"); /* Modern Browsers */
+}

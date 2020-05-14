@@ -17,7 +17,6 @@
 <![endif]-->
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     @section('css')
-      <link href="{{ asset('gym/css/font-lato.css') }}" rel="stylesheet">
       <link href="{{ asset('gym/css/main.css') }}" rel="stylesheet">
     @show
     
