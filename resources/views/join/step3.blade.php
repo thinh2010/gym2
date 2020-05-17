@@ -41,11 +41,72 @@
                     </div>
                     <div id="step1" class="panel-collapse collapse in">
                         <div class="panel-body panel-body1">
-                            <p>Tổng tiền thanh toán: <b>{{ number_format($plan['membershipFee']['gross'], 0) }} VNĐ</b></p>
+                            <div class="payment-plan">{{ $club['name'] }} - {{ $plan['name'] }}</div>
                             <form action="/tham-gia/thanh-toan" method="POST">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th width="60%">Nội dung thanh toán</th>
+                                            <th width="10%">Số lượng</th>
+                                            <th width="15%">Đơn giá</th>
+                                            <th width="20%">Thành tiền</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if ($plan['membershipFee']['gross'] > 0)
+                                        <tr>
+                                            <td>Phí thành viên</td>
+                                            <td>1</td>
+                                            <td>{{ number_format($plan['membershipFee']['gross'], 0) }} VNĐ</td>
+                                            <td>{{ number_format($plan['membershipFee']['gross'], 0) }} VNĐ</td>
+                                        </tr>
+                                        @endif
+                                        @if ($plan['joiningFee']['gross'] > 0)
+                                        <tr>
+                                            <td>Phí đăng ký</td>
+                                            <td>1</td>
+                                            <td>{{ number_format($plan['joiningFee']['gross'], 0) }} VNĐ</td>
+                                            <td>{{ number_format($plan['joiningFee']['gross'], 0) }} VNĐ</td>
+                                        </tr>
+                                        @endif
+                                        @if ($plan['adminFee']['gross'] > 0)
+                                        <tr>
+                                            <td>Phí quản trị</td>
+                                            <td>1</td>
+                                            <td>{{ number_format($plan['adminFee']['gross'], 0) }} VNĐ</td>
+                                            <td>{{ number_format($plan['adminFee']['gross'], 0) }} VNĐ</td>
+                                        </tr>
+                                        @endif
+                                        <tr>
+                                            <td>
+                                                <b>Chương trình giảm giá</b> <br />
+                                                @foreach ($discounts as $key => $discount)
+                                                    <div class="discount-radio">
+                                                        <input type="radio" name="discountId" id="discount{{ $discount['id'] }}" value="{{ $discount['id'] }}" />
+                                                        <label for="discount{{ $discount['id'] }}">{{ $discount['name'] }}</label>
+                                                    </div>
+                                                @endforeach
+
+                                                <div class="discount-box">
+                                                    <p class="text">Bạn có mã giảm giá? Hãy điền vào đây để nhận giảm giá</p>
+                                                    <input type="text" class="discount-code" /> <button type="button" class="check-discount">Thêm mã giảm giá</button>
+                                                </div>
+                                            </td>
+                                            <td>1</td>
+                                            <td><span class="discount">---</span></td>
+                                            <td><span class="discount">---</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3">Tổng tiền thanh toán</th>
+                                            <td><span class="totalPrice">{{ number_format($totalPrice, 0) }} VNĐ</span></b></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                                 @csrf
                                 <input type="hidden" name="paymentPlanId" value="{{ $plan['id'] }}">
-                                <input type="hidden" name="clubId" value="{{ $clubId }}">
+                                <input type="hidden" name="clubId" value="{{ $club['id'] }}">
                                 <button class="nextStep step1-done available" type="submit">Thanh toán</button>
                             </form>
                         </div>
@@ -59,167 +120,40 @@
 
 @section('css')
     @parent
-    {{-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href="{{ asset('gym/css/steps.css') }}" rel="stylesheet">
     <style type="text/css">
-        .panel-group {
-            margin-bottom: 20px;
+        .panel-body table tr td,
+        .panel-body table tr th { padding: 10px 0; }
+        .panel-body table tr { border-bottom: 1px solid #ccc; }
+        .panel-body table tr th { text-align: left; }
+        .totalPrice {
+            font-weight: bold;
+            font-size: 24px;
         }
-        .panel-default {
-            border-color: #be202f;
+        .discount {
+            font-style: italic;
         }
-        .panel {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        .discount-box .text {
+            text-transform: none;
+            margin-bottom: 5px;
         }
-        .panel-group .panel {
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        .panel-heading {
-            padding: 0;
-            background: none;
-        }
-        .panel-default>.panel-heading {
-            color: #333;
-            background-color: #bb434f;
-            border-color: #ddd;
-        }
-        .panel-default>.panel-heading.active {
-            background-color: #be202f;
-        }
-        .panel-group .panel-heading {
-            border-bottom: 0;
-        }
-        .panel-heading {
-            padding: 10px 15px;
-            border-bottom: 1px solid transparent;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
-        }
-        .panel-heading a {
-            color: #333;
-            background: none;
-            display: block;
-            border-radius: 4px 4px 0 0;
-        }
-        .panel-heading a .num {
-            background: #333;
-            color: #fff;
-        }
-        .panel-heading a .num {
-            display: block;
-            float: left;
-            margin-right: 10px;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            text-align: center;
-            background: #fff;
-            border-radius: 50%;
-            color: #333;
-            font-size: 20px;
-        }
-        .panel-heading a ul {
-            float: left;
-            width: calc(100% - 75px);
-            margin: 0;
-            list-style: none;
-        }
-        .panel-heading.active a ul li {
-            color: #fff;
-        }
-        .panel-heading a ul li {
-            list-style: none;
-            line-height: 45px;
-        }
-        .panel-heading a ul li strong {
-            text-transform: uppercase;
-        }
-        .panel-default>.panel-heading+.panel-collapse>.panel-body {
-            border-top-color: #ddd;
-        }
-        .panel-group .panel-heading+.panel-collapse>.panel-body {
-            border-top: 1px solid #ddd;
-        }
-        .panel-body {
-            border: 1px solid #bb434f;
-        }
-        .panel-body1 {
-            padding: 30px 15px;
-        }
-        .clearfix {
-            clear: both;
-        }
-        .classes-intro__gym-selector {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .panel-body .nextStep.available {
+        .check-discount {
+            border: none;
+            border-radius: 5px;
             background: #be202f;
             color: #fff;
+            padding: 4px 15px;
         }
-        .nextStep {
-            margin: 30px 15px 0 15px;
-            width: calc(100% - 30px);
-            height: 56px;
-            border-radius: 50px;
-            border: none;
-            background: #f1f1f1;
-            color: #333;
-            font-size: 25px;
-            text-transform: uppercase;
+        .discount-radio {
+            margin: 15px 0;
         }
-        .payment-plans {
-            margin-top: 20px;
-            /*visibility: hidden;*/
-            display: none;
-        }
-        .plan-detail {
-            margin: 20px 20px;
-            transition: all 0.2s;
-        }
-        .plan-detail span {
-            display: block;
-            font-weight: bold;
-            font-size: 28px;
-            margin: 20px 0;
-        }
-        .plan-detail span.price {
-            font-size: 34px;
-        }
-        .plan-detail .box {
-            border: 1px solid #0ba8d8;
-            background-color: #0ba8d8;
-            display: block;
-            color: #fff;
+        .payment-plan {
             text-align: center;
-            padding: 25px 5px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .plan-detail:hover, .plan-detail.selected {
-            margin-top: 0;
-        }
-        .plan1 .box {
-            border: 1px solid #d8af0b;
-            background-color: #d8af0b;
-        }
-        .plan2 .box {
-            border: 1px solid #d8670b;
-            background-color: #d8670b;
-        }
-        .plan3 .box {
-            border: 1px solid #d8260b;
-            background-color: #d8260b;
-        }
-        .plan4 .box {
-            border: 1px solid #0ba5d8;
-            background-color: #0ba5d8;
+            font-size: 30px;
+            font-weight: bold;
+            color: #be202f;
+            margin-bottom: 15px;
         }
     </style>
 @endsection
@@ -240,6 +174,17 @@
                     slidesToScroll: 4
                 });
             }
+        })
+
+        $('.check-discount').on('click', function() {
+            var code = $('.discount-code').val();
+            if (code == '' || code == null) {
+                $('.message').html('Hãy điền mã giảm giá');
+            }
+            $('.message').html('Mã giảm giá không hợp lệ');
+            // $.get("/api/other/discounts/{{ $club['id'] }}/{{ $plan['id'] }}/" + code, function(data, status) {
+
+            // })
         })
 
         $('.plan-detail').on('click', function() {

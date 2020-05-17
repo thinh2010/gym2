@@ -101,6 +101,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 // Perfect Gym
 Route::group(['prefix' => '/other', 'as' => 'api.perfect_gym.'], function () {
     Route::get('/classes/{clubId}', 'Api\OtherController@getClasses')->name('get_classes');
+    Route::get('/discounts/{clubId}/{planId}/{code}', 'Api\OtherController@getDiscounts')->name('get_discounts');
 });
 
 

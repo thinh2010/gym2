@@ -34,12 +34,24 @@
                             @else
                                 <table>
                                     <tr>
-                                        <td width="200px">Tên</td>
+                                        <th width="200px" align="left">Tên</th>
                                         <td>{{ Auth::user()->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td width="200px">Email</td>
+                                        <th width="200px">Email</th>
                                         <td>{{ Auth::user()->email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="200px">Số điện thoại</th>
+                                        <td>{{ Auth::user()->phone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="200px">Ngày sinh</th>
+                                        <td>{{ Auth::user()->birthdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th width="200px">Giới tính</th>
+                                        <td>@lang('messages.' . Auth::user()->gender)</td>
                                     </tr>
                                 </table>
                                 <form action="/tham-gia/step-3" method="POST">
@@ -72,168 +84,11 @@
 
 @section('css')
     @parent
-    {{-- <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> --}}
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href="{{ asset('gym/css/steps.css') }}" rel="stylesheet">
     <style type="text/css">
-        .panel-group {
-            margin-bottom: 20px;
-        }
-        .panel-default {
-            border-color: #be202f;
-        }
-        .panel {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
-            box-shadow: 0 1px 1px rgba(0,0,0,.05);
-        }
-        .panel-group .panel {
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        .panel-heading {
-            padding: 0;
-            background: none;
-        }
-        .panel-default>.panel-heading {
-            color: #333;
-            background-color: #bb434f;
-            border-color: #ddd;
-        }
-        .panel-default>.panel-heading.active {
-            background-color: #be202f;
-        }
-        .panel-group .panel-heading {
-            border-bottom: 0;
-        }
-        .panel-heading {
-            padding: 10px 15px;
-            border-bottom: 1px solid transparent;
-            border-top-left-radius: 3px;
-            border-top-right-radius: 3px;
-        }
-        .panel-heading a {
-            color: #333;
-            background: none;
-            display: block;
-            border-radius: 4px 4px 0 0;
-        }
-        .panel-heading a .num {
-            background: #333;
-            color: #fff;
-        }
-        .panel-heading a .num {
-            display: block;
-            float: left;
-            margin-right: 10px;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            text-align: center;
-            background: #fff;
-            border-radius: 50%;
-            color: #333;
-            font-size: 20px;
-        }
-        .panel-heading a ul {
-            float: left;
-            width: calc(100% - 75px);
-            margin: 0;
-            list-style: none;
-        }
-        .panel-heading.active a ul li {
-            color: #fff;
-        }
-        .panel-heading a ul li {
-            list-style: none;
-            line-height: 45px;
-        }
-        .panel-heading a ul li strong {
-            text-transform: uppercase;
-        }
-        .panel-default>.panel-heading+.panel-collapse>.panel-body {
-            border-top-color: #ddd;
-        }
-        .panel-group .panel-heading+.panel-collapse>.panel-body {
-            border-top: 1px solid #ddd;
-        }
-        .panel-body {
-            border: 1px solid #bb434f;
-        }
-        .panel-body1 {
-            padding: 30px 15px;
-        }
-        .clearfix {
-            clear: both;
-        }
-        .classes-intro__gym-selector {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .panel-body .nextStep.available {
-            background: #be202f;
-            color: #fff;
-        }
-        .nextStep {
-            margin: 30px 15px 0 15px;
-            width: calc(100% - 30px);
-            height: 56px;
-            border-radius: 50px;
-            border: none;
-            background: #f1f1f1;
-            color: #333;
-            font-size: 25px;
-            text-transform: uppercase;
-        }
-        .payment-plans {
-            margin-top: 20px;
-            /*visibility: hidden;*/
-            display: none;
-        }
-        .plan-detail {
-            margin: 20px 20px;
-            transition: all 0.2s;
-        }
-        .plan-detail span {
-            display: block;
-            font-weight: bold;
-            font-size: 28px;
-            margin: 20px 0;
-        }
-        .plan-detail span.price {
-            font-size: 34px;
-        }
-        .plan-detail .box {
-            border: 1px solid #0ba8d8;
-            background-color: #0ba8d8;
-            display: block;
-            color: #fff;
-            text-align: center;
-            padding: 25px 5px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .plan-detail:hover, .plan-detail.selected {
-            margin-top: 0;
-        }
-        .plan1 .box {
-            border: 1px solid #d8af0b;
-            background-color: #d8af0b;
-        }
-        .plan2 .box {
-            border: 1px solid #d8670b;
-            background-color: #d8670b;
-        }
-        .plan3 .box {
-            border: 1px solid #d8260b;
-            background-color: #d8260b;
-        }
-        .plan4 .box {
-            border: 1px solid #0ba5d8;
-            background-color: #0ba5d8;
-        }
+        .panel-body table tr td { padding: 10px 0; }
+        .panel-body table tr th { text-align: left; }
     </style>
 @endsection
 

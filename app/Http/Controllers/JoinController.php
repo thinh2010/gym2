@@ -31,18 +31,27 @@ class JoinController extends FController
         $planId = $request->input('paymentPlanId');
         $clubId = $request->input('clubId');
         $plan = $this->getPlan($planId);
-        return view('join.step3', ['plan' => $plan, 'clubId' => $clubId]);
+        $club = $this->getClub($clubId);
+        $discounts = $this->getDiscounts($clubId, $planId);
+
+        $totalPrice = $plan['membershipFee']['gross'] + $plan['joiningFee']['gross'] + $plan['adminFee']['gross'];
+        // dd($club);
+        return view('join.step3', ['plan' => $plan, 'club' => $club, 'discounts' => $discounts, 'totalPrice' => $totalPrice]);
     }
 
     public function payment(Request $request) {
         $planId = $request->input('paymentPlanId');
         $clubId = $request->input('clubId');
+        $discountId = $request->input('discountId');
+        $price = $this->calcTotalPrice($planId, $discountId);
         $plan = $this->getPlan($planId);
-        $price = $plan['membershipFee']['gross'];
+
+        // $price = $plan['membershipFee']['gross'];
 
         $payment = Payment::create([
             'plan_id' => $planId,
             'club_id' => $clubId,
+            'discount_id' => $discountId,
             'plan_name' => $plan['name'],
             'price' => $price,
             'vpc_TicketNo' => $this->getClientId(),
@@ -78,12 +87,15 @@ class JoinController extends FController
     }
 
     public function paymentResult(Request $request, Payment $payment) {
+        // dd('sss');
         $hashKey = config('onepay.hashkey');
         $secureHash = $request->input('vpc_SecureHash');
-        $hashString = $this->getSecureHash($request->except('vpc_SecureHash'));
+        $data = $request->except('vpc_SecureHash');
+        ksort($data);
+
+        $hashString = $this->getSecureHash($data);
 
         $ownSecureHash = strtoupper(hash_hmac('SHA256', $hashString, pack('H*',$hashKey)));
-
 
         if ($secureHash === $ownSecureHash) {
             // check hash ok
@@ -98,14 +110,25 @@ class JoinController extends FController
             ]);
             $payment->fill($data);
             $payment->save();
-            return view('join.finish', ['payment' => $payment]);
+
+            if ($data['vpc_TxnResponseCode'] == 0) { //payment success
+                return view('join.finish', ['payment' => $payment]);
+            } else {
+                return view('join.fail', ['payment' => $payment]);
+            }
+            
         }
+
+        return view('join.fail', ['payment' => $payment]);
     }
 
     public function getSecureHash($params) {
         $hashString = '';
         foreach ($params as $key => $value) {
-            $hashString .= $key . '=' . $value . '&';
+            if ($key != "vpc_SecureHash" && (strlen($value) > 0) && ((substr($key, 0,4)=="vpc_") || (substr($key,0,5) =="user_"))) {
+                $hashString .= $key . "=" . $value . "&";
+            }
+            // $hashString .= $key . '=' . $value . '&';
         }
         $hashString = rtrim($hashString, "&");
 

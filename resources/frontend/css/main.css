@@ -12098,3 +12098,15 @@ div.select-theme-easygym.-classes .select-content {
     font-size: 20px
   }
 }
+
+.clearfix { clear: both; }
+.flex-grid {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-grid > .col {
+  flex: 1;
+}
+.p10 { padding: 0 10px; }
+.text-center {text-align: center;}

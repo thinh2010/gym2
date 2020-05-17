@@ -1,4 +1,4 @@
-@extends('layouts.other')
+@extends('layouts.main')
 
 @section('content')
 <div class="containerFullScreen">
@@ -36,4 +36,9 @@
     </form>
 
   </div> <!--containerFullScreen-->
+@endsection
+
+@section('css')
+    @parent
+    <link href="{{ asset('gym/css/login.css') }}" rel="stylesheet">
 @endsection

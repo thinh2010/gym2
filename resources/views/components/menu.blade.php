@@ -200,12 +200,12 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Locations">
+                <a href="#" data-letters="Địa điểm phòng tập">
                     <span>Địa điểm phòng tập</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="/page/classes" data-letters="Classes">
+                <a href="/page/classes" data-letters="Lớp tập nhóm">
                     <span>Lớp tập nhóm</span>
                 </a>
             </li>
@@ -225,33 +225,33 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Get in touch">
+                <a href="#" data-letters="Liên hệ">
                     <span>Liên hệ</span>
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="/page/gym-rules" data-letters="Gym rules">
+                <a href="/page/gym-rules" data-letters="Nội quy phòng tập">
                     <span>Nội quy phòng tập</span>
                 </a>
             </li>
             <li class="nav-sub-menu -top">
                 <ul class="nav-sub-menu__inner">
                     <li class="nav__item -hecto -sub-menu">
-                        <a href="#">
+                        <a href="/page/hoi-vien">
                             <span class="icon svg-user svg--orange" data-grunticon-embed></span>
-                            <span>Join Online</span>
+                            <span>Quyền lợi hội viên</span>
                         </a>
                     </li>
                     <li class="nav__item -hecto -sub-menu">
-                        <a href="#" target="_blank">
+                        <a href="/page/about-us" target="_blank">
                             <span class="icon svg-users svg--orange" data-grunticon-embed></span>
-                            <span>Member Zone</span>
+                            <span>Về chúng tôi</span>
                         </a>
                     </li>
                     <li class="nav__item -hecto -sub-menu">
                         <a href="#">
                             <span class="icon svg-ticket svg--orange" data-grunticon-embed></span>
-                            <span>Buy Day Pass</span>
+                            <span>Vé tập ngày</span>
                         </a>
                     </li>
                 </ul>

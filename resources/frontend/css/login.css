@@ -16,9 +16,7 @@ figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, su
 	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 body, html {
   width:100vw; height: 100%; color:black; overflow-x: hidden; background:rgba(215,225,234,.8);}
-body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-family: "Lato", sans-serif; }
-p, span {margin:0 1rem 0 1rem; line-height:150%}
-span {display:block;}
+body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-family: "Montserrat", sans-serif; }
 
 .page {width:100%; margin:0 auto 0 auto;}
 .dontShow1st {display:none;}
@@ -36,7 +34,7 @@ span {display:block;}
 
 /*General*/
 .containerFullScreen {width:100%;}
-.vgForm { width: 80%; }
+.vgForm { width: 80%; margin: 0 auto;}
 .site-section { text-align: -webkit-center }
 #toolbar {position:absolute; top:0; width:100%; background-color:#be202f;; z-index:1000;}
 #toolbar .containerFullScreen {display:flex; align-items:center; }
@@ -56,19 +54,18 @@ span {display:block;}
 .pgTitle { font-size:40px; color:black; margin-bottom:60px; text-decoration:underline; }
 .subTitle {font-size:32px; margin:50px auto; }
 #gov { font-size:20px;}
-#below {font-weight:600; margin-bottom:30px; margin-top:90px;}
+#below {font-weight:600; margin-bottom:30px; margin-top:90px;text-align: center;}
 .egInput, #formGender, #dobDiv, #startDateDiv, .paymentBox {background: rgba(255,255,255,.1); border: none; border-bottom:1px solid #be202f;; border-radius: 2px;
 	font-size: 20px; margin-bottom:30px; outline: 0; padding: 30px 20px 10px 20px; width: 100%;
 	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; background-color: #e8eeef;
-	color:black; -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-	font-family: "Lato"; }
-::placeholder { color:#969696; font-style:italic; font-family: "Lato"; }
+	color:black; -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; }
+::placeholder { color:#969696; font-style:italic;}
 .lblAlert { animation: lblAlertAnime 3s linear 1;  }
 @keyframes lblAlertAnime { 0% {color:white; opacity:1;} 5% {color:white; opacity:0.3;} 20% { color:red;opacity:1 } 90% { color:red;opacity:1 } 95% { color:red; opacity:0.3} 100% {color:white; opacity:1;}  }
 .noData { animation: noDataAnime 1.5s both 2; }
 @keyframes noDataAnime { 0% {background-color:white; opacity:1;} 50% {background-color:red; opacity:0.3;} 100% {background-color:white; opacity:1;}  }
-.radioLabel { font-size: 20px; }
-.radioInput { margin-bottom: 25px; }
+.radioLabel { font-size: 20px; vertical-align: middle; }
+.radioInput { vertical-align: middle; }
 @media only screen and (min-width: 320px) and (max-width: 991px) {
   #toolbar, #hiddenBar, #toolbar div {height:70px;}
   #logoTitle { font-size:1.3rem; line-height:70px; }
@@ -98,4 +95,7 @@ span {display:block;}
     #separator {height: 160px;}
 
 		.btn {font-size:1.4rem; padding:15px 17px 15px 17px; }
-} /* 992+
+} /* 992+ */
+
+.w100 { width: 100%; }
+.w50 { width: 50%; float: left; }

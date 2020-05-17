@@ -36,6 +36,7 @@ mix.webpackConfig(config);
 mix
   .js('resources/js/app.js', 'public/js')
   .js('resources/js/admin_app.js', 'public/js')
+  .copy('resources/frontend/css/steps.css', 'public/gym/css')
   .copy('resources/frontend/css/font-lato.css', 'public/gym/css')
   .copy('resources/frontend/css/main.css', 'public/gym/css')
   .copy('resources/frontend/css/svg.css', 'public/gym/css')
@@ -44,6 +45,7 @@ mix
   .copy('resources/frontend/js/jquery.js', 'public/gym/js')
   .copy('resources/frontend/js/error.js', 'public/gym/js')
   .copyDirectory('resources/frontend/img', 'public/gym/img')
+  .copyDirectory('resources/frontend/datepicker', 'public/gym/datepicker')
   .copyDirectory('resources/frontend/fonts', 'public/gym/fonts')
   .copyDirectory('resources/frontend/fullcalendar', 'public/gym/fullcalendar')
   .extract([

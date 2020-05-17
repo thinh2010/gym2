@@ -17,6 +17,7 @@ class FController extends BaseController
     protected $meta;
 
     protected $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
+    protected $urlV1 = 'https://vgym.perfectgym.com/Api/';
 
     public function __construct(MetaInterface $meta) 
     {
@@ -53,10 +54,46 @@ class FController extends BaseController
         return $response->json()['value'];
     }
 
+    public function getClub($id) {
+        $client = $this->getInstance();
+        $response = $client->get($this->baseUrl . 'odata/Clubs('.$id.')');
+
+        return $response->json();
+    }
+
     public function getPlan($id) {
         $client = $this->getInstance();
         $response = $client->get($this->baseUrl . 'odata/PaymentPlans('.$id.')');
         return $response->json();
+    }
+
+    public function checkDiscount($code, $planId, $clubId) {
+        $client = $this->getInstance();
+
+        $discounts = $client->get($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
+        dd($discounts);
+    }
+
+    public function getDiscounts($clubId, $planId) {
+        $client = $this->getInstance();
+
+        $discounts = $client->get($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
+        return $discounts->json()['elements'];
+    }
+
+    public function calcTotalPrice($planId, $discountId) {
+        $client = $this->getInstance();
+
+        if ($discountId == null) {
+            $plan = $this->getPlan($planId);
+            $totalPrice = $plan['membershipFee']['gross'] + $plan['joiningFee']['gross'] + $plan['adminFee']['gross'];
+        } else {
+            $response = $client->get($this->urlV1 . 'Discounts/DiscountedFees?paymentPlanId=' . $planId . '&discountIds=' . $discountId);
+            $prices = $response->json()['elements'][0];
+            $totalPrice = $prices['membershipFee']['gross'] + $prices['joiningFee']['gross'] + $prices['administarationFee']['gross'];
+        }
+
+        return $totalPrice;
     }
 
     protected function setMeta($entity) {

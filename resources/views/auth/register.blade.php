@@ -28,23 +28,28 @@
             </span>
         @enderror
 
-        <input id="birthdate" type="birthdate" class="egInput @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" placeholder="Ngày sinh, điền theo định dạng năm-tháng-ngày">
-        @error('birthdate')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-
-        <input type="radio" class="radioInput" id="male" name="gender" value="male">
-        <label for="male" class="radioLabel">Nam</label>
-        <input type="radio" class="radioInput" id="female" name="gender" value="female">
-        <label for="female" class="radioLabel">Nữ</label>
-        @error('gender')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-
+        <div class="flex-grid">
+            <div class="col">
+                <input id="birthdate" type="birthdate" class="egInput @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" placeholder="Ngày sinh, điền theo định dạng năm-tháng-ngày" data-toggle="datepicker">
+                @error('birthdate')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                </div>
+            <div class="col p10" style="padding-top: 10px;">
+                <input type="radio" class="radioInput" id="male" name="gender" value="male">
+                <label for="male" class="radioLabel">Nam</label>
+                <input type="radio" class="radioInput" id="female" name="gender" value="female">
+                <label for="female" class="radioLabel">Nữ</label>
+                @error('gender')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+        
         <input id="password" type="password" class="egInput @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Mật khẩu">
 
         @error('password')
@@ -74,4 +79,36 @@
 @section('css')
     @parent
     <link href="{{ asset('gym/css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('gym/datepicker/datepicker.min.css') }}" rel="stylesheet">
+
+    <style type="text/css">
+        .datepicker-panel > ul > li {
+            width: 40px;
+            height: 40px;
+        }
+        .datepicker-container {
+            width: 280px;
+        }
+        .datepicker-panel > ul > li[data-view="month current"], 
+        .datepicker-panel > ul > li[data-view="year current"], 
+        .datepicker-panel > ul > li[data-view="years current"] {
+            width: 200px;
+        }
+
+        .datepicker-container ul > li {
+            color: #be202f;
+        }
+    </style>
+@endsection
+
+@section('js')
+    @parent
+    <script type="text/javascript" src="{{ asset('gym/datepicker/datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('gym/datepicker/datepicker.vi-VN.js') }}"></script>
+    <script type="text/javascript">
+        $('[data-toggle="datepicker"]').datepicker({
+            format: 'yyyy-mm-dd',
+            language: 'vi-VN'
+        });
+    </script>
 @endsection

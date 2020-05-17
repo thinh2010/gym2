@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="containerFullScreen">
-    <div class="subTitle" id="below"> Thanh toán thành công </div>
-    <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+    <div class="subTitle" id="below"> Thanh toán thất bại </div>
+    <p>@lang('onepay.' . $payment['vpc_TxnResponseCode'] )</p>
 </div>
 @endsection
 
