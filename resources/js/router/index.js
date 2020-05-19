@@ -308,6 +308,33 @@ export const asyncRoutes = [
       },
     ],
   },
+  {
+    path: '/users',
+    component: Layout,
+    redirect: '/users/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/users/List'),
+        name: 'UserList',
+        meta: { title: 'users', icon: 'user', permissions: ['manage user'] },
+      },
+      {
+        path: 'users/edit/:id(\\d+)',
+        component: () => import('@/views/users/Profile'),
+        name: 'UserProfile',
+        meta: { title: 'userProfile', noCache: true, permissions: ['manage user'] },
+        hidden: true,
+      },
+      {
+        path: 'roles',
+        component: () => import('@/views/role-permission/List'),
+        name: 'RoleList',
+        meta: { title: 'rolePermission', icon: 'role', permissions: ['manage permission'] },
+      },
+    ],
+  },
+
   // {
   //   path: '/theme',
   //   component: Layout,

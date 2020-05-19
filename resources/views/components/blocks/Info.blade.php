@@ -7,10 +7,12 @@
                     <a href="{{ $content->description }}">{{ $content->title }}</a>
                 </h2> 
                 {!! $content->content !!}
+                @if (isset($content->description) && isset($content->other_text))
                 <a href="{{ $content->description }}" class="btn -medium -fill">
                     <span>{{ $content->other_text }}</span>
                     <span class="svg-chevron-right" style="background-image: none;"><svg xmlns="http://www.w3.org/2000/svg" width="7.844" height="11.993" viewBox="0 0 7.844 11.993"><path d="M7.844 5.997l-5.997 5.997-1.847-1.848 4.15-4.15-4.15-4.149 1.847-1.847 5.997 5.997z"></path></svg></span>
                 </a>
+                @endif
             </div>
         </div>
         @endforeach
