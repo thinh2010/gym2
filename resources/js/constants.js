@@ -74,6 +74,13 @@ customOptions[TYPE_HEADING] = [
     'label': 'Button',
     'placeholder': 'Text cho button. Ví dụ: Join Now',
   },
+  {
+    'name': 'buttonLink',
+    'form_name': 'options[buttonLink]',
+    'type': 'text',
+    'label': 'Link cho Button',
+    'placeholder': 'Link cho button.',
+  },
 ];
 
 customOptions[TYPE_UNDER_HEADING] = [
@@ -90,6 +97,13 @@ customOptions[TYPE_UNDER_HEADING] = [
     'type': 'text',
     'label': 'Button',
     'placeholder': 'Text cho button. Ví dụ: Join Online',
+  },
+  {
+    'name': 'buttonLink',
+    'form_name': 'options[buttonLink]',
+    'type': 'text',
+    'label': 'Link cho Button',
+    'placeholder': 'Link cho button.',
   },
 ];
 

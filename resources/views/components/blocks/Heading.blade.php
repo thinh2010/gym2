@@ -7,8 +7,10 @@
         <div class="home-hero-reduced-fees__footer">
             <p>{{ $block->description }}</p>
         </div>
+        @if (isset($block->options->button))
         <div class="text--center">
-            <a href="#" class="btn -large -fill">{{ isset($block->options->button) ? $block->options->button : 'Join Now' }}</a>
+            <a href="{{ isset($block->options->buttonLink) ? $block->options->buttonLink : '#' }}" class="btn -large -fill">{{ isset($block->options->button) ? $block->options->button : 'Join Now' }}</a>
         </div>
+        @endif
     </div>
 </section>
