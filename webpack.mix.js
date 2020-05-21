@@ -44,6 +44,7 @@ mix
   .copy('resources/frontend/js/main.js', 'public/gym/js')
   .copy('resources/frontend/js/jquery.js', 'public/gym/js')
   .copy('resources/frontend/js/error.js', 'public/gym/js')
+  .copy('resources/frontend/js/jquery.inputmask.min.js', 'public/gym/js')
   .copyDirectory('resources/frontend/img', 'public/gym/img')
   .copyDirectory('resources/frontend/datepicker', 'public/gym/datepicker')
   .copyDirectory('resources/frontend/fonts', 'public/gym/fonts')

@@ -30,7 +30,7 @@
 
         <div class="flex-grid">
             <div class="col">
-                <input id="birthdate" type="birthdate" class="egInput @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" placeholder="Ngày sinh, điền theo định dạng năm-tháng-ngày" data-toggle="datepicker">
+                <input id="birthdate" type="text" class="egInput @error('birthdate') is-invalid @enderror" name="birthdate" value="{{ old('birthdate') }}" required autocomplete="birthdate" placeholder="Ngày sinh, điền theo định dạng ngày-tháng-năm" data-toggle="datepicker">
                 @error('birthdate')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -38,10 +38,10 @@
                 @enderror
                 </div>
             <div class="col p10" style="padding-top: 10px;">
-                <input type="radio" class="radioInput" id="male" name="gender" value="male">
-                <label for="male" class="radioLabel">Nam</label>
-                <input type="radio" class="radioInput" id="female" name="gender" value="female">
-                <label for="female" class="radioLabel">Nữ</label>
+                <select name="gender" id="gender">
+                  <option value="male">Nam</option>
+                  <option value="female">Nữ</option>
+                </select>
                 @error('gender')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -79,36 +79,20 @@
 @section('css')
     @parent
     <link href="{{ asset('gym/css/login.css') }}" rel="stylesheet">
-    <link href="{{ asset('gym/datepicker/datepicker.min.css') }}" rel="stylesheet">
-
     <style type="text/css">
-        .datepicker-panel > ul > li {
-            width: 40px;
-            height: 40px;
-        }
-        .datepicker-container {
-            width: 280px;
-        }
-        .datepicker-panel > ul > li[data-view="month current"], 
-        .datepicker-panel > ul > li[data-view="year current"], 
-        .datepicker-panel > ul > li[data-view="years current"] {
-            width: 200px;
-        }
-
-        .datepicker-container ul > li {
-            color: #be202f;
+        #gender {
+            width: 100%;
+            height: 50px;
         }
     </style>
 @endsection
 
 @section('js')
     @parent
-    <script type="text/javascript" src="{{ asset('gym/datepicker/datepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('gym/datepicker/datepicker.vi-VN.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('gym/js/jquery.inputmask.min.js') }}"></script>
     <script type="text/javascript">
-        $('[data-toggle="datepicker"]').datepicker({
-            format: 'yyyy-mm-dd',
-            language: 'vi-VN'
-        });
+        $(document).ready(function() {
+            $("#birthdate").inputmask({alias:"datetime", inputFormat: "dd/mm/yyyy"});
+        })
     </script>
 @endsection
