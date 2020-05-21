@@ -52,6 +52,8 @@ class ViewServiceProvider extends ServiceProvider
 
             $timetables = $client->get($baseUrl . 'odata/Classes?$expand=classType&$filter=startDate ge ' . urlencode($startDate->toIso8601String()) . ' and endDate le ' . urlencode($endDate->toIso8601String()));
 
+            file_put_contents('aa.txt', print_r($timetables->json()['value'], true));
+
             $view->with('timetables', htmlspecialchars_decode(json_encode($timetables->json()['value'])));
         });
     }

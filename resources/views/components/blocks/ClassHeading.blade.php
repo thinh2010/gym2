@@ -28,6 +28,39 @@
 			</div>
 		</form>
 
+		<div class="schedule-list">
+			<div class="row">
+				<div class="col">
+					T2
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					T3
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					T4
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					T5
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					T6
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					T7
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+				<div class="col">
+					CN
+					<p class="schedule-day monday">18/05/2020</p>
+				</div>
+			</div>
+		</div>
+
 		<div id="calendar"></div>
 	</div>
 </section>
@@ -36,6 +69,25 @@
 	@parent
   <link href="{{ asset('gym/fullcalendar/packages/core/main.css') }}" rel="stylesheet">
   <link href="{{ asset('gym/fullcalendar/packages/daygrid/main.css') }}" rel="stylesheet">
+  <style type="text/css">
+  	.row {
+  		text-align: center;
+  		font-weight: bold;
+  		font-size: 50px;
+  		position: relative;
+  		display: flex;
+  		flex-wrap: wrap;
+  		color: #000;
+  	}
+  	.col {
+  		flex-basis: 0;
+  		flex-grow: 1;
+  		max-width: 100%;
+  	}
+  	p.schedule-day {
+  		font-weight: normal;
+  	}
+  </style>
 @endsection
 
 @section('js')
