@@ -32,12 +32,17 @@ class ViewServiceProvider extends ServiceProvider
         // );
 
         // Using Closure based composers...
-        
+        View::composer(['components/blocks.ClassHeading', 'components/blocks.ClubMap'], function ($view) {
+            $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
+            $client = $this->getInstance();
+            $clubs = $client->get($baseUrl . 'odata/Clubs?$filter=isDeleted eq false');
+
+            $view->with('clubs', $clubs->json()['value']);
+        });        
 
         View::composer('components/blocks.ClassHeading', function ($view) {
             $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
             $client = $this->getInstance();
-            $clubs = $client->get($baseUrl . 'odata/Clubs?$filter=isDeleted eq false');
 
             $now = Carbon::now();
             $startDate = clone $now;
@@ -47,9 +52,6 @@ class ViewServiceProvider extends ServiceProvider
 
             $timetables = $client->get($baseUrl . 'odata/Classes?$expand=classType&$filter=startDate ge ' . urlencode($startDate->toIso8601String()) . ' and endDate le ' . urlencode($endDate->toIso8601String()));
 
-            // dd($timetables->json());
-            // dd();
-            $view->with('clubs', $clubs->json()['value']);
             $view->with('timetables', htmlspecialchars_decode(json_encode($timetables->json()['value'])));
         });
     }

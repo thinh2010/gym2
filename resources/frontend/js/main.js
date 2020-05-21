@@ -4820,5 +4820,5 @@ function loadCSS(e, t, n){
     a(), l();
   } };
 }()); $(function(){
-  Site.init(pageName), Site.pageLoad(), loadJS('https://maps.googleapis.com/maps/api/js?key=AIzaSyD7hpQEE5EdhLQUXkoFxZUSvx3SP0ESjFE&amp;callback=initMaps');
+  Site.init(pageName), Site.pageLoad();
 });

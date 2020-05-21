@@ -28,7 +28,7 @@
                                             </svg>
                                         </span>
                                         <select class="select-target select-theme-easygym js-location-dropdown caps" id="GymSelect">
-                                            <option value="">Select gym</option>
+                                            <option value="">Chọn địa điểm</option>
                                             @foreach ($clubs ?? '' as $key => $club)
                                                 <option value="{{ $club['id'] }}">{{ $club['name'] }}</option>
                                             @endforeach
