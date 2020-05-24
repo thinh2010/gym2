@@ -23,9 +23,26 @@ class OtherController extends Controller
         ]);
     }
 
-    public function getClasses($clubId) {
+    public function getClassCategories() {
+        $client = $this->getInstance();
+
+        $response = $client->get($this->baseUrl . 'odata/ClassCategories');
+
+        $data = [];
+        if (!empty($response->json()['value'])) {
+            foreach($response->json()['value'] as $key => $value) {
+                $data[$value['id']] = $value['name'];
+            }
+        }
+
+        return response()->json(['message' => 'success', 'data' => $data]);
+    }
+
+    public function getClasses(Request $request) {
         $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
         $client = $this->getInstance();
+
+        $clubId = $request->get('clubId');
 
         $now = Carbon::now();
         $startDate = clone $now;
@@ -33,9 +50,7 @@ class OtherController extends Controller
         $endDate = clone $now;
         $endDate = $endDate->addMonths(2);
 
-        // $clubId = 2;
-
-        $timetables = $client->get($baseUrl . 'odata/Classes?$expand=classType&$filter=clubId eq ' . $clubId . ' and startDate ge ' . urlencode($startDate->toIso8601String()) . ' and endDate le ' . urlencode($endDate->toIso8601String()));
+        $timetables = $client->get($baseUrl . 'odata/Classes?$expand=classType&$orderBy=startDate ASC&$filter=isDeleted eq false and clubId eq ' . $clubId . ' and startDate ge ' . urlencode($startDate->toIso8601String()) . ' and endDate le ' . urlencode($endDate->toIso8601String()));
 
         $data = [];
         if (!empty($timetables->json()['value'])) {
@@ -43,21 +58,17 @@ class OtherController extends Controller
                 $data[] = (object) [
                     'title' => $value['classType']['name'],
                     'start' => $value['startDate'],
-                    'end' => $value['endDate']
+                    'end' => $value['endDate'],
+                    'studio' => $value['classType']['categoryId']
                 ];
             }
         }
 
-        // dd($data);
-
         return response()->json(['message' => 'success', 'data' => $data]);
-        // die(var_dump($timetables->json()['value']));
     }
 
     public function getDiscounts($clubId, $planId, $code) {
         $client = $this->getInstance();
-
-        dd($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
 
         $discounts = $client->get($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
         dd($discounts->json());
