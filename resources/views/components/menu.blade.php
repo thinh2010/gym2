@@ -200,7 +200,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Địa điểm phòng tập">
+                <a href="/page/dia-diem-phong-tap" data-letters="Địa điểm phòng tập">
                     <span>Địa điểm phòng tập</span>
                 </a>
             </li>
