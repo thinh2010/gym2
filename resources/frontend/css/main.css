@@ -1530,7 +1530,8 @@ img {
   width: 100%;
   float: left;
   position: relative;
-  z-index: 97
+  z-index: 97;
+  margin-top: 70px;
 }
 
 .site-main:after {
