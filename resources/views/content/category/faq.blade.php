@@ -7,35 +7,96 @@
         </div>
     </section>
 
-    <section class="site-section -blog-grey-bg">
-    <div class="blog-categories">
-        <ul class="blog-categories__list">
-            <li class="blog-categories__item">
-                <a href="/faqs" class="btn" data-category="all">Tất cả</a>
-            </li>
-            @foreach($categories as $key => $cat)
-                <li class="blog-categories__item @if($category->id === $cat->id) -selected @endif">
-                    <a href="/category/{{ $cat->slug }}" class="btn" data-category="news">{{ $cat->title }}</a>
-                </li>
-            @endforeach
-        </ul>
-    </div>
-    <div class="blog-articles">
-        <div class="site-container blog-articles__container" id="blog-articles">
-            @foreach($category->articles as $key => $article)
-            <div class="blog-index-article">
-                <a class="blog-index-article__img" href="/article/{{ $article->slug }}">
-                    <img src="{{ $article->image }}" alt="" width="380" height="267">
-                </a>
+    <div class="cont">
+        <article class="main-column">
 
-                <div class="blog-index-article__inner">
-                    <h2 class="heading h1 caps">
-                        <a href="/article/{{ $article->slug }}">{{ $article->title }}</a>
-                    </h2>
+            <header class="article-header">
+              <h1> Can I book PACK45 workouts?</h1>
+            </header>
 
-                    <time class="blog-index-article__date">{{ $article->created_at->format('d.m.Y') }}</time>
-                </div>
+            <div class="article-body markdown">
+              <p>Nope, you don't need to book PACK45 Workouts. Simply turn up 15 mins before it starts to guarantee your place.</p>
             </div>
+
+            <div class="article-attachments">
+              <ul class="attachments">
+                
+              </ul>
+            </div>
+
+            <footer class="article-footer">
+              
+                <div class="article-vote">
+                  <span class="article-vote-question">Was this article helpful?</span>
+                  <div class="article-vote-controls">
+                    <a class="article-vote-up" data-auth-action="signin" aria-selected="false" role="button" rel="nofollow" title="Yes" href="/hc/en-gb/signin?return_to=https%3A%2F%2Feasygym.zendesk.com%2Fhc%2Fen-gb%2Farticles%2F207938585-Can-I-book-PACK45-workouts-"></a>
+                    <a class="article-vote-down" data-auth-action="signin" aria-selected="false" role="button" rel="nofollow" title="No" href="/hc/en-gb/signin?return_to=https%3A%2F%2Feasygym.zendesk.com%2Fhc%2Fen-gb%2Farticles%2F207938585-Can-I-book-PACK45-workouts-"></a>
+                  </div>
+                  <small class="article-vote-count">
+                    <span class="article-vote-label">1 out of 1 found this helpful</span>
+                  </small>
+                </div>
+              
+              
+          <ul class="share">
+            <li><a href="https://www.facebook.com/share.php?title=Can+I+book+PACK45+workouts%3F&amp;u=https%3A%2F%2Feasygym.zendesk.com%2Fhc%2Fen-gb%2Farticles%2F207938585-Can-I-book-PACK45-workouts-" class="share-facebook">Facebook</a></li>
+            <li><a href="https://twitter.com/share?lang=en&amp;text=Can+I+book+PACK45+workouts%3F&amp;url=https%3A%2F%2Feasygym.zendesk.com%2Fhc%2Fen-gb%2Farticles%2F207938585-Can-I-book-PACK45-workouts-" class="share-twitter">Twitter</a></li>
+            <li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;source=easyGym&amp;title=Can+I+book+PACK45+workouts%3F&amp;url=https%3A%2F%2Feasygym.zendesk.com%2Fhc%2Fen-gb%2Farticles%2F207938585-Can-I-book-PACK45-workouts-" class="share-linkedin">LinkedIn</a></li>
+          </ul>
+
+
+            </footer>
+
+            <div class="article-more-questions">
+              Have more questions? <a href="/hc/en-gb/requests/new">Submit a request</a>
+            </div>
+
+        </article>
+
+        <aside class="article-sidebar side-column">
+            <section class="recent-articles"><h3 class="recent-articles-title">Recently viewed articles</h3><ul><li><a href="/hc/en-gb/articles/207938785-Are-there-showers-">Are there showers?</a></li><li><a href="/hc/en-gb/articles/203418232-What-are-the-opening-times-">What are the opening times?</a></li><li><a href="/hc/en-gb/articles/203417562-Is-there-parking-available-">Is there parking available?</a></li><li><a href="/hc/en-gb/articles/203750262-Can-I-use-chalk-including-liquid-chalk-in-the-gym-">Can I use chalk including liquid chalk in the gym?</a></li><li><a href="/hc/en-gb/articles/207938395-What-are-the-shower-facilities-like-">What are the shower facilities like?</a></li></ul></section>
+            
+          <section class="related-articles">
+            
+              <h3 class="related-articles-title">Related articles</h3>
+            
+            <ul>
+              
+                <li>
+                  <a href="/hc/en-gb/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGkES%2BRkDDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGkEGeRkDDoLbG9jYWxlSSIKZW4tZ2IGOgZFVDoIdXJsSSI4L2hjL2VuLWdiL2FydGljbGVzLzIwNzkzODYzNS1Ib3ctbXVjaC1kb2VzLWl0LWNvc3QtBjsIVDoJcmFua2kG--937e1736b1c0d1212615ae62853aafbcdae4ad9b" rel="nofollow">How much does it cost?</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-gb/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGkEHwZaDDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGkEGeRkDDoLbG9jYWxlSSIKZW4tZ2IGOgZFVDoIdXJsSSI7L2hjL2VuLWdiL2FydGljbGVzLzIwNzIyNjM5OS1XaGVuLWFyZS1QQUNLNDUtd29ya291dHMtBjsIVDoJcmFua2kH--bd07f3e9895e702253f3a8c67ececed1bef017f2" rel="nofollow">When are PACK45 workouts?</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-gb/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGkEW%2BNkDDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGkEGeRkDDoLbG9jYWxlSSIKZW4tZ2IGOgZFVDoIdXJsSSJGL2hjL2VuLWdiL2FydGljbGVzLzIwNzkzODM5NS1XaGF0LWFyZS10aGUtc2hvd2VyLWZhY2lsaXRpZXMtbGlrZS0GOwhUOglyYW5raQg%3D--b3ea348b6b583be2870099f7447f2b6d31717405" rel="nofollow">What are the shower facilities like?</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-gb/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGkEeOofDDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGkEGeRkDDoLbG9jYWxlSSIKZW4tZ2IGOgZFVDoIdXJsSSI9L2hjL2VuLWdiL2FydGljbGVzLzIwMzQxODIzMi1XaGF0LWFyZS10aGUtb3BlbmluZy10aW1lcy0GOwhUOglyYW5raQk%3D--3d8e25d59133f08056087b254dec2baabbc788b1" rel="nofollow">What are the opening times?</a>
+                </li>
+              
+                <li>
+                  <a href="/hc/en-gb/related/click?data=BAh7CjobZGVzdGluYXRpb25fYXJ0aWNsZV9pZGkE4yYiDDoYcmVmZXJyZXJfYXJ0aWNsZV9pZGkEGeRkDDoLbG9jYWxlSSIKZW4tZ2IGOgZFVDoIdXJsSSJYL2hjL2VuLWdiL2FydGljbGVzLzIwMzU2NDc3MS1JbnRyb2R1Y3Rpb24tdG8tSElJVC1IaWdoLUludGVuc2l0eS1JbnRlcnZhbC1UcmFpbmluZy0GOwhUOglyYW5raQo%3D--731cbf623bb1115a16cccc4210551e34e79928aa" rel="nofollow">Introduction to HIIT (High Intensity Interval Training) </a>
+                </li>
+              
+            </ul>
+          </section>
+
+
+          </aside>
+    </div>
+
+    <section class="site-section -blog-grey-bg">
+    <div class="blog-articles">
+
+        <div class="listQA">
+            @foreach($category->articles as $key => $article)
+                <a class="titleQA" href="/article/{{ $article->slug }}">
+                    <h3>{{ $article->title }}</h3>
+                </a>
             @endforeach
         </div>
     </div>
@@ -76,9 +137,10 @@
 
 @section('css')
     @parent
-
+    <link href="{{ asset('gym/css/faqs.css') }}" rel="stylesheet">
     <style type="text/css">
         #blog-articles { margin-bottom: 100px; }
+        
     </style>
 @endsection
 @section('js')

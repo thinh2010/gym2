@@ -95,62 +95,62 @@
 
 @section('css')
     @parent
-  <link href="{{ asset('gym/fullcalendar/packages/core/main.css') }}" rel="stylesheet">
-  <link href="{{ asset('gym/fullcalendar/packages/daygrid/main.css') }}" rel="stylesheet">
-  <style type="text/css">
-    .row {
-        text-align: center;
-        font-weight: bold;
-        font-size: 50px;
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        color: #be202f;
-    }
-    .col {
-        flex-basis: 0;
-        flex-grow: 1;
-        max-width: 100%;
-    }
-    p.schedule-day {
-        font-weight: normal;
-        color: #000;
-    }
-    .schedule-list {
-        display: none;
-    }
-    .schedule {
-        background: #fff;
-        border-top: solid 3px #bb434f;
-        border-bottom: solid 3px #bb434f;
-        border-left: solid 1px #bb434f;
-        border-right: solid 1px #bb434f;
-        padding: 5px 0 5px 5px;
-        height: 120px;
-        cursor: pointer;
-    }
-    .schedule p {
-        margin-bottom: 0px;
-        font-weight: normal;
-    }
-    .schedule .class-name {
-        font-size: 14px;
-        color: #000;
-        font-weight: bold
-    }
-    .class-name {
-        margin-top: 10px;
-        text-transform: uppercase;
-    }
-    .schedule .class-time {
-        font-size: 15px;
-        color: #333;
-    }
-    .schedule .trainer-name, .schedule .studio {
-        font-size: 13px;
-        color: #333;
-    }
-  </style>
+    <link href="{{ asset('gym/fullcalendar/packages/core/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('gym/fullcalendar/packages/daygrid/main.css') }}" rel="stylesheet">
+    <style type="text/css">
+        .row {
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            color: #be202f;
+        }
+        .col {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        p.schedule-day {
+            font-weight: normal;
+            color: #000;
+        }
+        .schedule-list {
+            display: none;
+        }
+        .schedule {
+            background: #fff;
+            border-top: solid 3px #bb434f;
+            border-bottom: solid 3px #bb434f;
+            border-left: solid 1px #bb434f;
+            border-right: solid 1px #bb434f;
+            padding: 5px 0 5px 5px;
+            height: 120px;
+            cursor: pointer;
+        }
+        .schedule p {
+            margin-bottom: 0px;
+            font-weight: normal;
+        }
+        .schedule .class-name {
+            font-size: 14px;
+            color: #000;
+            font-weight: bold
+        }
+        .class-name {
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+        .schedule .class-time {
+            font-size: 15px;
+            color: #333;
+        }
+        .schedule .trainer-name, .schedule .studio {
+            font-size: 13px;
+            color: #333;
+        }
+    </style>
 @endsection
 
 @section('js')
