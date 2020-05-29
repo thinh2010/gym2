@@ -5551,7 +5551,6 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
   border: 1px solid #dcdcdc;
   border-radius: 5px;
   margin-bottom: 10px;
-  text-align: center
 }
 
 .faq__item.-is-active .faq__title:after {
@@ -5565,7 +5564,6 @@ div.select-theme-easygym.select-element-attached-bottom .select-content {
 
 .faq__title {
   color: #be202f;
-  text-transform: uppercase;
   font-size: 1.3125rem;
   padding: 20px 0;
   margin: 0 50px;
