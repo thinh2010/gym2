@@ -8,7 +8,7 @@
     <script type="text/javascript">
         var base = '/'; var siteName = 'vGym';
     </script>
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/gym/img/icon.jpg" />
 
     <script type="text/javascript" src="/gym/js/jquery.js"></script>
     <script type="text/javascript" src="/gym/js/error.js"></script>
