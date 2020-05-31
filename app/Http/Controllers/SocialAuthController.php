@@ -16,8 +16,12 @@ class SocialAuthController extends FController
         return Socialite::driver($social)->redirect();
     }
 
-    public function callback($social)
+    public function callback(Request $request, $social)
     {
+        $error = $request->query('error_code', '');
+        if ($error != '') {
+            return redirect()->to('/');
+        }
         $providerUser = Socialite::driver($social)->user();
         $user = SocialAccountService::getUser($providerUser, $social);
         
