@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
+use Carbon\Carbon;
+use App\Services\SocialAccountService;
 
 class RegisterController extends FController
 {
@@ -52,7 +54,8 @@ class RegisterController extends FController
     {
         return Validator::make($data, [
             'phone' => ['required', 'string', 'max:255', 'unique:users'],
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'gender' => ['required', 'string', 'max:255'],
             'birthdate' => ['required', 'string', 'max:255'],
@@ -68,13 +71,19 @@ class RegisterController extends FController
      */
     protected function create(array $data)
     {
-        return User::create([
-            'phone' => $data['phone'],
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'birthdate' => $data['birthdate'],
-            'gender' => $data['gender'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        if (isset($data['provider_user_id']) && $data['provider_user_id'] != '') {
+            return SocialAccountService::createAccountAndUser($data);
+        } else {
+            return User::create([
+                'phone' => $data['phone'],
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'birthdate' => new Carbon($data['birthdate']),
+                'gender' => $data['gender'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
     }
 }

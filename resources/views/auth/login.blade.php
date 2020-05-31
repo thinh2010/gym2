@@ -32,6 +32,12 @@
             <button type="submit" class="btn btn-primary" id="btnPg00">
                 Đăng nhập
             </button>
+
+            <div class="line"></div>
+
+            <a href="/redirect/facebook" class="btn btn-fb">
+                Đăng nhập bằng Facebook
+            </a>
         </div>
     </form>
 

@@ -111,7 +111,7 @@
             </ul> -->
             <div class="site-footer__baseline">
                 <hr class="hr" />
-                <p>© 2020 vGym. <a href="/page/policy">Privacy Policy</a> | <a href="/page/gym-rules">Gym
+                <p>© 2020 VGym. <a href="/page/policy">Privacy Policy</a> | <a href="/page/gym-rules">Gym
                         Rules</a> | <a href="/page/terms-and-conditions">Terms and Conditions</a></p>
             </div>
         </div>
@@ -119,17 +119,6 @@
 
     @section('js')
     @show
-
-    <div class="overlay">
-        <div class="opening-soon-video-overlay js-opening-soon-video"></div>
-        <div class="newsletter-confirm">
-            <i class="svg-tick">Tick icon</i>
-            <hr class="hr" />
-            <h2 class="heading -alpha">Great!</h2>
-            <p>Thanks for registering your email.</p> <a href="javascript:;"
-                class="js-close-modal newsletter-confirm__close"></a>
-        </div>
-    </div>
 </body>
 
 

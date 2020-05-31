@@ -47,7 +47,7 @@ body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-fami
 .postCode { font-size:18px; }
 #gyms {display:flex; justify-content: space-between; width:600px; ;}
 .btnDiv {margin-top:30px; margin-bottom:100px; color:white; }
-.btn {color: #fff;cursor: pointer;display:block; background-color:#be202f;; text-align:center; border-radius:15px; margin:auto; padding: 10px 15px 10px 15px; box-shadow: 2px 4px 4px rgba(0, 0, 0, .6)}
+.btn {color: #fff;cursor: pointer;display:block; background-color:#be202f;; text-align:center; margin:auto; padding: 10px 15px 10px 15px; border: none;}
 .btn:active {opacity:0.4; box-shadow:none; }
 
 /*pg00*/
@@ -55,8 +55,8 @@ body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-fami
 .subTitle {font-size:32px; margin:50px auto; }
 #gov { font-size:20px;}
 #below {font-weight:600; margin-bottom:30px; margin-top:90px;text-align: center;}
-.egInput, #formGender, #dobDiv, #startDateDiv, .paymentBox {background: rgba(255,255,255,.1); border: none; border-bottom:1px solid #be202f;; border-radius: 2px;
-	font-size: 20px; margin-bottom:30px; outline: 0; padding: 30px 20px 10px 20px; width: 100%;
+.egInput, #formGender, #dobDiv, #startDateDiv, .paymentBox {background: rgba(255,255,255,.1); border:1px solid aliceblue;; border-radius: 2px;
+	font-size: 20px; margin-bottom:30px; outline: 0; padding: 20px; width: 100%;
 	box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; background-color: #e8eeef;
 	color:black; -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset; }
 ::placeholder { color:#969696; font-style:italic;}
@@ -99,3 +99,12 @@ body, html, div, span, h1, h2, h3, h4, h5, h6, p, span, input, label { font-fami
 
 .w100 { width: 100%; }
 .w50 { width: 50%; float: left; }
+.line {
+    background: #bb434f;
+    width: 50%;
+    margin: 20px auto;
+    height: 1px;
+}
+.btn-fb {
+    background: #4267b2;
+}

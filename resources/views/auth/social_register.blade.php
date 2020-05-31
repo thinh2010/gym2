@@ -3,9 +3,12 @@
 @section('content')
 <section class="site-section -blog-grey-bg">
     <div class="subTitle" id="below"> Đăng ký thành viên mới </div>
+    <p class="intro">Chúng tôi cần thêm một số thông tin cơ bản để hoàn thành việc đăng ký thành viên mới</p>
 
     <form method="POST" class="vgForm" action="{{ route('register') }}">
         @csrf
+
+        <span class="invalid-feedback message-error" role="alert"></span>
 
         <div class="flex-grid">
             <div class="col">
@@ -86,21 +89,14 @@
             </div>
         </div>
 
+        <input type="hidden" name="provider_user_id" value="{{ $providerUserId }}" />
+        <input type="hidden" name="provider" value="{{ $provider }}" />
+
         <div class="btnDiv">
             <button type="submit" class="btn btn-primary" id="btnPg00">
                 Đăng ký và mua gói tập
             </button>
-
-            <div class="line"></div>
-
-            <a href="/redirect/facebook" class="btn btn-fb">
-                Đăng ký bằng Facebook
-            </a>
         </div>
-
-        @if($errors->any())
-            {{ implode('', $errors->all('<div>:message</div>')) }}
-        @endif
     </form>
 
 </section> <!--site-section -blog-grey-bg-->
@@ -110,6 +106,17 @@
     @parent
     <link href="{{ asset('gym/css/login.css') }}" rel="stylesheet">
     <style type="text/css">
+        .message-error { display: none }
+        .invalid-feedback {
+            background: #bb434f;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .intro {
+            margin: 10px 0;
+            text-align: center;
+        }
     </style>
 @endsection
 
@@ -119,6 +126,66 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#birthdate").inputmask({alias:"datetime", inputFormat: "dd/mm/yyyy"});
+
+            $('.vgForm').on('submit', function(e) {
+                var email = $('#email').val();
+                var first_name = $('#first_name').val();
+                var last_name = $('#last_name').val();
+                var phone = $('#phone').val();
+                var birthdate = $('#birthdate').val();
+                var password = $('#password').val();
+                var password_confirm = $('#password-confirm').val();
+                var error = false;
+
+                if (email == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền email!';
+                }
+
+                if (first_name == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền tên!';
+                }
+
+                if (last_name == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền họ!';
+                }
+
+                if (phone == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền số điện thoại!';
+                }
+
+                if (birthdate == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền ngày sinh!';
+                }
+
+                if (password == '') {
+                    error = true;
+                    msg = 'Xin vui lòng điền mật khẩu!';
+                }
+
+                if (password.length < 8) {
+                    error = true;
+                    msg = 'Mật khẩu cần nhiều hơn 8 ký tự!';
+                }
+
+                if (password != password_confirm) {
+                    error = true;
+                    msg = 'Mật khẩu xác nhận không chính xác, vui lòng nhập lại';
+                }
+
+                if (error) {
+                    e.preventDefault();
+                    $('.message-error').html(msg).css({display: 'block'});
+                } else {
+                    $(this).submit();
+                }
+            })
         })
+
+
     </script>
 @endsection

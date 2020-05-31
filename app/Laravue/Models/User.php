@@ -84,4 +84,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function getNameAttribute() {
+        return "{$this->last_name} {$this->first_name}";
+    }
 }

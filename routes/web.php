@@ -47,3 +47,8 @@ Route::get('/thanh-toan/{payment}', 'JoinController@paymentResult')->name('payme
 Route::group(['middleware' => 'web'], function() {
     Route::get('/admin/{any?}', 'Admin\IndexController@index')->where('any', '.*')->name('admin');
 });
+
+
+//social login
+Route::get('/redirect/{social}', 'SocialAuthController@redirect');
+Route::get('/callback/{social}', 'SocialAuthController@callback');

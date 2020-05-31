@@ -35,7 +35,7 @@
                 <li class="nav__item">
                     <a href="/profile"
                         class="nav__link -desktop vertical-align-children">
-                        <span class="nav-header__title">Hi {{ Auth::user()->name }}</span>
+                        <span class="nav-header__title">Hi {{ Auth::user()->getNameAttribute() }}</span>
                     </a>
                 </li>
                 <li class="nav__item">
