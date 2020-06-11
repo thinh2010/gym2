@@ -10,16 +10,22 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use App\Services\PerfectGymService;
 
 class FController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    /**
+     * MetaInterface
+     */
     protected $meta;
 
-    protected $baseUrl = 'https://vgym.perfectgym.com/Api/v2/';
-    protected $urlV1 = 'https://vgym.perfectgym.com/Api/';
+    /**
+     * PerfectGymService
+     */
+    protected $pg;
 
-    public function __construct(MetaInterface $meta) 
+    public function __construct(MetaInterface $meta, PerfectGymService $pg) 
     {
         // Fetch the Site Settings object
         $site_settings = Setting::first();
@@ -28,7 +34,7 @@ class FController extends BaseController
         $this->meta->setTitle($site_settings->meta_title)
                     ->setKeywords($site_settings->meta_keyword)
                     ->setDescription($site_settings->meta_description);
-
+        $this->pg = $pg;
     }
 
     public function getInstance() {
@@ -38,62 +44,28 @@ class FController extends BaseController
         ]);
     }
 
-    public function testApi() {
-        $client = $this->getInstance();
-
-        // $response = $client->get($baseUrl . 'odata/CLubs/1?$expand=availablePaymentPlans');
-        $response = $client->get($this->baseUrl . 'odata/Classes?$filter=clubId eq 1');
-        dd($response->json());
-
-    }
-
     public function getClubs() {
-        $client = $this->getInstance();
-        $response = $client->get($this->baseUrl . 'odata/Clubs?$filter=isDeleted eq false&$expand=availablePaymentPlans');
-
-        return $response->json()['value'];
+        return $this->pg->getClubs();
     }
 
     public function getClub($id) {
-        $client = $this->getInstance();
-        $response = $client->get($this->baseUrl . 'odata/Clubs('.$id.')');
-
-        return $response->json();
+        return $this->pg->getClub($id);
     }
 
     public function getPlan($id) {
-        $client = $this->getInstance();
-        $response = $client->get($this->baseUrl . 'odata/PaymentPlans('.$id.')');
-        return $response->json();
+        return $this->pg->getPlan($id);
     }
 
     public function checkDiscount($code, $planId, $clubId) {
-        $client = $this->getInstance();
-
-        $discounts = $client->get($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
-        dd($discounts);
+        return $this->pg->checkDiscount($code, $planId, $clubId);
     }
 
     public function getDiscounts($clubId, $planId) {
-        $client = $this->getInstance();
-
-        $discounts = $client->get($this->urlV1 . 'Discounts/Discounts?paymentPlanId=' . $planId . '&clubId=' . $clubId);
-        return $discounts->json()['elements'];
+        return $this->pg->getDiscounts($clubId, $planId);
     }
 
     public function calcTotalPrice($planId, $discountId) {
-        $client = $this->getInstance();
-
-        if ($discountId == null) {
-            $plan = $this->getPlan($planId);
-            $totalPrice = $plan['membershipFee']['gross'] + $plan['joiningFee']['gross'] + $plan['adminFee']['gross'];
-        } else {
-            $response = $client->get($this->urlV1 . 'Discounts/DiscountedFees?paymentPlanId=' . $planId . '&discountIds=' . $discountId);
-            $prices = $response->json()['elements'][0];
-            $totalPrice = $prices['membershipFee']['gross'] + $prices['joiningFee']['gross'] + $prices['administarationFee']['gross'];
-        }
-
-        return $totalPrice;
+        return $this->pg->calcTotalPrice($planId, $discountId);
     }
 
     protected function setMeta($entity) {

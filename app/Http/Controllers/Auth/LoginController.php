@@ -6,6 +6,7 @@ use App\Http\Controllers\FController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
+use App\Services\PerfectGymService;
 
 class LoginController extends FController
 {
@@ -34,9 +35,9 @@ class LoginController extends FController
      *
      * @return void
      */
-    public function __construct(MetaInterface $meta)
+    public function __construct(MetaInterface $meta, PerfectGymService $pg)
     {
-        parent::__construct($meta);
+        parent::__construct($meta, $pg);
         $this->middleware('guest')->except('logout');
     }
 

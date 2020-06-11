@@ -26,30 +26,32 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('roles/{role}/permissions', 'Api\RoleController@permissions')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
     Route::apiResource('permissions', 'Api\PermissionController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
 
-    Route::apiResource('pages', 'Api\PageController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('pages', 'Api\PageController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
     Route::put('/pages/{page}/addBlock/{block}', 'Api\PageController@addBlock')->name('add_block');
     Route::post('/pages/{page}/update_block_order', 'Api\PageController@updateBlockOrder')->name('update_block_order');
     Route::delete('/pages/{page}/block/{block}', 'Api\PageController@removeBlock')->name('remove_block');
-    Route::post('/pages/{id}/edit', 'Api\PageController@update')->name('pageUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/pages/{id}/edit', 'Api\PageController@update')->name('pageUpdate')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
 
-    Route::apiResource('blocks', 'Api\BlockController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('blocks', 'Api\BlockController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
 
-    Route::post('/blocks/{id}/edit', 'Api\BlockController@update')->name('postUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
-    Route::get('/enabled_blocks', 'Api\BlockController@enabledBlocks')->name('enabled_blocks')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/blocks/{id}/edit', 'Api\BlockController@update')->name('postUpdate')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::get('/enabled_blocks', 'Api\BlockController@enabledBlocks')->name('enabled_blocks')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
     Route::post('/blocks/update_order', 'Api\BlockController@updateOrder')->name('update_order');
 
     // block contents
-    Route::apiResource('block_contents', 'Api\BlockContentController')->only(['show', 'destroy'])->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('block_contents', 'Api\BlockContentController')->only(['show', 'destroy'])->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
 
-    Route::post('/blocks/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
-    Route::post('/block_contents/{id}/edit', 'Api\BlockContentController@update')->name('update_block_content')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::post('/blocks/{id}/block_contents', 'Api\BlockContentController@store')->name('store_block_content')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::post('/block_contents/{id}/edit', 'Api\BlockContentController@update')->name('update_block_content')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
     Route::post('/block_contents/update_order', 'Api\BlockContentController@updateOrder')->name('update_order');
 
-    Route::apiResource('categories', 'Api\CategoryController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
-    Route::post('/categories/{id}/edit', 'Api\CategoryController@update')->name('postCategoryUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('categories', 'Api\CategoryController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::post('/categories/{id}/edit', 'Api\CategoryController@update')->name('postCategoryUpdate')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
 
-    Route::apiResource('articles', 'Api\ArticleController')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
-    Route::post('/articles/{id}/edit', 'Api\ArticleController@update')->name('postArticleUpdate')->middleware('permission:' . \App\Laravue\Acl::PERMISSION_PERMISSION_MANAGE);
+    Route::apiResource('articles', 'Api\ArticleController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::post('/articles/{id}/edit', 'Api\ArticleController@update')->name('postArticleUpdate')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+
+    Route::apiResource('menus', 'Api\MenuController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
     
 
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {

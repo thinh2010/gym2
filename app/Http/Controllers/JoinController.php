@@ -58,24 +58,21 @@ class JoinController extends FController
             'user_id' => Auth::user()->id,
         ]);
 
-        // $payment->user()->associate(Auth::user());
-
-        // $payment->save();
-
         $onePayUrl = 'https://mtf.onepay.vn/paygate/vpcpay.op';
         $params['vpc_AccessCode'] = config('onepay.access_code');
         $params['vpc_Amount'] = $price*100;
         $params['vpc_Command'] = 'pay';
         $params['vpc_Currency'] = 'VND';
         $params['vpc_Locale'] = 'vn';
-        $params['vpc_MerchTxnRef'] = 'vgym1p' . rand(7,7) . $payment->id; // ma giao dich
+        $params['vpc_MerchTxnRef'] = 'vgym1p' . rand(0,999999) . $payment->id; // ma giao dich
         $params['vpc_Merchant'] = config('onepay.merchant');
-        $params['vpc_OrderInfo'] = $payment->id; // ma don hang
+        $params['vpc_OrderInfo'] = 'vgym' . rand(0,9999) . '000' . $payment->id; // ma don hang
         $params['vpc_ReturnURL'] = env('APP_URL') . '/thanh-toan/' . $payment->id;
         $params['vpc_TicketNo'] = $this->getClientId();
         $params['vpc_Version'] = 2;
 
         $hashKey = config('onepay.hashkey');
+        // dd($hashKey); 
         $hashString = $this->getSecureHash($params);
         
         // dd($hashString);
@@ -112,11 +109,22 @@ class JoinController extends FController
             $payment->save();
 
             if ($data['vpc_TxnResponseCode'] == 0) { //payment success
+                // create PG user
+                $user = auth()->user();
+                $userData = [
+                    'email' => $user->email,
+                    'homeClubId' => $payment->club_id,
+                    'birthDate' => $user->birthdate,
+                    'firstName' => $user->first_name,
+                    'lastName' => $user->last_name,
+                    'phoneNumber' => $user->phone,
+                    'sex' => $user->gender,
+                ];
+                $this->pg->createUser($userData);
                 return view('join.finish', ['payment' => $payment]);
             } else {
                 return view('join.fail', ['payment' => $payment]);
             }
-            
         }
 
         return view('join.fail', ['payment' => $payment]);

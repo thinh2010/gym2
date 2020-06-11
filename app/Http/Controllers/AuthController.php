@@ -29,10 +29,13 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials)) {
-            return response()->json(new JsonResponse([], 'login_error'), Response::HTTP_UNAUTHORIZED);
+            return response()->json(new JsonResponse([], 'Thông tin đăng nhập không chính xác'), Response::HTTP_UNAUTHORIZED);
         }
 
         $user = $request->user();
+        if ( !$user->hasRole(\App\Laravue\Acl::ROLE_ADMIN)) {
+            return response()->json(new JsonResponse([], 'Không được quyền truy cập'), Response::HTTP_UNAUTHORIZED);
+        }
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         $token->save();

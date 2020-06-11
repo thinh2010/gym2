@@ -21,6 +21,7 @@ export default {
     faqArticles: 'Faq article',
     addFaqArticle: 'Add new Faq article',
     editFaqArticle: 'Edit Faq article',
+    menu: 'Menu',
     settings: 'Settings',
     dashboard: 'Dashboard',
     introduction: 'Introduction',
@@ -92,6 +93,9 @@ export default {
     administrator: 'Administrator',
     users: 'Users',
     userProfile: 'User Profile',
+  },
+  menu: {
+    add_new: 'Add new menu',
   },
   navbar: {
     logOut: 'Log Out',

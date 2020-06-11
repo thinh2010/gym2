@@ -296,19 +296,6 @@ export const asyncRoutes = [
   },
   // adminRoutes,
   {
-    path: '/settings',
-    component: Layout,
-    redirect: '/settings/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/settings/Form'),
-        name: 'Settings',
-        meta: { title: 'settings', icon: 'admin', noCache: false },
-      },
-    ],
-  },
-  {
     path: '/users',
     component: Layout,
     redirect: '/users/index',
@@ -326,11 +313,44 @@ export const asyncRoutes = [
         meta: { title: 'userProfile', noCache: true, permissions: ['manage user'] },
         hidden: true,
       },
+    ],
+  },
+  {
+    path: '/menu',
+    component: Layout,
+    redirect: '/menu/index',
+    children: [
       {
-        path: 'roles',
+        path: 'index',
+        component: () => import('@/views/menu/Index'),
+        name: 'MenuIndex',
+        meta: { title: 'menu', icon: 'tree-table', permissions: ['manage menu'] },
+      },
+    ],
+  },
+  {
+    path: '/roles',
+    component: Layout,
+    redirect: '/roles/index',
+    children: [
+      {
+        path: 'index',
         component: () => import('@/views/role-permission/List'),
         name: 'RoleList',
         meta: { title: 'rolePermission', icon: 'role', permissions: ['manage permission'] },
+      },
+    ],
+  },
+  {
+    path: '/settings',
+    component: Layout,
+    redirect: '/settings/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/settings/Form'),
+        name: 'Settings',
+        meta: { title: 'settings', icon: 'admin', noCache: false },
       },
     ],
   },

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Carbon\Carbon;
 use App\Services\SocialAccountService;
+use App\Services\PerfectGymService;
 
 class RegisterController extends FController
 {
@@ -38,9 +39,9 @@ class RegisterController extends FController
      *
      * @return void
      */
-    public function __construct(MetaInterface $meta)
+    public function __construct(MetaInterface $meta, PerfectGymService $pg)
     {
-        parent::__construct($meta);
+        parent::__construct($meta, $pg);
         $this->middleware('guest');
     }
 
@@ -71,7 +72,6 @@ class RegisterController extends FController
      */
     protected function create(array $data)
     {
-
         if (isset($data['provider_user_id']) && $data['provider_user_id'] != '') {
             return SocialAccountService::createAccountAndUser($data);
         } else {

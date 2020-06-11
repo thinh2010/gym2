@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@raynguyen.net',
-            'password' => Hash::make('gymgym@123'),
+            'password' => Hash::mpake('gymgym@123'),
         ]);
         $manager = User::create([
             'name' => 'Manager',
@@ -50,8 +50,9 @@ class DatabaseSeeder extends Seeder
         $editor->syncRoles($editorRole);
         $user->syncRoles($userRole);
         $visitor->syncRoles($visitorRole);
-        $this->call(UsersTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(SettingSeeder::class);
+        $this->call(MenuSeeder::class);
     }
 }

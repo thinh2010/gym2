@@ -1,0 +1,61 @@
+<template>
+  <div class="app-container">
+    <el-row type="flex" class="row-bg">
+      <el-col :span="12">
+        <el-form :inline="true">
+          <el-form-item label="Menu">
+            <el-input v-model="newMenu" placeholder="Menu" />
+          </el-form-item>
+          <el-form-item>
+            <el-button icon="el-icon-plus" type="primary" @click="addNewMenu">{{ $t('menu.add_new') }}</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+    <el-tabs v-model="activeName" v-loading="loading" style="margin-top:15px;" type="card" closable @edit="handleTabsEdit">
+      <el-tab-pane v-for="item in menuTabs" :key="item.key" :label="item.title" :name="item.key">
+        {{ activeName }}
+      </el-tab-pane>
+    </el-tabs>
+  </div>
+</template>
+
+<script>
+import Resource from '@/api/resource';
+
+const menuApi = new Resource('menus');
+export default {
+  name: 'MenuIndex',
+  data() {
+    return {
+      loading: false,
+      menuTabs: [],
+      activeName: 'main_menu',
+      newMenu: '',
+    };
+  },
+  created() {
+    this.getList();
+  },
+  methods: {
+    async getList() {
+      this.loading = true;
+      const { data } = await menuApi.list();
+      this.menuTabs = data;
+      this.loading = false;
+    },
+    async addNewMenu() {
+      await menuApi.store({
+        title: this.newMenu,
+        key: this.newMenu.toLowerCase().split(' ').join('_'),
+      });
+      this.getList();
+      this.newMenu = '';
+    },
+    async handleTabsEdit(targetName, action) {
+      alert(targetName);
+      alert(action);
+    },
+  },
+};
+</script>

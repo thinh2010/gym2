@@ -9,6 +9,8 @@ class Payment extends Model
     protected $fillable = [
         'id',
         'plan_id',
+        'club_id',
+        'discount_id',
         'plan_name',
         'description',
         'price',
