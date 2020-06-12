@@ -16,6 +16,9 @@
                         <h3>{{ $category->title }}</h3>
                     </a>
                 @endforeach
+                <a class="titleQA" href="/lien-he">
+                    <h3>Gửi câu hỏi</h3>
+                </a>
             </div>
         </div>
     </section>

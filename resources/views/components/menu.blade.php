@@ -225,7 +225,7 @@
                 </a>
             </li>
             <li class="nav__item -hecto -menu">
-                <a href="#" data-letters="Liên hệ">
+                <a href="/lien-he" data-letters="Liên hệ">
                     <span>Liên hệ</span>
                 </a>
             </li>

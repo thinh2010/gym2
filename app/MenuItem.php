@@ -3,17 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 
-class Menu extends Model
+class MenuItem extends Model
 {
+    use NodeTrait;
+
     protected $fillable = [
         'id',
+        'type',
         'title',
-        'key',
+        'target_id',
+        'link'
     ];
-
-    public function getRouteKeyName()
-    {
-        return 'key';
-    }
 }

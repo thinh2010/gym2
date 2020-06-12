@@ -87,12 +87,16 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Item  $item
+     * @param  Menu  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $item)
+    public function destroy(Menu $menu)
     {
-        $item->delete();
+        try {
+            $menu->delete();
+        } catch(Exception $e) {
+            dd($e->getMessages());
+        }
 
         return response()->json(['message' => 'success']);
     }

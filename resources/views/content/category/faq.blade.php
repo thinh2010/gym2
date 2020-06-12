@@ -32,6 +32,7 @@
                     @foreach ($categories as $key => $category)
                         <li><a href="/category/{{ $category->slug }}">{{ $category->title }}</a></li>
                     @endforeach
+                    <li><a target="_blank" href="/lien-he">Gửi câu hỏi</a></li>
                 </ul>
             </section>
           </aside>
