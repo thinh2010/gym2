@@ -9,6 +9,7 @@ export const TYPE_FILE = 'File';
 export const TYPE_TEXT = 'Text';
 export const TYPE_CLUB_MAP = 'ClubMap';
 export const TYPE_HEADING = 'Heading';
+export const TYPE_SLIDESHOW = 'Slideshow';
 export const TYPE_UNDER_HEADING = 'UnderHeading';
 export const TYPE_CLASSES = 'Classes';
 export const TYPE_CLASS_HEADING = 'ClassHeading';
@@ -29,6 +30,7 @@ export const BLOCK_TYPES = [
   { value: TYPE_CLASSES, label: 'Classes' },
   { value: TYPE_CLASS_HEADING, label: 'Class Heading' },
   { value: TYPE_CLUB_MAP, label: 'Map of clubs' },
+  { value: TYPE_SLIDESHOW, label: 'Slideshow' },
   { value: TYPE_INFO, label: 'Information' },
   { value: TYPE_PAGE_HEADING, label: 'Page heading' },
   { value: TYPE_ITEM_ODDS, label: 'Item Odds' },
@@ -123,6 +125,17 @@ customOptions[TYPE_CLASSES] = [
     'type': 'text',
     'label': 'Button',
     'placeholder': 'Text cho button',
+  },
+];
+
+customOptions[TYPE_SLIDESHOW] = [
+  {
+    'name': 'width',
+    'form_name': 'options[width]',
+    'type': 'text',
+    'label': 'Chiều dài',
+    'placeholder': 'Chiều dài của slide',
+    'defaultValue': 1200,
   },
 ];
 

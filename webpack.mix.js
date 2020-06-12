@@ -42,6 +42,7 @@ mix
   .copy('resources/frontend/css/svg.css', 'public/gym/css')
   .copy('resources/frontend/css/login.css', 'public/gym/css')
   .copy('resources/frontend/css/faqs.css', 'public/gym/css')
+  .copy('resources/frontend/css/bxslider.css', 'public/gym/css')
   .copy('resources/frontend/js/main.js', 'public/gym/js')
   .copy('resources/frontend/js/jquery.js', 'public/gym/js')
   .copy('resources/frontend/js/error.js', 'public/gym/js')

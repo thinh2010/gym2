@@ -20,9 +20,6 @@
       <link href="{{ asset('gym/css/main.css') }}" rel="stylesheet">
     @show
     
-    <meta property="fb:admins" content="799377696" />
-    <meta property="fb:app_id" content="1011327512217988" />
-    <meta property="fb:pages" content="215168371844812" />
     <meta property="og:site_name" content="vGym" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Low Cost Gym | No Contract | Gyms Near Me - vGym" />
