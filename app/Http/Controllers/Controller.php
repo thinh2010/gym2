@@ -11,8 +11,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    function make_slug($string) {
-    	$replacement = '-';
+    function make_slug($string, $replacement = '-') {
         $map = array();
         $quotedReplacement = preg_quote($replacement, '/');
         $default = array(

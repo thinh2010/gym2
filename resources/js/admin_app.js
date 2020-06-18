@@ -24,6 +24,8 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false;
 
+window.Bus = new Vue({ name: 'Bus' });
+
 new Vue({
   el: '#app',
   router,

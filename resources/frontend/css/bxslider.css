@@ -9,6 +9,7 @@
   *zoom: 1;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
+  margin: 0 auto;
 }
 .bx-wrapper img {
   max-width: 100%;

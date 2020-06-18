@@ -13,7 +13,13 @@ class MenuItem extends Model
         'id',
         'type',
         'title',
-        'target_id',
-        'link'
+        'target',
+        'link',
+        'parent_id',
+        'menu_id',
     ];
+
+    public function menu() {
+        return $this->belongsTo('App\Menu', 'menu_id');
+    }
 }

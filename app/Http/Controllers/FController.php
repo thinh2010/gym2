@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Setting;
+use App\Menu;
 use Butschster\Head\Contracts\MetaTags\MetaInterface;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -30,6 +31,13 @@ class FController extends BaseController
         // Fetch the Site Settings object
         $site_settings = Setting::first();
         \View::share('site_settings', $site_settings);
+
+        $mainMenu = Menu::where('key', '=', 'main_menu')->with('items')->firstOrFail();
+        $footerLeftMenu = Menu::where('key', '=', 'footer_menu_left')->with('items')->firstOrFail();
+        $footerRightMenu = Menu::where('key', '=', 'footer_menu_right')->with('items')->firstOrFail();
+        \View::share('mainMenu', $mainMenu->items()->defaultOrder()->get());
+        \View::share('footerMenuLeft', $footerLeftMenu->items()->defaultOrder()->get());
+        \View::share('footerMenuRight', $footerRightMenu->items()->defaultOrder()->get());
         $this->meta = $meta;
         $this->meta->setTitle($site_settings->meta_title)
                     ->setKeywords($site_settings->meta_keyword)

@@ -35,6 +35,7 @@ class MenuController extends Controller
         ]);
 
         $data = $request->all();
+        $data['key'] = $this->make_slug($data['title'], '_');
         $item = Menu::create($data);
 
         return response()->json(['message' => 'success', 'data' => $item->jsonSerialize()]);

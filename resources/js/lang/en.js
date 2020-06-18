@@ -1,4 +1,9 @@
 export default {
+  common: {
+    back: 'Back',
+    return: 'Return',
+    cancel: 'Cancel',
+  },
   route: {
     pages: 'Pages',
     editPages: 'Edit page',
@@ -96,6 +101,7 @@ export default {
   },
   menu: {
     add_new: 'Add new menu',
+    save: 'Save',
   },
   navbar: {
     logOut: 'Log Out',

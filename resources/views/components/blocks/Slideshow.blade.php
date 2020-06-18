@@ -13,7 +13,7 @@
             $('.bxslider').bxSlider({
                 mode: 'fade',
                 captions: true,
-                slideWidth: {{ isset($block->options->width) ? $block->options->width : '1200' }}
+                slideWidth: {{ isset($block->options->width) ? $block->options->width : '1920' }}
             })
         })
     </script>

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MenuItemResource extends JsonResource
+class MenuItemDetailResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +17,10 @@ class MenuItemResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'depth' => $this->depth,
+            'type' => $this->type,
             'link' => $this->link,
-            'children' => MenuItemNodeResource::collection($this->children)
+            'target' => $this->target,
+            'parent_id' => $this->parent_id
         ];
     }
 }

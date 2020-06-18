@@ -16,7 +16,8 @@ class MenuItemNodeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'label' => $this->title,
+            'title' => $this->title,
+            'link' => $this->link,
         ];
     }
 }

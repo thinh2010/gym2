@@ -17,7 +17,7 @@ class MenuItem extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('type');
-            $table->integer('target_id');
+            $table->string('target')->nullable();
             $table->string('link');
             $table->nestedSet();
             $table->timestamps();

@@ -7,7 +7,8 @@ module.exports = {
     sourceType: 'module'
   },
   globals: {
-    _: true
+    _: true,
+    Bus: true
   },
   env: {
     browser: true,

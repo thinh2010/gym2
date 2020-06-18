@@ -4139,7 +4139,6 @@ blockquote p:after {
   font-size: 18px;
   font-size: 1.125rem;
   color: #bbb;
-  font-family: "proxima_reg";
   text-transform: uppercase
 }
 
@@ -8130,7 +8129,6 @@ a.checkerboard__item:hover:after {
   padding-top: 2px;
   padding-right: 25px;
   padding-left: 25px;
-  font-family: "proxima_reg"
 }
 
 .home-map__search .submit {
@@ -9397,7 +9395,6 @@ div.select-theme-easygym.-classes .select-content {
 
 .blog-article p {
   margin-top: 0;
-  font-family: "proxima_reg";
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -9453,7 +9450,6 @@ div.select-theme-easygym.-classes .select-content {
   color: #999;
   display: block;
   text-align: center;
-  font-family: "proxima_reg";
   margin-bottom: 0 !important
 }
 
@@ -9465,7 +9461,6 @@ div.select-theme-easygym.-classes .select-content {
   display: block;
   text-align: center;
   margin-bottom: 20px;
-  font-family: "proxima_reg"
 }
 
 @media (min-width: 1000px) {
@@ -9527,7 +9522,6 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-exercise__subtitle {
-  font-family: "proxima_reg";
   color: #be202f
 }
 
@@ -9590,7 +9584,6 @@ div.select-theme-easygym.-classes .select-content {
 }
 
 .blog-exercise__value.-type {
-  font-family: "proxima_reg";
   margin-bottom: 0
 }
 
@@ -9747,7 +9740,6 @@ div.select-theme-easygym.-classes .select-content {
 
 .blog-article__related-posts>.h1 {
   text-align: center;
-  font-family: "proxima_reg";
   margin-bottom: 40px
 }
 
@@ -11599,11 +11591,9 @@ div.select-theme-easygym.-classes .select-content {
 .partner-favourites__caption {
   margin-top: 5px;
   text-align: left;
-  font-family: "proxima_reg"
 }
 
 .partner-favourites__caption a {
-  font-family: "proxima_reg";
   color: #999
 }
 
@@ -11611,14 +11601,12 @@ div.select-theme-easygym.-classes .select-content {
   color: #be202f;
   margin-top: -5px;
   text-align: left;
-  font-family: "proxima_reg";
   font-size: 18px
 }
 
 .partner-favourites__edit-link {
   font-size: 14px;
   text-align: left;
-  font-family: "proxima_reg";
   font-size: 18px
 }
 

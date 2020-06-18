@@ -52,7 +52,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/articles/{id}/edit', 'Api\ArticleController@update')->name('postArticleUpdate')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
 
     Route::apiResource('menus', 'Api\MenuController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
-    Route::apiResource('menu_items', 'Api\MenuItemController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::apiResource('menus.items', 'Api\MenuItemController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    Route::post('/menus/{menu}/items/update_tree', 'Api\MenuItemController@updateTree')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
+    // Route::apiResource('menu_items', 'Api\MenuItemController')->middleware('role:' . \App\Laravue\Acl::ROLE_ADMIN);
     
 
     // Route::group(['prefix' => '/pages', 'as' => 'api.pages.'], function () {

@@ -16,4 +16,9 @@ class Menu extends Model
     {
         return 'key';
     }
+
+    public function items()
+    {
+        return $this->hasMany('App\MenuItem');
+    }
 }

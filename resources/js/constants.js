@@ -141,6 +141,21 @@ customOptions[TYPE_SLIDESHOW] = [
 
 export const CUSTOM_OPTIONS = customOptions;
 
+export const MENU_TYPES = [
+  {
+    label: 'Page',
+    value: 'page',
+  },
+  {
+    label: 'Content',
+    value: 'content',
+  },
+  {
+    label: 'Link',
+    value: 'link',
+  },
+];
+
 export const
   toastedSuccess = {
     icon: ' fa-check',

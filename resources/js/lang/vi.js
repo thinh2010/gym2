@@ -2,6 +2,7 @@ export default {
   common: {
     back: 'Quay lại',
     return: 'Trở về',
+    cancel: 'Hủy',
   },
   route: {
     pages: 'Trang nội dung',
@@ -98,6 +99,7 @@ export default {
   },
   menu: {
     add_new: 'Tạo menu mới',
+    save: 'Lưu',
   },
   navbar: {
     logOut: 'Đăng xuất',
