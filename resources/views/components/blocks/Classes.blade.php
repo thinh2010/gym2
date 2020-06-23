@@ -5,7 +5,7 @@
         <p>{{ $block->description }}</p>
         <a href="{{ $block->options->link }}"
             class="btn -large -frosted">
-            <span>{{ isset($block->options->button) ? $block->options->button : 'Find out more' }}</span>
+            <b>{{ isset($block->options->button) ? $block->options->button : 'Find out more' }}</b>
             <span class="svg-chevron-right -orange" data-grunticon-embed></span>
         </a>
     </div>

@@ -8785,7 +8785,6 @@ a.checkerboard__item:hover:after {
   padding-bottom: 4.5833333333%;
   text-align: center;
   background-color: #fff;
-  overflow: hidden
 }
 
 @media (min-width: 1920px) {
@@ -12087,6 +12086,7 @@ div.select-theme-easygym.-classes .select-content {
   flex: 1;
 }
 .p10 { padding: 0 10px; }
+.mt-10 { margin-top: 10px; }
 .text-center {text-align: center;}
 .select-box {
   border: 1px solid aliceblue;

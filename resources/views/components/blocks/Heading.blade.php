@@ -5,11 +5,11 @@
             <span class="home-hero-reduced-fees__tagline">{{ $block->options->slogan2 }}</span>
         </h1>
         <div class="home-hero-reduced-fees__footer">
-            <p>{{ $block->description }}</p>
+            <p><b>{{ $block->description }}</b></p>
         </div>
         @if (isset($block->options->button))
         <div class="text--center">
-            <a href="{{ isset($block->options->buttonLink) ? $block->options->buttonLink : '#' }}" class="btn -large -fill">{{ isset($block->options->button) ? $block->options->button : 'Join Now' }}</a>
+            <a href="{{ isset($block->options->buttonLink) ? $block->options->buttonLink : '#' }}" class="btn -large -fill"><b>{{ isset($block->options->button) ? $block->options->button : 'Join Now' }}</b></a>
         </div>
         @endif
     </div>

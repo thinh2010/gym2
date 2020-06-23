@@ -6,7 +6,7 @@
         <!-- Login -->
         @if (isset($block->options->button))
         <a href="{{ isset($block->options->buttonLink) ? $block->options->buttonLink : '#' }}" class="btn -large -fill">
-            <span>{{ isset($block->options->button) ? $block->options->button : 'Join Online' }}</span>
+            <b>{{ isset($block->options->button) ? $block->options->button : 'Join Online' }}</b>
             <span class="svg-chevron-right -white" data-grunticon-embed></span>
         </a>
         @endif

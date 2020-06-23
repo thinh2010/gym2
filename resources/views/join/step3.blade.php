@@ -83,7 +83,7 @@
                                                 <b>Chương trình giảm giá</b> <br />
                                                 @foreach ($discounts as $key => $discount)
                                                     <div class="discount-radio">
-                                                        <input type="radio" name="discountId" id="discount{{ $discount['id'] }}" value="{{ $discount['id'] }}" />
+                                                        <input type="radio" name="discountId" id="discount{{ $discount['id'] }}" value="{{ $discount['id'] }}" checked="" />
                                                         <label for="discount{{ $discount['id'] }}">{{ $discount['name'] }}</label>
                                                     </div>
                                                 @endforeach

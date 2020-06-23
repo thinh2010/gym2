@@ -307,7 +307,7 @@ export const asyncRoutes = [
         meta: { title: 'users', icon: 'user', permissions: ['manage user'] },
       },
       {
-        path: 'users/edit/:id(\\d+)',
+        path: 'edit/:id(\\d+)',
         component: () => import('@/views/users/Profile'),
         name: 'UserProfile',
         meta: { title: 'userProfile', noCache: true, permissions: ['manage user'] },

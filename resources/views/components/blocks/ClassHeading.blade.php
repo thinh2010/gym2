@@ -87,9 +87,9 @@
                 <div class="col" id="Saturday"></div>
                 <div class="col" id="Sunday"></div>
             </div>
-        </div>
 
-        <div id="calendar"></div>
+            <a href="/register" class="btn -large -fill mt-10">Đăng ký ngay</a>
+        </div>
     </div>
 </section>
 
@@ -118,6 +118,8 @@
         }
         .schedule-list {
             display: none;
+            min-width: 900px;
+            overflow-x: auto;
         }
         .schedule {
             background: #fff;
@@ -201,7 +203,8 @@
 
             ResetDays();
 
-            // if (timetables.length == 0) {
+            if ((moment().diff(monday, 'days') <= 7 && moment().diff(monday, 'days') >= -7) 
+                || (moment().diff(sunday1) >= -7 && moment().diff(sunday1) <= 7)) {
                 $.ajax({
                     url: '/api/other/classes',
                     type: 'POST',
@@ -212,7 +215,7 @@
                         LoadSchedule(monday, sunday1);
                     }
                 })
-            // }
+            }
             
 
             $('.monday').html(monday.format("DD/MM/YYYY"));
