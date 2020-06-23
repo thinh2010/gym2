@@ -161,7 +161,7 @@
 <script src='{{ asset('gym/js/moment.min.js') }}'></script>
     
     <script type="text/javascript">
-        var index = -1;
+        var index = 0;
         var studios = [];
         var timetables = [];
 
